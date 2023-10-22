@@ -14,23 +14,25 @@ import com.beermartket.alcohol.model.LoaiSanPham;
 import com.beermartket.alcohol.repository.LoaiSanPhamRepository;
 
 @Controller
+@RequestMapping("user")
 public class HomeController {
 	@Autowired
 	LoaiSanPhamRepository lspDao;
 	
-	 @RequestMapping("/home/{page}")
-		public String mota(Model model, @PathVariable("page")String page) {
-	    	model.addAttribute("mix", page);
-	        return "customer/home/index";
-	    }
-//	@RequestMapping("/home")
-//	public String Home() {
-//		
-//		 return "customer/home/index";
-//	}
-	
-	@GetMapping("/all/category")
-	public ResponseEntity<List<LoaiSanPham>> findAll() {
-		return ResponseEntity.ok(lspDao.findAll());
+	@RequestMapping("/home")
+	public String Home() {
+			
+		 return "customer/view/home/home";
 	}
+	
+	@RequestMapping("/product_detail")
+	public String Product_detail() {
+			
+		 return "customer/view/home/product-video";
+	}
+	
+//	@GetMapping("/all/category")
+//	public ResponseEntity<List<LoaiSanPham>> findAll() {
+//		return ResponseEntity.ok(lspDao.findAll());
+//	}
 }

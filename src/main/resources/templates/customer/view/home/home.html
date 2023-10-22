@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/customer/layout/index :: content(~{::body},~{::title})}">
+
+<head>
+
+<title>Trang chủ</title>
+</head>
 <body>
 	<aside class="category-sidebar">
         <div class="category-header">
@@ -113,7 +121,7 @@
         </div>
         <ul class="cart-list">
             <li class="cart-item">
-                <div class="cart-media"><a href="#"><img th:href="@{/images/product/01.jpg}" alt="product"></a><button
+                <div class="cart-media"><a href="#"><img th:src="@{/images/product/01.jpg}" alt="product"></a><button
                         class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
@@ -130,7 +138,7 @@
                 </div>
             </li>
             <li class="cart-item">
-                <div class="cart-media"><a href="#"><img th:href="@{/images/product/02.jpg}" alt="product"></a><button
+                <div class="cart-media"><a href="#"><img th:src="@{/images/product/02.jpg}" alt="product"></a><button
                         class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
@@ -164,7 +172,7 @@
                 </div>
             </li>
             <li class="cart-item">
-                <div class="cart-media"><a href="#"><img th:href="@{/images/product/04.jpg}" alt="product"></a><button
+                <div class="cart-media"><a href="#"><img th:src="@{/images/product/04.jpg}" alt="product"></a><button
                         class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
@@ -181,7 +189,7 @@
                 </div>
             </li>
             <li class="cart-item">
-                <div class="cart-media"><a href="#"><img th:href="@{/images/product/05.jpg}" alt="product"></a><button
+                <div class="cart-media"><a href="#"><img th:src="@{/images/product/05.jpg}" alt="product"></a><button
                         class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
@@ -206,7 +214,7 @@
         </div>
     </aside>
     <aside class="nav-sidebar">
-        <div class="nav-header"><a href="#"><img th:href="@{/images/logo.png}" alt="logo"></a><button class="nav-close"><i
+        <div class="nav-header"><a href="#"><img th:src="@{/images/logo.png}" alt="logo"></a><button class="nav-close"><i
                     class="icofont-close"></i></button></div>
         <div class="nav-content">
             <div class="nav-btn"><a href="login.html" class="btn btn-inline"><i class="fa fa-unlock-alt"></i><span>join
@@ -316,22 +324,22 @@
                                 <div class="view-label-group"><label class="view-label new">new</label><label
                                         class="view-label off">-10%</label></div>
                                 <ul class="preview-slider slider-arrow">
-                                    <li><img th:href="@{/images/product/01.jpg}" alt="product"></li>
-                                    <li><img th:href="@{/images/product/01.jpg}" alt="product"></li>
-                                    <li><img th:href="@{/images/product/01.jpg}" alt="product"></li>
-                                    <li><img th:href="@{/images/product/01.jpg}" alt="product"></li>
-                                    <li><img th:href="@{/images/product/01.jpg}" alt="product"></li>
-                                    <li><img th:href="@{/images/product/01.jpg}" alt="product"></li>
-                                    <li><img th:href="@{/images/product/01.jpg}" alt="product"></li>
+                                    <li><img th:src="@{/images/product/01.jpg}" alt="product"></li>
+                                    <li><img th:src="@{/images/product/01.jpg}" alt="product"></li>
+                                    <li><img th:src="@{/images/product/01.jpg}" alt="product"></li>
+                                    <li><img th:src="@{/images/product/01.jpg}" alt="product"></li>
+                                    <li><img th:src="@{/images/product/01.jpg}" alt="product"></li>
+                                    <li><img th:src="@{/images/product/01.jpg}" alt="product"></li>
+                                    <li><img th:src="@{/images/product/01.jpg}" alt="product"></li>
                                 </ul>
                                 <ul class="thumb-slider">
-                                    <li><img th:href="@{/images/product/01.jpg}" alt="product"></li>
-                                    <li><img th:href="@{/images/product/01.jpg}" alt="product"></li>
-                                    <li><img th:href="@{/images/product/01.jpg}" alt="product"></li>
-                                    <li><img th:href="@{/images/product/01.jpg}" alt="product"></li>
-                                    <li><img th:href="@{/images/product/01.jpg}" alt="product"></li>
-                                    <li><img th:href="@{/images/product/01.jpg}" alt="product"></li>
-                                    <li><img th:href="@{/images/product/01.jpg}" alt="product"></li>
+                                    <li><img th:src="@{/images/product/01.jpg}" alt="product"></li>
+                                    <li><img th:src="@{/images/product/01.jpg}" alt="product"></li>
+                                    <li><img th:src="@{/images/product/01.jpg}" alt="product"></li>
+                                    <li><img th:src="@{/images/product/01.jpg}" alt="product"></li>
+                                    <li><img th:src="@{/images/product/01.jpg}" alt="product"></li>
+                                    <li><img th:src="@{/images/product/01.jpg}" alt="product"></li>
+                                    <li><img th:src="@{/images/product/01.jpg}" alt="product"></li>
                                 </ul>
                             </div>
                         </div>
@@ -402,7 +410,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6">
-                        <div class="banner-img"><img th:href="@{/images/home/index/01.png}" alt="index"></div>
+                        <div class="banner-img"><img th:src="@{/images/home/index/01.png}" alt="index"></div>
                     </div>
                 </div>
             </div>
@@ -411,7 +419,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-lg-6">
-                        <div class="banner-img"><img th:href="@{/images/home/index/02.png}" alt="index"></div>
+                        <div class="banner-img"><img th:src="@{/images/home/index/02.png}" alt="index"></div>
                     </div>
                     <div class="col-md-6 col-lg-6">
                         <div class="banner-content">
@@ -432,28 +440,28 @@
     <section class="section suggest-part">
         <div class="container">
             <ul class="suggest-slider slider-arrow">
-                <li><a class="suggest-card" href="shop-4column.html"><img th:href="@{/images/suggest/01.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/01.jpg}" alt="suggest">
                         <h5>vegetables <span>34 items</span></h5>
                     </a></li>
-                <li><a class="suggest-card" href="shop-4column.html"><img th:href="@{/images/suggest/02.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/02.jpg}" alt="suggest">
                         <h5>fruits <span>89 items</span></h5>
                     </a></li>
-                <li><a class="suggest-card" href="shop-4column.html"><img th:href="@{/images/suggest/03.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/03.jpg}" alt="suggest">
                         <h5>groceries <span>45 items</span></h5>
                     </a></li>
-                <li><a class="suggest-card" href="shop-4column.html"><img th:href="@{/images/suggest/04.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/04.jpg}" alt="suggest">
                         <h5>dairy farm <span>83 items</span></h5>
                     </a></li>
-                <li><a class="suggest-card" href="shop-4column.html"><img th:href="@{/images/suggest/05.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/05.jpg}" alt="suggest">
                         <h5>sea foods <span>40 items</span></h5>
                     </a></li>
-                <li><a class="suggest-card" href="shop-4column.html"><img th:href="@{/images/suggest/06.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/06.jpg}" alt="suggest">
                         <h5>vegan foods <span>57 items</span></h5>
                     </a></li>
-                <li><a class="suggest-card" href="shop-4column.html"><img th:href="@{/images/suggest/07.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/07.jpg}" alt="suggest">
                         <h5>dry foods <span>23 items</span></h5>
                     </a></li>
-                <li><a class="suggest-card" href="shop-4column.html"><img th:href="@{/images/suggest/08.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/08.jpg}" alt="suggest">
                         <h5>fast foods <span>97 items</span></h5>
                     </a></li>
             </ul>
@@ -474,7 +482,7 @@
                         <div class="product-media">
                             <div class="product-label"><label class="label-text sale">sale</label></div><button
                                 class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image"
-                                href="product-video.html"><img th:href="@{/images/product/01.jpg}" alt="product"></a>
+                                href="product-video.html"><img th:src="@{/images/product/01.jpg}" alt="product"></a>
                             <div class="product-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -504,7 +512,7 @@
                             <div class="product-label"><label class="label-text sale">sale</label><label
                                     class="label-text new">new</label></div><button class="product-wish wish"><i
                                     class="fas fa-heart"></i></button><a class="product-image"
-                                href="product-video.html"><img th:href="@{/images/product/02.jpg}" alt="product"></a>
+                                href="product-video.html"><img th:src="@{/images/product/02.jpg}" alt="product"></a>
                             <div class="product-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -533,7 +541,7 @@
                         <div class="product-media">
                             <div class="product-label"><label class="label-text sale">sale</label></div><button
                                 class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image"
-                                href="product-video.html"><img th:href="@{/images/product/03.jpg}" alt="product"></a>
+                                href="product-video.html"><img th:src="@{/images/product/03.jpg}" alt="product"></a>
                             <div class="product-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -562,7 +570,7 @@
                         <div class="product-media">
                             <div class="product-label"><label class="label-text sale">sale</label></div><button
                                 class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image"
-                                href="product-video.html"><img th:href="@{/images/product/04.jpg}" alt="product"></a>
+                                href="product-video.html"><img th:src="@{/images/product/04.jpg}" alt="product"></a>
                             <div class="product-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -591,7 +599,7 @@
                         <div class="product-media">
                             <div class="product-label"><label class="label-text sale">sale</label></div><button
                                 class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image"
-                                href="product-video.html"><img th:href="@{/images/product/05.jpg}" alt="product"></a>
+                                href="product-video.html"><img th:src="@{/images/product/05.jpg}" alt="product"></a>
                             <div class="product-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -620,7 +628,7 @@
                         <div class="product-media">
                             <div class="product-label"><label class="label-text sale">sale</label></div><button
                                 class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image"
-                                href="product-video.html"><img th:href="@{/images/product/06.jpg}" alt="product"></a>
+                                href="product-video.html"><img th:src="@{/images/product/06.jpg}" alt="product"></a>
                             <div class="product-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -649,7 +657,7 @@
                         <div class="product-media">
                             <div class="product-label"><label class="label-text sale">sale</label></div><button
                                 class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image"
-                                href="product-video.html"><img th:href="@{/images/product/07.jpg}" alt="product"></a>
+                                href="product-video.html"><img th:src="@{/images/product/07.jpg}" alt="product"></a>
                             <div class="product-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -678,7 +686,7 @@
                         <div class="product-media">
                             <div class="product-label"><label class="label-text sale">sale</label></div><button
                                 class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image"
-                                href="product-video.html"><img th:href="@{/images/product/08.jpg}" alt="product"></a>
+                                href="product-video.html"><img th:src="@{/images/product/08.jpg}" alt="product"></a>
                             <div class="product-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -707,7 +715,7 @@
                         <div class="product-media">
                             <div class="product-label"><label class="label-text sale">sale</label></div><button
                                 class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image"
-                                href="product-video.html"><img th:href="@{/images/product/09.jpg}" alt="product"></a>
+                                href="product-video.html"><img th:src="@{/images/product/09.jpg}" alt="product"></a>
                             <div class="product-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -736,7 +744,7 @@
                         <div class="product-media">
                             <div class="product-label"><label class="label-text sale">sale</label></div><button
                                 class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image"
-                                href="product-video.html"><img src="images/product/10.jpg" alt="product"></a>
+                                href="product-video.html"><img src="/images/product/10.jpg" alt="product"></a>
                             <div class="product-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -773,7 +781,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="promo-img"><a href="#"><img src="images/promo/home/03.jpg" alt="promo"></a></div>
+                    <div class="promo-img"><a href="#"><img src="/images/promo/home/03.jpg" alt="promo"></a></div>
                 </div>
             </div>
         </div>
@@ -793,7 +801,7 @@
                         <div class="feature-media">
                             <div class="feature-label"><label class="label-text feat">feature</label></div><button
                                 class="feature-wish wish"><i class="fas fa-heart"></i></button><a class="feature-image"
-                                href="product-video.html"><img src="images/product/09.jpg" alt="product"></a>
+                                href="product-video.html"><img src="/images/product/09.jpg" alt="product"></a>
                             <div class="feature-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -823,7 +831,7 @@
                         <div class="feature-media">
                             <div class="feature-label"><label class="label-text feat">feature</label></div><button
                                 class="feature-wish wish"><i class="fas fa-heart"></i></button><a class="feature-image"
-                                href="product-video.html"><img src="images/product/10.jpg" alt="product"></a>
+                                href="product-video.html"><img src="/images/product/10.jpg" alt="product"></a>
                             <div class="feature-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -853,7 +861,7 @@
                         <div class="feature-media">
                             <div class="feature-label"><label class="label-text feat">feature</label></div><button
                                 class="feature-wish wish"><i class="fas fa-heart"></i></button><a class="feature-image"
-                                href="product-video.html"><img src="images/product/11.jpg" alt="product"></a>
+                                href="product-video.html"><img src="/images/product/11.jpg" alt="product"></a>
                             <div class="feature-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -883,7 +891,7 @@
                         <div class="feature-media">
                             <div class="feature-label"><label class="label-text feat">feature</label></div><button
                                 class="feature-wish wish"><i class="fas fa-heart"></i></button><a class="feature-image"
-                                href="product-video.html"><img src="images/product/12.jpg" alt="product"></a>
+                                href="product-video.html"><img src="/images/product/12.jpg" alt="product"></a>
                             <div class="feature-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -913,7 +921,7 @@
                         <div class="feature-media">
                             <div class="feature-label"><label class="label-text feat">feature</label></div><button
                                 class="feature-wish wish"><i class="fas fa-heart"></i></button><a class="feature-image"
-                                href="product-video.html"><img src="images/product/13.jpg" alt="product"></a>
+                                href="product-video.html"><img src="/images/product/13.jpg" alt="product"></a>
                             <div class="feature-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -943,7 +951,7 @@
                         <div class="feature-media">
                             <div class="feature-label"><label class="label-text feat">feature</label></div><button
                                 class="feature-wish wish"><i class="fas fa-heart"></i></button><a class="feature-image"
-                                href="product-video.html"><img src="images/product/14.jpg" alt="product"></a>
+                                href="product-video.html"><img src="/images/product/14.jpg" alt="product"></a>
                             <div class="feature-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -996,7 +1004,7 @@
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-5">
-                    <div class="countdown-img"><img th:href="@{/images/countdown.png}" alt="countdown">
+                    <div class="countdown-img"><img th:src="@{/images/countdown.png}" alt="countdown">
                         <div class="countdown-off"><span>20%</span><span>off</span></div>
                     </div>
                 </div>
@@ -1020,7 +1028,7 @@
                                 <div class="product-media">
                                     <div class="product-label"><label class="label-text new">new</label></div><button
                                         class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                        class="product-image" href="product-video.html"><img  th:href="@{/images/product/15.jpg}"
+                                        class="product-image" href="product-video.html"><img  th:src="@{/images/product/15.jpg}"
                                             alt="product"></a>
                                     <div class="product-widget"><a title="Product Compare" href="compare.html"
                                             class="fas fa-random"></a><a title="Product Video"
@@ -1051,7 +1059,7 @@
                                 <div class="product-media">
                                     <div class="product-label"><label class="label-text new">new</label></div><button
                                         class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                        class="product-image" href="product-video.html"><img src="images/product/16.jpg"
+                                        class="product-image" href="product-video.html"><img src="/images/product/16.jpg"
                                             alt="product"></a>
                                     <div class="product-widget"><a title="Product Compare" href="compare.html"
                                             class="fas fa-random"></a><a title="Product Video"
@@ -1082,7 +1090,7 @@
                                 <div class="product-media">
                                     <div class="product-label"><label class="label-text new">new</label></div><button
                                         class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                        class="product-image" href="product-video.html"><img src="images/product/17.jpg"
+                                        class="product-image" href="product-video.html"><img src="/images/product/17.jpg"
                                             alt="product"></a>
                                     <div class="product-widget"><a title="Product Compare" href="compare.html"
                                             class="fas fa-random"></a><a title="Product Video"
@@ -1113,7 +1121,7 @@
                                 <div class="product-media">
                                     <div class="product-label"><label class="label-text new">new</label></div><button
                                         class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                        class="product-image" href="product-video.html"><img src="images/product/18.jpg"
+                                        class="product-image" href="product-video.html"><img src="/images/product/18.jpg"
                                             alt="product"></a>
                                     <div class="product-widget"><a title="Product Compare" href="compare.html"
                                             class="fas fa-random"></a><a title="Product Video"
@@ -1144,7 +1152,7 @@
                                 <div class="product-media">
                                     <div class="product-label"><label class="label-text new">new</label></div><button
                                         class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                        class="product-image" href="product-video.html"><img src="images/product/19.jpg"
+                                        class="product-image" href="product-video.html"><img src="/images/product/19.jpg"
                                             alt="product"></a>
                                     <div class="product-widget"><a title="Product Compare" href="compare.html"
                                             class="fas fa-random"></a><a title="Product Video"
@@ -1175,7 +1183,7 @@
                                 <div class="product-media">
                                     <div class="product-label"><label class="label-text new">new</label></div><button
                                         class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                        class="product-image" href="product-video.html"><img src="images/product/20.jpg"
+                                        class="product-image" href="product-video.html"><img src="/images/product/20.jpg"
                                             alt="product"></a>
                                     <div class="product-widget"><a title="Product Compare" href="compare.html"
                                             class="fas fa-random"></a><a title="Product Video"
@@ -1216,10 +1224,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
-                    <div class="promo-img"><a href="#"><img src="images/promo/home/01.jpg" alt="promo"></a></div>
+                    <div class="promo-img"><a href="#"><img src="/images/promo/home/01.jpg" alt="promo"></a></div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
-                    <div class="promo-img"><a href="#"><img src="images/promo/home/02.jpg" alt="promo"></a></div>
+                    <div class="promo-img"><a href="#"><img src="/images/promo/home/02.jpg" alt="promo"></a></div>
                 </div>
             </div>
         </div>
@@ -1252,7 +1260,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text order">314</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/01.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/01.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1283,7 +1291,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text order">314</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/02.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/02.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1314,7 +1322,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text order">314</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/03.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/03.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1345,7 +1353,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text order">314</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/04.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/04.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1376,7 +1384,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text order">314</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/05.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/05.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1407,7 +1415,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text order">314</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/06.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/06.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1438,7 +1446,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text order">314</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/07.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/07.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1469,7 +1477,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text order">314</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/08.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/08.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1500,7 +1508,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text order">314</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/09.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/09.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1531,7 +1539,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text order">314</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/10.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/10.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1566,7 +1574,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text rate">4.8</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/11.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/11.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1597,7 +1605,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text rate">4.8</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/12.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/12.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1628,7 +1636,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text rate">4.8</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/13.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/13.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1659,7 +1667,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text rate">4.8</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/14.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/14.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1690,7 +1698,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text rate">4.8</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/15.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/15.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1721,7 +1729,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text rate">4.8</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/16.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/16.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1752,7 +1760,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text rate">4.8</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/17.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/17.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1783,7 +1791,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text rate">4.8</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/18.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/18.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1814,7 +1822,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text rate">4.8</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/19.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/19.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1845,7 +1853,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text rate">4.8</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/20.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/20.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1880,7 +1888,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text off">-10%</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/06.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/06.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1911,7 +1919,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text off">-10%</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/07.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/07.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1942,7 +1950,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text off">-10%</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/08.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/08.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -1973,7 +1981,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text off">-10%</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/09.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/09.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -2004,7 +2012,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text off">-10%</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/10.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/10.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -2035,7 +2043,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text off">-10%</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/11.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/11.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -2066,7 +2074,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text off">-10%</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/12.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/12.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -2097,7 +2105,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text off">-10%</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/13.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/13.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -2128,7 +2136,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text off">-10%</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/14.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/14.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -2159,7 +2167,7 @@
                             <div class="product-media">
                                 <div class="product-label"><label class="label-text off">-10%</label></div><button
                                     class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                    class="product-image" href="product-video.html"><img src="images/product/15.jpg"
+                                    class="product-image" href="product-video.html"><img src="/images/product/15.jpg"
                                         alt="product"></a>
                                 <div class="product-widget"><a title="Product Compare" href="compare.html"
                                         class="fas fa-random"></a><a title="Product Video"
@@ -2206,7 +2214,7 @@
             </div>
             <div class="brand-slider slider-arrow">
                 <div class="brand-wrap">
-                    <div class="brand-media"><img src="images/brand/01.jpg" alt="brand">
+                    <div class="brand-media"><img src="/images/brand/01.jpg" alt="brand">
                         <div class="brand-overlay"><a href="brand-single.html"><i class="fas fa-link"></i></a></div>
                     </div>
                     <div class="brand-meta">
@@ -2215,7 +2223,7 @@
                     </div>
                 </div>
                 <div class="brand-wrap">
-                    <div class="brand-media"><img src="images/brand/02.jpg" alt="brand">
+                    <div class="brand-media"><img src="/images/brand/02.jpg" alt="brand">
                         <div class="brand-overlay"><a href="brand-single.html"><i class="fas fa-link"></i></a></div>
                     </div>
                     <div class="brand-meta">
@@ -2224,7 +2232,7 @@
                     </div>
                 </div>
                 <div class="brand-wrap">
-                    <div class="brand-media"><img src="images/brand/03.jpg" alt="brand">
+                    <div class="brand-media"><img src="/images/brand/03.jpg" alt="brand">
                         <div class="brand-overlay"><a href="brand-single.html"><i class="fas fa-link"></i></a></div>
                     </div>
                     <div class="brand-meta">
@@ -2233,7 +2241,7 @@
                     </div>
                 </div>
                 <div class="brand-wrap">
-                    <div class="brand-media"><img src="images/brand/04.jpg" alt="brand">
+                    <div class="brand-media"><img src="/images/brand/04.jpg" alt="brand">
                         <div class="brand-overlay"><a href="brand-single.html"><i class="fas fa-link"></i></a></div>
                     </div>
                     <div class="brand-meta">
@@ -2242,7 +2250,7 @@
                     </div>
                 </div>
                 <div class="brand-wrap">
-                    <div class="brand-media"><img src="images/brand/05.jpg" alt="brand">
+                    <div class="brand-media"><img src="/images/brand/05.jpg" alt="brand">
                         <div class="brand-overlay"><a href="brand-single.html"><i class="fas fa-link"></i></a></div>
                     </div>
                     <div class="brand-meta">
@@ -2251,7 +2259,7 @@
                     </div>
                 </div>
                 <div class="brand-wrap">
-                    <div class="brand-media"><img src="images/brand/06.jpg" alt="brand">
+                    <div class="brand-media"><img src="/images/brand/06.jpg" alt="brand">
                         <div class="brand-overlay"><a href="brand-single.html"><i class="fas fa-link"></i></a></div>
                     </div>
                     <div class="brand-meta">
@@ -2290,7 +2298,7 @@
                                 <li class="fas fa-star"></li>
                                 <li class="fas fa-star"></li>
                                 <li class="fas fa-star"></li>
-                            </ul><img src="images/avatar/01.jpg" alt="testimonial">
+                            </ul><img src="/images/avatar/01.jpg" alt="testimonial">
                         </div>
                         <div class="testimonial-card"><i class="fas fa-quote-left"></i>
                             <p>Lorem ipsum dolor consectetur adipisicing elit neque earum sapiente vitae obcaecati
@@ -2302,7 +2310,7 @@
                                 <li class="fas fa-star"></li>
                                 <li class="fas fa-star"></li>
                                 <li class="fas fa-star"></li>
-                            </ul><img src="images/avatar/02.jpg" alt="testimonial">
+                            </ul><img src="/images/avatar/02.jpg" alt="testimonial">
                         </div>
                         <div class="testimonial-card"><i class="fas fa-quote-left"></i>
                             <p>Lorem ipsum dolor consectetur adipisicing elit neque earum sapiente vitae obcaecati
@@ -2314,7 +2322,7 @@
                                 <li class="fas fa-star"></li>
                                 <li class="fas fa-star"></li>
                                 <li class="fas fa-star"></li>
-                            </ul><img src="images/avatar/03.jpg" alt="testimonial">
+                            </ul><img src="/images/avatar/03.jpg" alt="testimonial">
                         </div>
                         <div class="testimonial-card"><i class="fas fa-quote-left"></i>
                             <p>Lorem ipsum dolor consectetur adipisicing elit neque earum sapiente vitae obcaecati
@@ -2326,7 +2334,7 @@
                                 <li class="fas fa-star"></li>
                                 <li class="fas fa-star"></li>
                                 <li class="fas fa-star"></li>
-                            </ul><img src="images/avatar/04.jpg" alt="testimonial">
+                            </ul><img src="/images/avatar/04.jpg" alt="testimonial">
                         </div>
                     </div>
                 </div>
@@ -2346,7 +2354,7 @@
                 <div class="col-lg-12">
                     <div class="blog-slider slider-arrow">
                         <div class="blog-card">
-                            <div class="blog-media"><a class="blog-img" href="#"><img src="images/blog/01.jpg"
+                            <div class="blog-media"><a class="blog-img" href="#"><img src="/images/blog/01.jpg"
                                         alt="blog"></a></div>
                             <div class="blog-content">
                                 <ul class="blog-meta">
@@ -2361,7 +2369,7 @@
                             </div>
                         </div>
                         <div class="blog-card">
-                            <div class="blog-media"><a class="blog-img" href="#"><img src="images/blog/02.jpg"
+                            <div class="blog-media"><a class="blog-img" href="#"><img src="/images/blog/02.jpg"
                                         alt="blog"></a></div>
                             <div class="blog-content">
                                 <ul class="blog-meta">
@@ -2376,7 +2384,7 @@
                             </div>
                         </div>
                         <div class="blog-card">
-                            <div class="blog-media"><a class="blog-img" href="#"><img src="images/blog/03.jpg"
+                            <div class="blog-media"><a class="blog-img" href="#"><img src="/images/blog/03.jpg"
                                         alt="blog"></a></div>
                             <div class="blog-content">
                                 <ul class="blog-meta">
@@ -2391,7 +2399,7 @@
                             </div>
                         </div>
                         <div class="blog-card">
-                            <div class="blog-media"><a class="blog-img" href="#"><img src="images/blog/04.jpg"
+                            <div class="blog-media"><a class="blog-img" href="#"><img src="/images/blog/04.jpg"
                                         alt="blog"></a></div>
                             <div class="blog-content">
                                 <ul class="blog-meta">
@@ -2474,81 +2482,5 @@
             </div>
         </div>
     </section>
-    <footer class="footer-part">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-xl-3">
-                    <div class="footer-widget"><a class="footer-logo" href="#"><img th:href="@{/images/logo.png}"
-                                alt="logo"></a>
-                        <p class="footer-desc">Adipisci asperiores ipsum ipsa repellat consequatur repudiandae quisquam
-                            assumenda dolor perspiciatis sit ipsum dolor amet.</p>
-                        <ul class="footer-social">
-                            <li><a class="icofont-facebook" href="#"></a></li>
-                            <li><a class="icofont-twitter" href="#"></a></li>
-                            <li><a class="icofont-linkedin" href="#"></a></li>
-                            <li><a class="icofont-instagram" href="#"></a></li>
-                            <li><a class="icofont-pinterest" href="#"></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="footer-widget contact">
-                        <h3 class="footer-title">contact us</h3>
-                        <ul class="footer-contact">
-                            <li><i class="icofont-ui-email"></i>
-                                <p><span>support@example.com</span><span>carrer@example.com</span></p>
-                            </li>
-                            <li><i class="icofont-ui-touch-phone"></i>
-                                <p><span>+120 279 532 13</span><span>+120 279 532 14</span></p>
-                            </li>
-                            <li><i class="icofont-location-pin"></i>
-                                <p>1Hd- 50, 010 Avenue, NY 90001 United States</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="footer-widget">
-                        <h3 class="footer-title">quick Links</h3>
-                        <div class="footer-links">
-                            <ul>
-                                <li><a href="#">My Account</a></li>
-                                <li><a href="#">Order History</a></li>
-                                <li><a href="#">Order Tracking</a></li>
-                                <li><a href="#">Best Seller</a></li>
-                                <li><a href="#">New Arrivals</a></li>
-                            </ul>
-                            <ul>
-                                <li><a href="#">Location</a></li>
-                                <li><a href="#">Affiliates</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="#">Carrer</a></li>
-                                <li><a href="#">Faq</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="footer-widget">
-                        <h3 class="footer-title">Download App</h3>
-                        <p class="footer-desc">Lorem ipsum dolor sit amet tenetur dignissimos ipsum eligendi autem
-                            obcaecati minus ducimus totam reprehenderit exercitationem!</p>
-                        <div class="footer-app"><a href="#"><img th:href="@{/images/google-store.png}" alt="google"></a><a
-                                href="#"><img th:href="@{/images/app-store.png" alt="app"></a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="footer-bottom">
-                        <p class="footer-copytext">&copy; All Copyrights Reserved by <a href="#">Mironcoder</a></p>
-                        <div class="footer-card"><a href="#"><img th:href="@{/images/payment/jpg/01.jpg}" alt="payment"></a><a
-                                href="#"><img th:href="@{/images/payment/jpg/02.jpg}" alt="payment"></a><a href="#"><img
-                                    th:href="@{/images/payment/jpg/03.jpg}" alt="payment"></a><a href="#"><img
-                                    th:href="@{/images/payment/jpg/04.jpg}" alt="payment"></a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 </body>
+</html>
