@@ -96,7 +96,7 @@
                         <div class="product-media">
                             <div class="product-label"><label class="label-text sale">new</label></div><button
                                 class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image"
-                                ng-click="goToSinglePage(item.maSanPham)"><img th:src="@{/images/product/01.jpg}" alt="product"></a>
+                                ng-click="goToSinglePage(item.maSanPham)"><img ng-src="../images/product/{{item.hinhAnh}}"></a>
                             <div class="product-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
