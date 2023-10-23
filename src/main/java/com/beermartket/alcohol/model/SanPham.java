@@ -55,6 +55,7 @@ public class SanPham implements Serializable {
 	@Column(name="TrangThai")
 	private boolean trangThai;
 
+
 	//bi-directional many-to-one association to ChiTietGioHang
 	@OneToMany(mappedBy="sanPham")
 	private List<ChiTietGioHang> chiTietGioHangs;

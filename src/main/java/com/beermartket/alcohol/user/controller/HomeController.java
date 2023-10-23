@@ -1,16 +1,10 @@
 package com.beermartket.alcohol.user.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.beermartket.alcohol.model.LoaiSanPham;
 import com.beermartket.alcohol.repository.LoaiSanPhamRepository;
 
 @Controller
@@ -25,8 +19,8 @@ public class HomeController {
 		 return "customer/view/home/home";
 	}
 	
-	@RequestMapping("/product_detail")
-	public String Product_detail() {
+	@RequestMapping("/product_detail/{maSanPham}")
+	public String Product_detail(@PathVariable("maSanPham") int maSanPham, Model model) {
 			
 		 return "customer/view/home/product-video";
 	}
