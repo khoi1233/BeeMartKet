@@ -1,12 +1,8 @@
 package com.beermartket.alcohol.model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.List;
-
-import org.hibernate.annotations.NamedQuery;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,6 +14,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Data
 @Entity
@@ -42,9 +39,9 @@ public class SanPham implements Serializable {
 
 	@Column(name="MoTa")
 	private String moTa;
-	
-	@Column(name="ThongTin")
-	private String ThongTin;
+
+	@Column(name="NgayTao")
+	private Timestamp ngayTao;
 
 	@Column(name="SoLuong")
 	private int soLuong;
@@ -52,41 +49,42 @@ public class SanPham implements Serializable {
 	@Column(name="TenSanPham")
 	private String tenSanPham;
 
+	@Column(name="ThongTin")
+	private String thongTin;
+
 	@Column(name="TrangThai")
 	private boolean trangThai;
-	
-	@Column(name="NgayTao")
-	private LocalDateTime ngayTao;
 
-	@JsonIgnore
+	//bi-directional many-to-one association to ChiTietGioHang
 	@OneToMany(mappedBy="sanPham")
 	private List<ChiTietGioHang> chiTietGioHangs;
 
-	@JsonIgnore
+	//bi-directional many-to-one association to ChiTietHoaDon
 	@OneToMany(mappedBy="sanPham")
 	private List<ChiTietHoaDon> chiTietHoaDons;
 
-	@JsonIgnore
+	//bi-directional many-to-one association to DanhGia
 	@OneToMany(mappedBy="sanPham")
 	private List<DanhGia> danhGias;
 
-	@JsonIgnore
+	//bi-directional many-to-one association to Hinh
 	@OneToMany(mappedBy="sanPham")
 	private List<Hinh> hinhs;
 
-
+	//bi-directional many-to-one association to LoaiSanPham
 	@ManyToOne
 	@JoinColumn(name="MaLoaiSanPham")
 	private LoaiSanPham loaiSanPham;
-
-
+//
+	//bi-directional many-to-one association to NhaCungCap
 	@ManyToOne
 	@JoinColumn(name="MaNhaCungCap")
 	private NhaCungCap nhaCungCap;
-
-
+//
+	//bi-directional many-to-one association to TaiKhoanAdmin
 	@ManyToOne
 	@JoinColumn(name="MaTaiKhoanAdmin")
 	private TaiKhoanAdmin taiKhoanAdmin;
+
 
 }

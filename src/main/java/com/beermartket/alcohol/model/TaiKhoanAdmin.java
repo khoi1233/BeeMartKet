@@ -1,10 +1,11 @@
 package com.beermartket.alcohol.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.hibernate.annotations.NamedQuery;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,6 +15,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Data
 @Entity
@@ -45,25 +47,28 @@ public class TaiKhoanAdmin implements Serializable {
 	@Column(name="MatKhau")
 	private String matKhau;
 
+	@Column(name="NgayTao")
+	private LocalDateTime ngayTao;
+
 	@Column(name="SoDienThoai")
 	private String soDienThoai;
 
 	@Column(name="TenDangNhap")
 	private String tenDangNhap;
 
-
+	//bi-directional many-to-one association to PhieuNhapHang
 	@OneToMany(mappedBy="taiKhoanAdmin")
 	private List<PhieuNhapHang> phieuNhapHangs;
 
-
+	@JsonIgnore
 	@OneToMany(mappedBy="taiKhoanAdmin")
 	private List<SanPham> sanPhams;
 
-
+	//bi-directional many-to-one association to TinTuc
 	@OneToMany(mappedBy="taiKhoanAdmin")
 	private List<TinTuc> tinTucs;
 
-
+	//bi-directional many-to-one association to Trang
 	@OneToMany(mappedBy="taiKhoanAdmin")
 	private List<Trang> trangs;
 

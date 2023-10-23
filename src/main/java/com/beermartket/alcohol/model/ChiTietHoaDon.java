@@ -2,18 +2,16 @@ package com.beermartket.alcohol.model;
 
 import java.io.Serializable;
 
-import org.hibernate.annotations.NamedQuery;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Data
 @Entity
@@ -45,4 +43,5 @@ public class ChiTietHoaDon implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="MaSanPham")
 	private SanPham sanPham;
+
 }

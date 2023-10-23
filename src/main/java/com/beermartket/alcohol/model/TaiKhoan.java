@@ -1,9 +1,9 @@
 package com.beermartket.alcohol.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
-
-import org.hibernate.annotations.NamedQuery;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -41,6 +41,9 @@ public class TaiKhoan implements Serializable {
 
 	@Column(name="MatKhau")
 	private String matKhau;
+
+	@Column(name="NgayTao")
+	private LocalDateTime ngayTao;
 
 	@Column(name="SoDienThoai")
 	private String soDienThoai;

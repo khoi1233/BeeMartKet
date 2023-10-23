@@ -15,19 +15,14 @@ import com.beermartket.alcohol.repository.SanPhamRepository;
 
 @RestController
 public class SanPham_restController {
-	@Autowired
-	LoaiSanPhamRepository loaisanphamDao;
 	
 	@Autowired
 	SanPhamRepository sanphamDao;
 
-	@GetMapping("/rest/loaisanpham")
-	public ResponseEntity<List<LoaiSanPham>> findAll1() {
-		return ResponseEntity.ok(loaisanphamDao.findAll());
-	}
 	@GetMapping("/rest/sanpham")
 	public ResponseEntity<List<SanPham>> findAll() {
 		return ResponseEntity.ok(sanphamDao.findAll());
 	}
+	
 
 }

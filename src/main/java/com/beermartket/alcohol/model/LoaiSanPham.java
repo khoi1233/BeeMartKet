@@ -35,9 +35,11 @@ public class LoaiSanPham implements Serializable {
 
 	@Column(name="TenLoaiSanPham")
 	private String tenLoaiSanPham;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy="loaiSanPham")
 	private List<SanPham> sanPhams;
 
+	
+	
 }
