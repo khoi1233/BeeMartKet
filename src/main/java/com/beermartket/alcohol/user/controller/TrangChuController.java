@@ -8,25 +8,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.beermartket.alcohol.repository.LoaiSanPhamRepository;
 
 @Controller
-@RequestMapping("user")
-public class HomeController {
+@RequestMapping("khachhang")
+public class TrangChuController {
 	@Autowired
 	LoaiSanPhamRepository lspDao;
 	
-	@RequestMapping("/home")
-	public String Home() {
+	@RequestMapping("/trangchu")
+	public String Trangchu() {
 			
-		 return "customer/view/home/home";
+		 return "customer/view/home/TrangChu";
 	}
 	
-	@RequestMapping("/product_detail/{maSanPham}")
-	public String Product_detail(@PathVariable("maSanPham") int maSanPham, Model model) {
+	@RequestMapping("/chitietsanpham/{maSanPham}")
+	public String Chitietsanpham(@PathVariable("maSanPham") int maSanPham, Model model) {
 			
-		 return "customer/view/home/product-video";
+		 return "customer/view/home/ChiTietSanPham";
 	}
 	
-//	@GetMapping("/all/category")
-//	public ResponseEntity<List<LoaiSanPham>> findAll() {
-//		return ResponseEntity.ok(lspDao.findAll());
-//	}
+	@RequestMapping("/sanpham")
+	public String Sanpham() {
+			
+		 return "customer/view/home/sanpham";
+	}
+
 }
