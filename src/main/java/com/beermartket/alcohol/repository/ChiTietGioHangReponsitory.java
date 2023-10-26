@@ -13,5 +13,5 @@ import com.beermartket.alcohol.model.SanPham;
 public interface ChiTietGioHangReponsitory extends JpaRepository<ChiTietGioHang, Integer> {
     List<ChiTietGioHang> findByGioHang(GioHang gioHang);
     List<ChiTietGioHang> findBySanPham(SanPham sanPham);
-
+    
 }

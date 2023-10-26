@@ -133,36 +133,36 @@
     </section>
     
      <!-- giỏ hàng bắt đầu -->
-    <aside class="cart-sidebar">
+    <aside class="cart-sidebar" >
         <div class="cart-header">
-            <div class="cart-total"><i class="fas fa-shopping-basket"></i><span>Tổng số sản phẩm (5)</span></div><button
+            <div class="cart-total"><i class="fas fa-shopping-basket"></i><span>Tổng số sản phẩm ({{cart.qrt}})</span></div><button
                 class="cart-close"><i class="icofont-close"></i></button>
         </div>
         <ul class="cart-list">
-            <li class="cart-item">
-                <div class="cart-media"><a href="#"><img th:src="@{/images/product/01.jpg}" alt="product"></a><button
-                        class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
+            <li class="cart-item" ng-repeat="item in cartItems">
+                <div class="cart-media"><a href="#"><img ng-src="../images/product/{{item.sanPham.hinhAnh}}" alt="product"></a><button
+                    ng-click="remove(item.maChiTietGH)" class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
-                        <h6><a href="product-single.html">existing product name</a></h6>
-                        <p>Unit Price - $8.75</p>
+                        <h6><a href="product-single.html">{{item.sanPham.tenSanPham}}</a></h6>
+                        <p>Giá: {{(item.sanPham.giaGoc - (item.sanPham.giaGoc * item.sanPham.chietKhauKH / 100)) | number}} đ</p>
                     </div>
                     <div class="cart-action-group">
                         <div class="product-action"><button class="action-minus" title="Quantity Minus"><i
                                     class="icofont-minus"></i></button><input class="action-input"
                                 title="Quantity Number" type="text" name="quantity" value="1"><button
                                 class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button></div>
-                        <h6>$56.98</h6>
+                        <h6>{{(item.sanPham.giaGoc - (item.sanPham.giaGoc * item.sanPham.chietKhauKH / 100)) | number}} đ</h6>
                     </div>
                 </div>
             </li>
             
         </ul>
-        <div class="cart-footer"><button class="coupon-btn">Do you have a coupon code?</button>
-            <form class="coupon-form"><input type="text" placeholder="Enter your coupon code"><button
-                    type="submit"><span>apply</span></button></form><a class="cart-checkout-btn"
-                href="checkout.html"><span class="checkout-label">Proceed to Checkout</span><span
-                    class="checkout-price">$369.78</span></a>
+        <div class="cart-footer"><button class="coupon-btn">Bạn đã có mã giảm giá?</button>
+            <form class="coupon-form"><input type="text" placeholder="Nhập mã phiếu giảm giá của bạn"><button
+                    type="submit"><span>áp dụng</span></button></form><a class="cart-checkout-btn"
+                href="checkout.html"><span class="checkout-label">Tiến hành Thanh Toán</span><span
+                    class="checkout-price">256541545441</span></a>
         </div>
     </aside>
     <!-- giỏ hàng kết thúc -->
@@ -210,7 +210,7 @@
                                     class="fas fa-shopping-basket"></i><span>add</span></button>
                             <div class="product-action"><button class="action-minus" title="Quantity Minus"><i
                                         class="icofont-minus"></i></button><input class="action-input"
-                                    title="Quantity Number" type="text" name="quantity" value="1"><button
+                                    title="Quantity Number" type="number" name="quantity" value="1"><button
                                     class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
                             </div>
                         </div>
