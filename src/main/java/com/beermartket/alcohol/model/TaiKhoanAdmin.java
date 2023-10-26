@@ -44,7 +44,10 @@ public class TaiKhoanAdmin implements Serializable {
 
 	@Column(name="MatKhau")
 	private String matKhau;
-
+	
+	@Column(name="MaHoaMatKhau")
+	private String maHoaMatKhau;
+	
 	@Column(name="SoDienThoai")
 	private String soDienThoai;
 
