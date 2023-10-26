@@ -1,9 +1,10 @@
 package com.beermartket.alcohol.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -55,7 +56,7 @@ public class TaiKhoan implements Serializable {
 	@OneToMany(mappedBy="taiKhoan")
 	private List<DanhGia> danhGias;
 
-	//bi-directional many-to-one association to GioHang
+	@JsonIgnore
 	@OneToMany(mappedBy="taiKhoan")
 	private List<GioHang> gioHangs;
 

@@ -38,6 +38,7 @@ public class ChiTietHoaDon implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="MaHoaDon")
 	private HoaDon hoaDon;
+	
 
 	//bi-directional many-to-one association to SanPham
 	@ManyToOne

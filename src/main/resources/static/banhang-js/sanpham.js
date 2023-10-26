@@ -6,7 +6,6 @@ app.controller('sanpham-controller', function($scope, $http, $window) {
 	$http.get('/rest/sanpham')
 		.then(function(response) {
 			$scope.sanpham = response.data;
-
 		});
 
 	 $scope.goToSinglePage = function(maSanPham) {
@@ -14,4 +13,6 @@ app.controller('sanpham-controller', function($scope, $http, $window) {
 		window.location.href = `/user/product_detail/${maSanPham}`;
 		alert("123");
 	};
+
+
 });

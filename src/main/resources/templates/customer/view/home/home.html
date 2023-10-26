@@ -6,7 +6,7 @@
 
 <title>Trang chủ</title>
 </head>
-<body ng-controller="sanpham-controller">
+<body ng-controller = "giohang-controller">
     <section class="home-index-slider slider-arrow slider-dots">
         <div class="banner-part banner-1">
             <div class="container">
@@ -51,6 +51,9 @@
             </div>
         </div>
     </section>
+    
+   
+    
     <section class="section suggest-part">
         <div class="container">
             <ul class="suggest-slider slider-arrow">
@@ -81,7 +84,7 @@
             </ul>
         </div>
     </section>
-    <section class="section recent-part">
+    <section class="section recent-part" ng-controller="sanpham-controller">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -94,7 +97,7 @@
                 <div class="col" ng-repeat="item in sanpham">
                     <div class="product-card">
                         <div class="product-media">
-                            <div class="product-label"><label class="label-text sale">new</label></div><button
+                            <div class="product-label"><label class="label-text sale">-{{item.chietKhauKH}} %</label></div><button
                                 class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image"
                                 ng-click="goToSinglePage(item.maSanPham)"><img ng-src="../images/product/{{item.hinhAnh}}"></a>
                             <div class="product-widget"><a title="Product Compare" href="compare.html"
@@ -108,10 +111,9 @@
                                     class="active icofont-star"></i><i class="active icofont-star"></i><i
                                     class="active icofont-star"></i><i class="icofont-star"></i><a
                                     href="product-video.html">(3)</a></div>
-                            <h6 class="product-name"><a href="product-video.html">fresh green chilis</a></h6>
-                            <h6 class="product-price"><del>${{item.giaGoc}} đ</del><span>${{item.giaGoc - (item.giaGoc * item.chietKhauKH / 100)}} đ</span></h6><button
-                                class="product-add" title="Add to Cart"><i
-                                    class="fas fa-shopping-basket"></i><span>add</span></button>
+                            <h6 class="product-name"><a href="product-video.html">{{item.tenSanPham}}</a></h6>
+                            <h6 class="product-price"><del>{{item.giaGoc | number}} đ</del><span>{{(item.giaGoc - (item.giaGoc * item.chietKhauKH / 100)) | number}} đ</span></h6>
+                            <button ng-click="addToCart(item.maSanPham)" class="product-add" title="Add to Cart"><i class="fas fa-shopping-basket"></i><span>Thêm vào giỏ hàng</span></button>
                             <div class="product-action"><button class="action-minus" title="Quantity Minus"><i
                                         class="icofont-minus"></i></button><input class="action-input"
                                     title="Quantity Number" type="text" name="quantity" value="1"><button
@@ -129,6 +131,42 @@
             </div>
         </div>
     </section>
+    
+     <!-- giỏ hàng bắt đầu -->
+    <aside class="cart-sidebar">
+        <div class="cart-header">
+            <div class="cart-total"><i class="fas fa-shopping-basket"></i><span>Tổng số sản phẩm (5)</span></div><button
+                class="cart-close"><i class="icofont-close"></i></button>
+        </div>
+        <ul class="cart-list">
+            <li class="cart-item">
+                <div class="cart-media"><a href="#"><img th:src="@{/images/product/01.jpg}" alt="product"></a><button
+                        class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
+                <div class="cart-info-group">
+                    <div class="cart-info">
+                        <h6><a href="product-single.html">existing product name</a></h6>
+                        <p>Unit Price - $8.75</p>
+                    </div>
+                    <div class="cart-action-group">
+                        <div class="product-action"><button class="action-minus" title="Quantity Minus"><i
+                                    class="icofont-minus"></i></button><input class="action-input"
+                                title="Quantity Number" type="text" name="quantity" value="1"><button
+                                class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button></div>
+                        <h6>$56.98</h6>
+                    </div>
+                </div>
+            </li>
+            
+        </ul>
+        <div class="cart-footer"><button class="coupon-btn">Do you have a coupon code?</button>
+            <form class="coupon-form"><input type="text" placeholder="Enter your coupon code"><button
+                    type="submit"><span>apply</span></button></form><a class="cart-checkout-btn"
+                href="checkout.html"><span class="checkout-label">Proceed to Checkout</span><span
+                    class="checkout-price">$369.78</span></a>
+        </div>
+    </aside>
+    <!-- giỏ hàng kết thúc -->
+    
     <div class="section promo-part">
         <div class="container">
             <div class="row">

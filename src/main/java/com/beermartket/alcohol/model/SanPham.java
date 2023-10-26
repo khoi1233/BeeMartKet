@@ -58,9 +58,9 @@ public class SanPham implements Serializable {
 	@Column(name="HinhAnh")
 	private String hinhAnh;
 
-	//bi-directional many-to-one association to ChiTietGioHang
-	@OneToMany(mappedBy="sanPham")
-	private List<ChiTietGioHang> chiTietGioHangs;
+//	//bi-directional many-to-one association to ChiTietGioHang
+//	@OneToMany(mappedBy="sanPham")
+//	private List<ChiTietGioHang> chiTietGioHangs;
 
 	//bi-directional many-to-one association to ChiTietHoaDon
 	@OneToMany(mappedBy="sanPham")

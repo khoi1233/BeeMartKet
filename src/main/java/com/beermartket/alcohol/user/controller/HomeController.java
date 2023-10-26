@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.beermartket.alcohol.repository.LoaiSanPhamRepository;
 
 @Controller
-@RequestMapping("user")
+@RequestMapping("/user")
 public class HomeController {
 	@Autowired
 	LoaiSanPhamRepository lspDao;
