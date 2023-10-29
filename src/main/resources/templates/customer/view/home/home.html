@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{/customer/layout/index :: content(~{::body},~{::title})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/customer/layout/index :: content(~{::body},~{::title})}">
 
 <head>
 
-<title>Trang chủ</title>
+    <title>Trang chủ</title>
 </head>
-<body ng-controller = "giohang-controller">
+
+<body ng-controller="giohang-controller">
     <section class="home-index-slider slider-arrow slider-dots">
         <div class="banner-part banner-1">
             <div class="container">
@@ -20,7 +20,8 @@
                             <div class="banner-btn"><a class="btn btn-inline" href="shop-4column.html"><i
                                         class="fas fa-shopping-basket"></i><span>shop now</span></a><a
                                     class="btn btn-outline" href="offer.html"><i
-                                        class="icofont-sale-discount"></i><span>get offer</span></a></div>
+                                        class="icofont-sale-discount"></i><span>get offer</span></a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6">
@@ -44,41 +45,50 @@
                             <div class="banner-btn"><a class="btn btn-inline" href="shop-4column.html"><i
                                         class="fas fa-shopping-basket"></i><span>shop now</span></a><a
                                     class="btn btn-outline" href="offer.html"><i
-                                        class="icofont-sale-discount"></i><span>get offer</span></a></div>
+                                        class="icofont-sale-discount"></i><span>get offer</span></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-   
-    
+
+
+
     <section class="section suggest-part">
         <div class="container">
             <ul class="suggest-slider slider-arrow">
-                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/01.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/01.jpg}"
+                            alt="suggest">
                         <h5>vegetables <span>34 items</span></h5>
                     </a></li>
-                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/02.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/02.jpg}"
+                            alt="suggest">
                         <h5>fruits <span>89 items</span></h5>
                     </a></li>
-                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/03.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/03.jpg}"
+                            alt="suggest">
                         <h5>groceries <span>45 items</span></h5>
                     </a></li>
-                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/04.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/04.jpg}"
+                            alt="suggest">
                         <h5>dairy farm <span>83 items</span></h5>
                     </a></li>
-                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/05.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/05.jpg}"
+                            alt="suggest">
                         <h5>sea foods <span>40 items</span></h5>
                     </a></li>
-                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/06.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/06.jpg}"
+                            alt="suggest">
                         <h5>vegan foods <span>57 items</span></h5>
                     </a></li>
-                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/07.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/07.jpg}"
+                            alt="suggest">
                         <h5>dry foods <span>23 items</span></h5>
                     </a></li>
-                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/08.jpg}" alt="suggest">
+                <li><a class="suggest-card" href="shop-4column.html"><img th:src="@{/images/suggest/08.jpg}"
+                            alt="suggest">
                         <h5>fast foods <span>97 items</span></h5>
                     </a></li>
             </ul>
@@ -93,13 +103,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5" >
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
                 <div class="col" ng-repeat="item in sanpham">
                     <div class="product-card">
                         <div class="product-media">
-                            <div class="product-label"><label class="label-text sale">-{{item.chietKhauKH}} %</label></div><button
-                                class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image"
-                                ng-click="goToSinglePage(item.maSanPham)"><img ng-src="../images/product/{{item.hinhAnh}}"></a>
+                            <div class="product-label"><label class="label-text sale">-{{item.chietKhauKH}} %</label>
+                            </div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a
+                                class="product-image" ng-click="goToSinglePage(item.maSanPham)"><img
+                                    ng-src="../images/product/{{item.hinhAnh}}"></a>
                             <div class="product-widget"><a title="Product Compare" href="compare.html"
                                     class="fas fa-random"></a><a title="Product Video"
                                     href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true"
@@ -112,12 +123,17 @@
                                     class="active icofont-star"></i><i class="icofont-star"></i><a
                                     href="product-video.html">(3)</a></div>
                             <h6 class="product-name"><a href="product-video.html">{{item.tenSanPham}}</a></h6>
-                            <h6 class="product-price"><del>{{item.giaGoc | number}} đ</del><span>{{(item.giaGoc - (item.giaGoc * item.chietKhauKH / 100)) | number}} đ</span></h6>
-                            <button ng-click="addToCart(item.maSanPham)" class="product-add" title="Add to Cart"><i class="fas fa-shopping-basket"></i><span>Thêm vào giỏ hàng</span></button>
-                            <div class="product-action"><button class="action-minus" title="Quantity Minus"><i
-                                        class="icofont-minus"></i></button><input class="action-input"
-                                    title="Quantity Number" type="text" name="quantity" value="1"><button
-                                    class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
+                            <h6 class="product-price"><del>{{item.giaGoc | number}} đ</del><span>{{(item.giaGoc -
+                                    (item.giaGoc * item.chietKhauKH / 100)) | number}} đ</span></h6>
+                            <button ng-click="addToCart(item.maSanPham)" class="product-add" title="Add to Cart"><i
+                                    class="fas fa-shopping-basket"></i><span>Thêm vào giỏ hàng</span></button>
+                            <div class="product-action">
+                                <button class="action-minus" title="Quantity Minus">
+                                    <i class="icofont-minus"></i></button><input class="action-input"
+                                    title="Quantity Number" type="text" name="quantity" value="1">
+                                <button class="action-plus" title="Quantity Plus">
+                                    <i class="icofont-plus"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -131,42 +147,51 @@
             </div>
         </div>
     </section>
-    
-     <!-- giỏ hàng bắt đầu -->
-    <aside class="cart-sidebar" >
+
+    <!-- giỏ hàng bắt đầu -->
+    <aside class="cart-sidebar">
         <div class="cart-header">
-            <div class="cart-total"><i class="fas fa-shopping-basket"></i><span>Tổng số sản phẩm ({{cart.qrt}})</span></div><button
-                class="cart-close"><i class="icofont-close"></i></button>
+            <div class="cart-total"><i class="fas fa-shopping-basket"></i><span>Tổng số sản phẩm
+                    ({{getTotalCartItemCount()}})</span></div><button class="cart-close"><i
+                    class="icofont-close"></i></button>
         </div>
         <ul class="cart-list">
             <li class="cart-item" ng-repeat="item in cartItems">
-                <div class="cart-media"><a href="#"><img ng-src="../images/product/{{item.sanPham.hinhAnh}}" alt="product"></a><button
-                    ng-click="remove(item.maChiTietGH)" class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
+                <div class="cart-media"><a href="#"><img ng-src="../images/product/{{item.sanPham.hinhAnh}}"
+                            alt="product"></a><button ng-click="remove(item.maChiTietGH)" class="cart-delete"><i
+                            class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
                         <h6><a href="product-single.html">{{item.sanPham.tenSanPham}}</a></h6>
-                        <p>Giá: {{(item.sanPham.giaGoc - (item.sanPham.giaGoc * item.sanPham.chietKhauKH / 100)) | number}} đ</p>
+                        <p>Giá: {{(item.sanPham.giaGoc - (item.sanPham.giaGoc * item.sanPham.chietKhauKH / 100)) |
+                            number}} đ</p>
                     </div>
                     <div class="cart-action-group">
-                        <div class="product-action"><button class="action-minus" title="Quantity Minus"><i
-                                    class="icofont-minus"></i></button><input class="action-input"
-                                title="Quantity Number" type="text" name="quantity" value="1"><button
-                                class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button></div>
-                        <h6>{{(item.sanPham.giaGoc - (item.sanPham.giaGoc * item.sanPham.chietKhauKH / 100)) | number}} đ</h6>
+                        <div class="product-action">
+                            <button class="action-minus" title="Quantity Minus" ng-click="decreaseQuantity(item)">
+                                <i class="icofont-minus"></i>
+                            </button>
+                            <input class="action-input" title="Quantity Number" type="number" name="quantity" ng-model="item.soLuong" ng-change="updateQuantity(item)">
+                            <button class="action-plus" title="Quantity Plus" ng-click="increaseQuantity(item)">
+                                <i class="icofont-plus"></i>
+                            </button>
+                        </div>
+                        <h6>{{(item.sanPham.giaGoc - (item.sanPham.giaGoc * item.sanPham.chietKhauKH / 100)) | number}}
+                            đ</h6>
                     </div>
                 </div>
             </li>
-            
+
         </ul>
         <div class="cart-footer"><button class="coupon-btn">Bạn đã có mã giảm giá?</button>
             <form class="coupon-form"><input type="text" placeholder="Nhập mã phiếu giảm giá của bạn"><button
                     type="submit"><span>áp dụng</span></button></form><a class="cart-checkout-btn"
-                href="checkout.html"><span class="checkout-label">Tiến hành Thanh Toán</span><span
-                    class="checkout-price">256541545441</span></a>
+                href="checkout.html"><span class="checkout-label" ng-click="goToCheckout()">Tiến hành Thanh Toán</span><span
+                    class="checkout-price">{{getTotalCartPrice() | number}} </span></a>
         </div>
     </aside>
     <!-- giỏ hàng kết thúc -->
-    
+
     <div class="section promo-part">
         <div class="container">
             <div class="row">
@@ -418,8 +443,8 @@
                                 <div class="product-media">
                                     <div class="product-label"><label class="label-text new">new</label></div><button
                                         class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                        class="product-image" href="product-video.html"><img  th:src="@{/images/product/15.jpg}"
-                                            alt="product"></a>
+                                        class="product-image" href="product-video.html"><img
+                                            th:src="@{/images/product/15.jpg}" alt="product"></a>
                                     <div class="product-widget"><a title="Product Compare" href="compare.html"
                                             class="fas fa-random"></a><a title="Product Video"
                                             href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play"
@@ -449,8 +474,8 @@
                                 <div class="product-media">
                                     <div class="product-label"><label class="label-text new">new</label></div><button
                                         class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                        class="product-image" href="product-video.html"><img src="/images/product/16.jpg"
-                                            alt="product"></a>
+                                        class="product-image" href="product-video.html"><img
+                                            src="/images/product/16.jpg" alt="product"></a>
                                     <div class="product-widget"><a title="Product Compare" href="compare.html"
                                             class="fas fa-random"></a><a title="Product Video"
                                             href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play"
@@ -480,8 +505,8 @@
                                 <div class="product-media">
                                     <div class="product-label"><label class="label-text new">new</label></div><button
                                         class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                        class="product-image" href="product-video.html"><img src="/images/product/17.jpg"
-                                            alt="product"></a>
+                                        class="product-image" href="product-video.html"><img
+                                            src="/images/product/17.jpg" alt="product"></a>
                                     <div class="product-widget"><a title="Product Compare" href="compare.html"
                                             class="fas fa-random"></a><a title="Product Video"
                                             href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play"
@@ -511,8 +536,8 @@
                                 <div class="product-media">
                                     <div class="product-label"><label class="label-text new">new</label></div><button
                                         class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                        class="product-image" href="product-video.html"><img src="/images/product/18.jpg"
-                                            alt="product"></a>
+                                        class="product-image" href="product-video.html"><img
+                                            src="/images/product/18.jpg" alt="product"></a>
                                     <div class="product-widget"><a title="Product Compare" href="compare.html"
                                             class="fas fa-random"></a><a title="Product Video"
                                             href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play"
@@ -542,8 +567,8 @@
                                 <div class="product-media">
                                     <div class="product-label"><label class="label-text new">new</label></div><button
                                         class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                        class="product-image" href="product-video.html"><img src="/images/product/19.jpg"
-                                            alt="product"></a>
+                                        class="product-image" href="product-video.html"><img
+                                            src="/images/product/19.jpg" alt="product"></a>
                                     <div class="product-widget"><a title="Product Compare" href="compare.html"
                                             class="fas fa-random"></a><a title="Product Video"
                                             href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play"
@@ -573,8 +598,8 @@
                                 <div class="product-media">
                                     <div class="product-label"><label class="label-text new">new</label></div><button
                                         class="product-wish wish"><i class="fas fa-heart"></i></button><a
-                                        class="product-image" href="product-video.html"><img src="/images/product/20.jpg"
-                                            alt="product"></a>
+                                        class="product-image" href="product-video.html"><img
+                                            src="/images/product/20.jpg" alt="product"></a>
                                     <div class="product-widget"><a title="Product Compare" href="compare.html"
                                             class="fas fa-random"></a><a title="Product Video"
                                             href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play"
@@ -1873,4 +1898,5 @@
         </div>
     </section>
 </body>
+
 </html>

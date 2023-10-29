@@ -11,7 +11,6 @@ import com.beermartket.alcohol.repository.LoaiSanPhamRepository;
 @RequestMapping("/user")
 public class HomeController {
 	@Autowired
-	LoaiSanPhamRepository lspDao;
 	
 	@RequestMapping("/home")
 	public String Home() {
@@ -25,8 +24,5 @@ public class HomeController {
 		 return "customer/view/home/product-video";
 	}
 	
-//	@GetMapping("/all/category")
-//	public ResponseEntity<List<LoaiSanPham>> findAll() {
-//		return ResponseEntity.ok(lspDao.findAll());
-//	}
+
 }
