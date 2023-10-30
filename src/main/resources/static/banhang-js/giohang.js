@@ -3,7 +3,7 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 	$scope.cartItems = [];
 	$scope.chiTietGioHang = {};
 
-	$http.get('/rest/3/chitietgiohang').then(function(response) {
+	$http.get('/rest/4/chitietgiohang').then(function(response) {
 		$scope.cartItems = response.data;
 	});
 
@@ -15,13 +15,14 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 		});
 
 		if (selectedItem) {
-			// Thêm sản phẩm đã chọn vào giỏ hàng
-			// $scope.cartItems.push(selectedItem);
-			// Bạn có thể thêm logic bổ sung ở đây, ví dụ: cập nhật số lượng hoặc hiển thị thông báo.
-			alert("sản phẩm đã tồn tại")
+			//nếu có sản phẩm
+			selectedItem.soLuong += 1;
+			$scope.update(selectedItem);
+			
+			
 		} else {
 			// Xử lý trường hợp khi không tìm thấy sản phẩm với "maSanPham" cụ thể.
-			$http.post('/add/3/' + masp).then(function(response) {
+			$http.post('/add/4/' + masp).then(function(response) {
 				// Xử lý phản hồi, ví dụ: cập nhật mảng cartItems
 				var newCartItem = response.data;
 				$scope.cartItems.push(newCartItem);
@@ -33,7 +34,7 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 	
 	// Hàm cập nhật sản phẩm trong cơ sở dữ liệu 
     $scope.update = function(item) {
-        var url = '/3/update/' + item.maChiTietGH; 
+        var url = '/4/update/' + item.maChiTietGH; 
         
 
         $http.put(url, item)

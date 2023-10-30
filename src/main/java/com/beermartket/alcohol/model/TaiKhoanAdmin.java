@@ -56,7 +56,7 @@ public class TaiKhoanAdmin implements Serializable {
 	@Column(name="TenDangNhap")
 	private String tenDangNhap;
 
-	//bi-directional many-to-one association to PhieuNhapHang
+	@JsonIgnore
 	@OneToMany(mappedBy="taiKhoanAdmin")
 	private List<PhieuNhapHang> phieuNhapHangs;
 
@@ -64,11 +64,11 @@ public class TaiKhoanAdmin implements Serializable {
 	@OneToMany(mappedBy="taiKhoanAdmin")
 	private List<SanPham> sanPhams;
 
-	//bi-directional many-to-one association to TinTuc
+	@JsonIgnore
 	@OneToMany(mappedBy="taiKhoanAdmin")
 	private List<TinTuc> tinTucs;
 
-	//bi-directional many-to-one association to Trang
+	@JsonIgnore
 	@OneToMany(mappedBy="taiKhoanAdmin")
 	private List<Trang> trangs;
 
