@@ -15,10 +15,9 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 		});
 
 		if (selectedItem) {
-			// Thêm sản phẩm đã chọn vào giỏ hàng
-			// $scope.cartItems.push(selectedItem);
-			// Bạn có thể thêm logic bổ sung ở đây, ví dụ: cập nhật số lượng hoặc hiển thị thông báo.
-			alert("sản phẩm đã tồn tại")
+			//nếu có sản phẩm
+			selectedItem.soLuong += 1;
+			$scope.update(selectedItem);
 		} else {
 			// Xử lý trường hợp khi không tìm thấy sản phẩm với "maSanPham" cụ thể.
 			$http.post('/add/3/' + masp).then(function(response) {
@@ -145,6 +144,6 @@ app.controller('giohang-controller', function($scope, $http, $window) {
         var cartItemsJson = JSON.stringify($scope.cartItems);
         
         // Sử dụng $window để điều hướng đến trang thanh toán và truyền danh sách giỏ hàng qua tham số URL
-        $window.location.href = '/checkout?cartItems=' + encodeURIComponent(cartItemsJson);
+        $window.location.href = '/user/checkout/3';
     };
 });
