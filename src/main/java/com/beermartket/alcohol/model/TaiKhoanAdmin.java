@@ -49,7 +49,10 @@ public class TaiKhoanAdmin implements Serializable {
 
 	@Column(name="NgayTao")
 	private LocalDateTime ngayTao;
-
+	
+	@Column(name="MaHoaMatKhau")
+	private String maHoaMatKhau;
+	
 	@Column(name="SoDienThoai")
 	private String soDienThoai;
 

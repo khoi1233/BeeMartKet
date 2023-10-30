@@ -1,0 +1,318 @@
+<body th:fragment="navbar">
+<div class="backdrop"></div><a class="backtop fas fa-arrow-up" href="#"></a>
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-5">
+                    <div class="header-top-welcome">
+                        <p>Welcome to Bee Market!</p>
+                    </div>
+                </div>
+                <div class="col-md-5 col-lg-3">
+<!--                     <div class="header-top-select"> -->
+<!--                         <div class="header-select"><i class="icofont-world"></i><select class="select"> -->
+<!--                                 <option value="english" selected>english</option> -->
+<!--                                 <option value="bangali">bangali</option> -->
+<!--                                 <option value="arabic">arabic</option> -->
+<!--                             </select></div> -->
+<!--                         <div class="header-select"><i class="icofont-money"></i><select class="select"> -->
+<!--                                 <option value="english" selected>doller</option> -->
+<!--                                 <option value="bangali">pound</option> -->
+<!--                                 <option value="arabic">taka</option> -->
+<!--                             </select></div> -->
+<!--                     </div> -->
+                </div>
+                <div class="col-md-7 col-lg-4">
+                    <ul class="header-top-list">
+                        <li><a href="/home/offer">offers</a></li>
+                        <li><a href="/home/faq">need help</a></li>
+                        <li><a href="/home/contact">contact us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-part">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-media-group"><button class="header-user"><img th:src="@{/images/user.png}"
+                            alt="user"></button><a href="/home/home"><img th:src="@{/images/logo.png}" alt="logo"></a><button
+                        class="header-src"><i class="fas fa-search"></i></button></div><a href="/home/home"
+                    class="header-logo"><img th:src="@{/images/logo.png}" alt="logo"></a>
+                    
+                    
+                    <th:block th:if="${session.currentUser == null}">
+									<a th:href="@{/access/login}"
+                    		class="header-widget" title="My Account"><img th:src="@{/images/user.png}" alt="user"><span>join</span></a>
+								</th:block>
+								<th:block th:unless="${session.currentUser == null}">
+									<a th:href="@{/home/home}"
+                    					class="header-widget" title="My Account"><img th:src="@{/images/user.png}" alt="user">
+                    					<span th:text="${session.currentUser}"></span>
+                    				</a>
+									
+									<a th:href="@{/home/log-out}" class=""><i
+											class="bi bi-box-arrow-right"></i> Đăng xuất</a></li>
+									<th:block th:if="${session.admin != null}">
+<!-- 										<a th:href="@{/admin/index}"><i -->
+<!-- 												class="bi bi-forward-fill"></i> Đến trang quản lý</a></li> -->
+									</th:block>
+								</th:block>
+                    
+                    
+                <form class="header-form"><input type="text" placeholder="Search anything..."><button><i
+                            class="fas fa-search"></i></button></form>
+                <div class="header-widget-group"><a href="/cart/compare" class="header-widget" title="Compare List"><i
+                            class="fas fa-random"></i><sup>0</sup></a><a href="/cart/wishlist" class="header-widget"
+                        title="Wishlist"><i class="fas fa-heart"></i><sup>0</sup></a><button
+                        class="header-widget header-cart" title="Cartlist"><i
+                            class="fas fa-shopping-basket"></i><sup>9+</sup><span>total
+                            price<small>$345.00</small></span></button></div>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="navbar-content">
+                        <ul class="navbar-list">
+                            <li class="navbar-item dropdown"><a class="navbar-link dropdown-arrow" href="">home</a>
+                                <ul class="dropdown-position-list">
+                                    <li><a th:href="@{/home/home-grid}">Home grid</a></li>
+                                    <li><a th:href="@{/home/home}">Home index</a></li>
+                                    <li><a th:href="@{/home/home-classic}">Home classic</a></li>
+                                    <li><a th:href="@{/home/home-standard}">Home standard</a></li>
+                                    <li><a th:href="@{/home/home-category}">Home category</a></li>
+                                </ul>
+                            </li>
+                            <li class="navbar-item dropdown-megamenu"><a class="navbar-link dropdown-arrow"
+                                    href="#">shop</a>
+                                <div class="megamenu">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="megamenu-wrap">
+                                                    <h5 class="megamenu-title">shop pages</h5>
+                                                    <ul class="megamenu-list">
+                                                        <li><a href="/home/shop-5column">shop 5 column</a></li>
+                                                        <li><a href="/home/shop-4column">shop 4 column</a></li>
+                                                        <li><a href="/home/shop-3column">shop 3 column</a></li>
+                                                        <li><a href="/home/shop-2column">shop 2 column</a></li>
+                                                        <li><a href="/home/shop-1column">shop 1 column</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="megamenu-wrap">
+                                                    <h5 class="megamenu-title">product pages</h5>
+                                                    <ul class="megamenu-list">
+                                                        <li><a href="/home/product-tab">product single tab</a></li>
+                                                        <li><a href="/home/product-grid">product single grid</a></li>
+                                                        <li><a href="/home/product-video">product single video</a></li>
+                                                        <li><a href="/home/product-simple">product single simple</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="megamenu-wrap">
+                                                    <h5 class="megamenu-title">user action</h5>
+                                                    <ul class="megamenu-list">
+                                                        <li><a href="/cart/wishlist">wishlist</a></li>
+                                                        <li><a href="/cart/compare">compare</a></li>
+                                                        <li><a href="/cart/checkout">checkout</a></li>
+                                                        <li><a href="/cart/orderlist">order history</a></li>
+                                                        <li><a href="/cart/invoice">order invoice</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="megamenu-wrap">
+                                                    <h5 class="megamenu-title">other pages</h5>
+                                                    <ul class="megamenu-list">
+                                                        <li><a href="/home/all-category">all Category</a></li>
+                                                        <li><a href="/home/brand-list">brand list</a></li>
+                                                        <li><a href="/home/brand-single">brand single</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="navbar-item dropdown-megamenu"><a class="navbar-link dropdown-arrow"
+                                    href="#">category</a>
+                                <div class="megamenu">
+                                    <div class="container megamenu-scroll">
+                                        <div class="row row-cols-5">
+                                            <div class="col">
+                                                <div class="megamenu-wrap">
+                                                    <h5 class="megamenu-title">vegetables</h5>
+                                                    <ul class="megamenu-list">
+                                                        <li><a href="#">carrot</a></li>
+                                                        <li><a href="#">broccoli</a></li>
+                                                        <li><a href="#">asparagus</a></li>
+                                                        <li><a href="#">cauliflower</a></li>
+                                                        <li><a href="#">eggplant</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="megamenu-wrap">
+                                                    <h5 class="megamenu-title">fruits</h5>
+                                                    <ul class="megamenu-list">
+                                                        <li><a href="#">Apple</a></li>
+                                                        <li><a href="#">orange</a></li>
+                                                        <li><a href="#">banana</a></li>
+                                                        <li><a href="#">strawberrie</a></li>
+                                                        <li><a href="#">watermelon</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="megamenu-wrap">
+                                                    <h5 class="megamenu-title">dairy farms</h5>
+                                                    <ul class="megamenu-list">
+                                                        <li><a href="#">Butter</a></li>
+                                                        <li><a href="#">Cheese</a></li>
+                                                        <li><a href="#">Milk</a></li>
+                                                        <li><a href="#">Eggs</a></li>
+                                                        <li><a href="#">cream</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="megamenu-wrap">
+                                                    <h5 class="megamenu-title">seafoods</h5>
+                                                    <ul class="megamenu-list">
+                                                        <li><a href="#">Lobster</a></li>
+                                                        <li><a href="#">Octopus</a></li>
+                                                        <li><a href="#">Shrimp</a></li>
+                                                        <li><a href="#">Halabos</a></li>
+                                                        <li><a href="#">Maeuntang</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="megamenu-wrap">
+                                                    <h5 class="megamenu-title">diet foods</h5>
+                                                    <ul class="megamenu-list">
+                                                        <li><a href="#">Salmon</a></li>
+                                                        <li><a href="#">Avocados</a></li>
+                                                        <li><a href="#">Leafy Greens</a></li>
+                                                        <li><a href="#">Boiled Potatoes</a></li>
+                                                        <li><a href="#">Cottage Cheese</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="megamenu-wrap">
+                                                    <h5 class="megamenu-title">fast foods</h5>
+                                                    <ul class="megamenu-list">
+                                                        <li><a href="#">burger</a></li>
+                                                        <li><a href="#">milkshake</a></li>
+                                                        <li><a href="#">sandwich</a></li>
+                                                        <li><a href="#">doughnut</a></li>
+                                                        <li><a href="#">pizza</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="megamenu-wrap">
+                                                    <h5 class="megamenu-title">drinks</h5>
+                                                    <ul class="megamenu-list">
+                                                        <li><a href="#">cocktail</a></li>
+                                                        <li><a href="#">hard soda</a></li>
+                                                        <li><a href="#">shampain</a></li>
+                                                        <li><a href="#">Wine</a></li>
+                                                        <li><a href="#">barley</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="megamenu-wrap">
+                                                    <h5 class="megamenu-title">meats</h5>
+                                                    <ul class="megamenu-list">
+                                                        <li><a href="#">Meatball</a></li>
+                                                        <li><a href="#">Sausage</a></li>
+                                                        <li><a href="#">Poultry</a></li>
+                                                        <li><a href="#">chicken</a></li>
+                                                        <li><a href="#">Cows</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="megamenu-wrap">
+                                                    <h5 class="megamenu-title">fishes</h5>
+                                                    <ul class="megamenu-list">
+                                                        <li><a href="#">scads</a></li>
+                                                        <li><a href="#">pomfret</a></li>
+                                                        <li><a href="#">groupers</a></li>
+                                                        <li><a href="#">anchovy</a></li>
+                                                        <li><a href="#">mackerel</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="megamenu-wrap">
+                                                    <h5 class="megamenu-title">dry foods</h5>
+                                                    <ul class="megamenu-list">
+                                                        <li><a href="#">noodles</a></li>
+                                                        <li><a href="#">Powdered milk</a></li>
+                                                        <li><a href="#">nut & yeast</a></li>
+                                                        <li><a href="#">almonds</a></li>
+                                                        <li><a href="#">pumpkin</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="navbar-item dropdown"><a class="navbar-link dropdown-arrow" href="#">pages</a>
+                                <ul class="dropdown-position-list">
+                                    <li><a href="/home/faq">faqs</a></li>
+                                    <li><a href="/home/offerl">offers</a></li>
+                                    <li><a href="/home/profile">my profile</a></li>
+                                    <li><a href="/home/wallet">my wallet</a></li>
+                                    <li><a href="/home/about">about us</a></li>
+                                    <li><a href="/home/contact">contact us</a></li>
+                                    <li><a href="/home/privacy">privacy policy</a></li>
+                                    <li><a href="/home/coming-soon">coming soon</a></li>
+                                    <li><a href="/home/blank-page">blank page</a></li>
+                                    <li><a href="/home/error">404 Error</a></li>
+                                    <li><a href="/home/email-template">email template</a></li>
+                                </ul>
+                            </li>
+                            <li class="navbar-item dropdown"><a class="navbar-link dropdown-arrow"
+                                    href="#">authentic</a>
+                                <ul class="dropdown-position-list">
+                                    <li><a href="/access/login">login</a></li>
+                                    <li><a href="/access/register">register</a></li>
+                                    <li><a href="/access/reset-password">reset password</a></li>
+                                    <li><a href="/access/change-password">change password</a></li>
+                                </ul>
+                            </li>
+                            <li class="navbar-item dropdown"><a class="navbar-link dropdown-arrow" href="#">blogs</a>
+                                <ul class="dropdown-position-list">
+                                    <li><a href="/home/blog-grid">blog grid</a></li>
+                                    <li><a href="/home/blog-standard">blog standard</a></li>
+                                    <li><a href="/home/blog-details">blog details</a></li>
+                                    <li><a href="/home/blog-author">blog author</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="navbar-info-group">
+                            <div class="navbar-info"><i class="icofont-ui-touch-phone"></i>
+                                <p><small>call us</small><span>(+880) 183 8288 389</span></p>
+                            </div>
+                            <div class="navbar-info"><i class="icofont-ui-email"></i>
+                                <p><small>email us</small><span>support@example.com</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</nav>
+</body>
