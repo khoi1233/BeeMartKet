@@ -38,8 +38,28 @@
                 <div class="header-media-group"><button class="header-user"><img th:src="@{/images/user.png}"
                             alt="user"></button><a href="/home/home"><img th:src="@{/images/logo.png}" alt="logo"></a><button
                         class="header-src"><i class="fas fa-search"></i></button></div><a href="/home/home"
-                    class="header-logo"><img th:src="@{/images/logo.png}" alt="logo"></a><a th:href="@{/access/login}"
-                    class="header-widget" title="My Account"><img th:src="@{/images/user.png}" alt="user"><span>join</span></a>
+                    class="header-logo"><img th:src="@{/images/logo.png}" alt="logo"></a>
+                    
+                    
+                    <th:block th:if="${session.currentUser == null}">
+									<a th:href="@{/access/login}"
+                    		class="header-widget" title="My Account"><img th:src="@{/images/user.png}" alt="user"><span>join</span></a>
+								</th:block>
+								<th:block th:unless="${session.currentUser == null}">
+									<a th:href="@{/home/home}"
+                    					class="header-widget" title="My Account"><img th:src="@{/images/user.png}" alt="user">
+                    					<span th:text="${session.currentUser}"></span>
+                    				</a>
+									
+									<a th:href="@{/home/log-out}" class=""><i
+											class="bi bi-box-arrow-right"></i> Đăng xuất</a></li>
+									<th:block th:if="${session.admin != null}">
+<!-- 										<a th:href="@{/admin/index}"><i -->
+<!-- 												class="bi bi-forward-fill"></i> Đến trang quản lý</a></li> -->
+									</th:block>
+								</th:block>
+                    
+                    
                 <form class="header-form"><input type="text" placeholder="Search anything..."><button><i
                             class="fas fa-search"></i></button></form>
                 <div class="header-widget-group"><a href="/cart/compare" class="header-widget" title="Compare List"><i

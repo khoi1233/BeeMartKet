@@ -8,22 +8,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.beermartket.alcohol.constant.SessionAttr;
 import com.beermartket.alcohol.model.TaiKhoan;
 import com.beermartket.alcohol.repository.TaiKhoanRepository;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AccessController {
+	@Autowired
+	HttpSession session;
 	@Autowired
 	private HttpServletResponse response;
 	@Autowired
 	TaiKhoanRepository taikhoanrp;
 	
 	@RequestMapping("/access/login")
-	public String loginPage(Model model ,HttpServletRequest request) {
+	public String loginPage(Model model ,HttpServletRequest request,HttpSession session) {
 		Cookie[] cookies = request.getCookies();
         if (cookies != null) {
         	String savedUsername = null;
@@ -40,8 +44,9 @@ public class AccessController {
                  model.addAttribute("username", savedUsername);
                  model.addAttribute("password", savedPassword);
              }
-        }
-	    return "access/login";
+        	}
+        return "access/login";
+	    
 	}
 
 	@RequestMapping(value = "/access/login", method = RequestMethod.POST)
@@ -78,6 +83,9 @@ public class AccessController {
     	        
     	        if (hashedUserInputPassword.equals(tk.getMatKhau())) {
     	            model.addAttribute("error", "Đăng nhập thành công");
+    	            session.setAttribute(SessionAttr.CURRENT_USER, tk.getTenDangNhap());
+    	            session.setAttribute(SessionAttr.User, tk.getTenDangNhap());
+    	            
     	            if (remember) {
                         // Lưu thông tin tài khoản vào cookie
                         Cookie usernameCookie = new Cookie("username", username);
@@ -95,7 +103,7 @@ public class AccessController {
                         System.out.println("Setting username cookie: " + usernameCookie.getName() + "=" + usernameCookie.getValue());
                         System.out.println("Setting password cookie: " + passwordCookie.getName() + "=" + passwordCookie.getValue());
                     }
-    	            
+    	            return "redirect:/home/home";
 
     	        } else {
     	            System.out.println("Mật khẩu không đúng. Đăng nhập thất bại.");
@@ -112,6 +120,15 @@ public class AccessController {
     	model.addAttribute("password", password);
         return "access/login";
     }
+
+	@RequestMapping("/home/log-out")
+	public String logout(Model model, HttpServletRequest req) {
+		session.removeAttribute(SessionAttr.CURRENT_USER);
+		session.removeAttribute(SessionAttr.Admin);
+		session.removeAttribute(SessionAttr.User);
+
+		return "customer/home/index";
+	}
 
 
     @RequestMapping("/access/register/check")
