@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/customer/layout/index :: content(~{::body},~{::title})}">
+
+<head>
+
+    <title>Vocher khuyến mãi</title>
+</head>
+
 <body>
     <aside class="category-sidebar">
         <div class="category-header">
@@ -113,7 +121,7 @@
         </div>
         <ul class="cart-list">
             <li class="cart-item">
-                <div class="cart-media"><a href="#"><img src="images/product/01.jpg" alt="product"></a><button
+                <div class="cart-media"><a href="#"><img src="/images/product/01.jpg" alt="product"></a><button
                         class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
@@ -130,7 +138,7 @@
                 </div>
             </li>
             <li class="cart-item">
-                <div class="cart-media"><a href="#"><img src="images/product/02.jpg" alt="product"></a><button
+                <div class="cart-media"><a href="#"><img src="/images/product/02.jpg" alt="product"></a><button
                         class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
@@ -147,7 +155,7 @@
                 </div>
             </li>
             <li class="cart-item">
-                <div class="cart-media"><a href="#"><img src="images/product/03.jpg" alt="product"></a><button
+                <div class="cart-media"><a href="#"><img src="/images/product/03.jpg" alt="product"></a><button
                         class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
@@ -164,7 +172,7 @@
                 </div>
             </li>
             <li class="cart-item">
-                <div class="cart-media"><a href="#"><img src="images/product/04.jpg" alt="product"></a><button
+                <div class="cart-media"><a href="#"><img src="/images/product/04.jpg" alt="product"></a><button
                         class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
@@ -181,7 +189,7 @@
                 </div>
             </li>
             <li class="cart-item">
-                <div class="cart-media"><a href="#"><img src="images/product/05.jpg" alt="product"></a><button
+                <div class="cart-media"><a href="#"><img src="/images/product/05.jpg" alt="product"></a><button
                         class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
@@ -206,7 +214,7 @@
         </div>
     </aside>
     <aside class="nav-sidebar">
-        <div class="nav-header"><a href="#"><img src="images/logo.png" alt="logo"></a><button class="nav-close"><i
+        <div class="nav-header"><a href="#"><img src="/images/logo.png" alt="logo"></a><button class="nav-close"><i
                     class="icofont-close"></i></button></div>
         <div class="nav-content">
             <div class="nav-btn"><a href="login.html" class="btn btn-inline"><i class="fa fa-unlock-alt"></i><span>join
@@ -267,7 +275,7 @@
                         <li><a href="login.html">login</a></li>
                         <li><a href="register.html">register</a></li>
                         <li><a href="reset-password.html">reset password</a></li>
-                        <li><a href="change-password.html">change password</a></li>
+                        <li><a th:href ="@{/user/change-password}">change password</a></li>
                     </ul>
                 </li>
                 <li><a class="nav-link dropdown-link" href="#"><i class="icofont-book-alt"></i>blogs</a>
@@ -327,7 +335,7 @@
                         <div class="account-content">
                             <div class="row">
                                 <div class="col-lg-2">
-                                    <div class="profile-image"><a href="#"><img src="images/user.png" alt="user"></a>
+                                    <div class="profile-image"><a href="#"><img src="/images/user.png" alt="user"></a>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4">
@@ -339,7 +347,7 @@
                                             class="form-control" type="email" value="mironcoder@gmail.com"></div>
                                 </div>
                                 <div class="col-lg-2">
-                                    <div class="profile-btn"><a href="change-password.html">change pass.</a></div>
+                                    <div class="profile-btn"><a th:href ="@{/user/change-password}">change pass.</a></div>
                                 </div>
                             </div>
                         </div>
@@ -450,7 +458,7 @@
                         <div class="account-content">
                             <div class="row">
                                 <div class="col-md-6 col-lg-4 alert fade show">
-                                    <div class="payment-card payment active"><img src="images/payment/png/01.png"
+                                    <div class="payment-card payment active"><img src="/images/payment/png/01.png"
                                             alt="payment">
                                         <h4>card number</h4>
                                         <p><span>****</span><span>****</span><span>****</span><sup>1876</sup></p>
@@ -459,7 +467,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 alert fade show">
-                                    <div class="payment-card payment"><img src="images/payment/png/02.png"
+                                    <div class="payment-card payment"><img src="/images/payment/png/02.png"
                                             alt="payment">
                                         <h4>card number</h4>
                                         <p><span>****</span><span>****</span><span>****</span><sup>1876</sup></p>
@@ -468,7 +476,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 alert fade show">
-                                    <div class="payment-card payment"><img src="images/payment/png/03.png"
+                                    <div class="payment-card payment"><img src="/images/payment/png/03.png"
                                             alt="payment">
                                         <h4>card number</h4>
                                         <p><span>****</span><span>****</span><span>****</span><sup>1876</sup></p>
@@ -663,7 +671,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-xl-3">
-                    <div class="footer-widget"><a class="footer-logo" href="#"><img src="images/logo.png"
+                    <div class="footer-widget"><a class="footer-logo" href="#"><img src="/images/logo.png"
                                 alt="logo"></a>
                         <p class="footer-desc">Adipisci asperiores ipsum ipsa repellat consequatur repudiandae quisquam
                             assumenda dolor perspiciatis sit ipsum dolor amet.</p>
@@ -718,8 +726,8 @@
                         <h3 class="footer-title">Download App</h3>
                         <p class="footer-desc">Lorem ipsum dolor sit amet tenetur dignissimos ipsum eligendi autem
                             obcaecati minus ducimus totam reprehenderit exercitationem!</p>
-                        <div class="footer-app"><a href="#"><img src="images/google-store.png" alt="google"></a><a
-                                href="#"><img src="images/app-store.png" alt="app"></a></div>
+                        <div class="footer-app"><a href="#"><img src="/images/google-store.png" alt="google"></a><a
+                                href="#"><img src="/images/app-store.png" alt="app"></a></div>
                     </div>
                 </div>
             </div>
@@ -727,13 +735,14 @@
                 <div class="col-12">
                     <div class="footer-bottom">
                         <p class="footer-copytext">&copy; All Copyrights Reserved by <a href="#">Mironcoder</a></p>
-                        <div class="footer-card"><a href="#"><img src="images/payment/jpg/01.jpg" alt="payment"></a><a
-                                href="#"><img src="images/payment/jpg/02.jpg" alt="payment"></a><a href="#"><img
-                                    src="images/payment/jpg/03.jpg" alt="payment"></a><a href="#"><img
-                                    src="images/payment/jpg/04.jpg" alt="payment"></a></div>
+                        <div class="footer-card"><a href="#"><img src="/images/payment/jpg/01.jpg" alt="payment"></a><a
+                                href="#"><img src="/images/payment/jpg/02.jpg" alt="payment"></a><a href="#"><img
+                                    src="/images/payment/jpg/03.jpg" alt="payment"></a><a href="#"><img
+                                    src="/images/payment/jpg/04.jpg" alt="payment"></a></div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 </body>
+</html>

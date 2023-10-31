@@ -40,13 +40,13 @@
 				<button class="header-user">
 					<img th:src="@{/images/user.png}" alt="user">
 				</button>
-				<a href="/home/home"><img th:src="@{/images/logo.png}"
+				<a href="/user/home"><img th:src="@{/images/logo.png}"
 					alt="logo"></a>
 				<button class="header-src">
 					<i class="fas fa-search"></i>
 				</button>
 			</div>
-			<a href="/home/home" class="header-logo"><img
+			<a href="/user/home" class="header-logo"><img
 				th:src="@{/images/logo.png}" alt="logo"></a><a
 				th:href="@{/access/login}" class="header-widget" title="My Account"><img
 				th:src="@{/images/user.png}" alt="user"><span>join</span></a>
@@ -272,17 +272,16 @@
 						<li class="navbar-item dropdown"><a
 							class="navbar-link dropdown-arrow" href="#">Trang</a>
 							<ul class="dropdown-position-list">
-								<li><a href="/home/faq">Câu hỏi thường gặp</a></li>
-								<li><a href="/home/offerl">Ưu đãi</a></li>
-								<li><a href="/home/profile">Hồ sơ của tôi</a></li>
-								<li><a href="/home/wallet">Ví của tôi</a></li>
-								<li><a href="/home/about">Về chúng tôi</a></li>
-								<li><a href="/home/contact">Liên hệ chúng tôi</a></li>
-								<li><a href="/home/privacy">Chính sách bảo mật</a></li>
-								<li><a href="/home/coming-soon">Sắp có</a></li>
-								<li><a href="/home/blank-page">Trang trống</a></li>
-								<li><a href="/home/error">Lỗi 404</a></li>
-								<li><a href="/home/email-template">Mẫu email</a></li>
+								<li><a th:href ="@{/user/faq}">Câu hỏi thường gặp</a></li>
+								<li><a th:href ="@{/user/offerl}">Ưu đãi</a></li>
+								<li><a th:href ="@{/user/profile}">Hồ sơ của tôi</a></li>								
+								<li><a th:href ="@{/user/about}">Về chúng tôi</a></li>
+								<li><a th:href ="@{/user/contact}">Liên hệ chúng tôi</a></li>
+								<li><a th:href ="@{/user/privacy}">Chính sách bảo mật</a></li>								
+								<li><a th:href ="@{/user/error}">Lỗi 404</a></li>
+								<!-- <li><a th:href ="@{/user/email_en}">Mẫu email</a></li> -->
+								<!-- <li><a th:href ="@{/user/coming-soon}">Sắp có</a></li> -->
+								<!-- <li><a href="/home/wallet">Ví của tôi</a></li> -->
 							</ul></li>
 
 						<li class="navbar-item dropdown"><a
