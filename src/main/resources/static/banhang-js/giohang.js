@@ -177,10 +177,17 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 
 	// Hàm để chuyển đến trang thanh toán
 	$scope.goToCheckout = function() {
-		// Chuyển danh sách giỏ hàng thành một chuỗi JSON
-		var cartItemsJson = JSON.stringify($scope.cartItems);
-
 		// Sử dụng $window để điều hướng đến trang thanh toán và truyền danh sách giỏ hàng qua tham số URL
 		$window.location.href = '/user/checkout/3';
 	};
+
+	//thanh toán =============================================
+
+
+	$scope.createHoaDon = function() {
+		$http.post('/user/gotocheckout/3').then(function(response) {
+			alert("tạo hóa đơn thành công");
+		});
+	}
+
 });

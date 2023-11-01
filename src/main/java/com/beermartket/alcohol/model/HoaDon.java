@@ -3,10 +3,15 @@ package com.beermartket.alcohol.model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -27,6 +32,7 @@ public class HoaDon implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="MaHoaDon")
 	private int maHoaDon;
 
@@ -37,7 +43,7 @@ public class HoaDon implements Serializable {
 	private String ghiChu;
 
 	@Column(name="NgayMua")
-	private LocalDateTime ngayMua;
+	private Date ngayMua;
 
 	@Column(name="TongTien")
 	private double tongTien;
@@ -49,6 +55,7 @@ public class HoaDon implements Serializable {
 	private boolean trangThaiThanhToan;
 
 	//bi-directional many-to-one association to ChiTietHoaDon
+	@JsonIgnore
 	@OneToMany(mappedBy="hoaDon")
 	private List<ChiTietHoaDon> chiTietHoaDons;
 
@@ -58,6 +65,7 @@ public class HoaDon implements Serializable {
 	private TaiKhoan taiKhoan;
 
 	//bi-directional many-to-one association to LienKetKhuyenMai
+	@JsonIgnore
 	@OneToMany(mappedBy="hoaDon")
 	private List<LienKetKhuyenMai> lienKetKhuyenMais;
 
