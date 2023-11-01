@@ -1,11 +1,22 @@
 
 app.controller('giohang-controller', function($scope, $http, $window) {
 	$scope.cartItems = [];
-	$scope.chiTietGioHang = {};
 
-	$http.get('/rest/3/chitietgiohang').then(function(response) {
-		$scope.cartItems = response.data;
-	});
+
+	$http.get('/getUsername')
+		.then(function(response) {
+			$scope.maGioHang = response.data;
+			console.log($scope.maGioHang);
+
+			// Gọi $http.get bên trong .then() để đảm bảo rằng $scope.maGioHang đã được cập nhật
+			$http.get('/rest/' + $scope.maGioHang + '/chitietgiohang')
+				.then(function(response) {
+					$scope.cartItems = response.data;
+				});
+		})
+		.catch(function(error) {
+			console.error('Lỗi khi lấy mã giỏ hàng:', error);
+		});
 
 
 	$scope.addToCart = function(masp) {
@@ -21,11 +32,12 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 
 		} else {
 			// Xử lý trường hợp khi không tìm thấy sản phẩm với "maSanPham" cụ thể.
-			$http.post('/add/3/' + masp).then(function(response) {
+			$http.post('/add/' + $scope.maGioHang + '/' + masp).then(function(response) {
 				// Xử lý phản hồi, ví dụ: cập nhật mảng cartItems
 				var newCartItem = response.data;
 				$scope.cartItems.push(newCartItem);
 				$scope.updateCartItemCount();
+
 			});
 
 		}
@@ -40,7 +52,7 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 
 	// Hàm cập nhật sản phẩm trong cơ sở dữ liệu 
 	$scope.update = function(item) {
-		var url = '/3/update/' + item.maChiTietGH;
+		var url = '/update/' + item.maChiTietGH;
 
 
 		$http.put(url, item)
@@ -178,14 +190,14 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 	// Hàm để chuyển đến trang thanh toán
 	$scope.goToCheckout = function() {
 		// Sử dụng $window để điều hướng đến trang thanh toán và truyền danh sách giỏ hàng qua tham số URL
-		$window.location.href = '/user/checkout/3';
+		$window.location.href = '/user/checkout/4';
 	};
 
 	//thanh toán =============================================
 
 
 	$scope.createHoaDon = function() {
-		$http.post('/user/gotocheckout/3').then(function(response) {
+		$http.post('/user/gotocheckout/' + 4).then(function(response) {
 			alert("tạo hóa đơn thành công");
 		});
 	}

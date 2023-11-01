@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.beermartket.alcohol.model.ChiTietGioHang;
+import com.beermartket.alcohol.model.ChiTietHoaDon;
 import com.beermartket.alcohol.model.GioHang;
 import com.beermartket.alcohol.model.HoaDon;
 import com.beermartket.alcohol.model.SanPham;
 import com.beermartket.alcohol.repository.ChiTietGioHangReponsitory;
+import com.beermartket.alcohol.repository.ChiTietHoaDonReponsitory;
 import com.beermartket.alcohol.repository.GioHangRepository;
 import com.beermartket.alcohol.repository.HoaDonReponsitory;
 import com.beermartket.alcohol.service.gioHangService;
@@ -27,7 +29,7 @@ public class ThanhToanController {
 	HoaDonReponsitory hdDao;
 	
 	@Autowired
-	gioHangService gioHang;
+	ChiTietHoaDonReponsitory cthdDAO;
 	
 	@Autowired
 	GioHangRepository giohangDao;
@@ -35,31 +37,35 @@ public class ThanhToanController {
 	@Autowired
 	ChiTietGioHangReponsitory ctgiohangDao;
 
-	@RequestMapping("/checkout/3")
+	@RequestMapping("/checkout/4")
 	public String checkout() {
 		return "customer/view/cart/checkout";
 
 	}
 
 	@PostMapping("/gotocheckout/{maGioHang}")
-	public HoaDon createHoaDon(@PathVariable Integer maGioHang) {
-//		// Lấy thông tin giỏ hàng từ mã giỏ hàng
-//		GioHang gioHang = giohangDao.findById(maGioHang).orElse(null);
-//
-//		if (gioHang != null) {
-//			// Sử dụng phương thức findByGioHang để lấy danh sách chi tiết giỏ hàng
-//			List<ChiTietGioHang> chiTietGioHangList = ctgiohangDao.findByGioHang(gioHang);
-//
-//		}
-		
+	public String createHoaDon(@PathVariable Integer maGioHang) {
 		HoaDon hd = new HoaDon();
-		Date currentDate = new Date();
-//		hd.setNgayMua(currentDate);
-//		hd.setTongTien(0);
-//		hd.setDiaChi("Ninh Kiều");
-//		hd.setTrangThaiThanhToan(false);
-//		hd.setTrangThaiHoaDon("Đang xử lý");
-//		hd.setGhiChu("abc");
-		return hdDao.save(hd);
+		hdDao.save(hd);
+		
+		// Lấy thông tin giỏ hàng từ mã giỏ hàng
+		GioHang gioHang = giohangDao.findById(maGioHang).orElse(null);
+		if (gioHang != null) {
+			// Sử dụng phương thức findByGioHang để lấy danh sách chi tiết giỏ hàng
+			List<ChiTietGioHang> chiTietGioHangList = ctgiohangDao.findByGioHang(gioHang);
+			for (ChiTietGioHang chiTietGioHang : chiTietGioHangList) {
+				ChiTietHoaDon cthd = new ChiTietHoaDon();
+				cthd.setHoaDon(hd);
+				cthd.setSanPham(chiTietGioHang.getSanPham());
+				cthd.setSoLuong(chiTietGioHang.getSoLuong());
+				int giaBan = (int) (chiTietGioHang.getSanPham().getGiaGoc() - (chiTietGioHang.getSanPham().getGiaGoc()* chiTietGioHang.getSanPham().getChietKhauKH() /100));
+				cthd.setGiaBan(giaBan);
+				cthd.setGhiChu("abc");
+				cthdDAO.save(cthd);
+			}
+		}
+		return "thành công";		
 	}
+	
+	
 }

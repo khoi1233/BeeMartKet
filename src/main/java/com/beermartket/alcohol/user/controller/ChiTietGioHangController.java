@@ -13,13 +13,18 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.beermartket.alcohol.constant.SessionAttr;
 import com.beermartket.alcohol.model.ChiTietGioHang;
 import com.beermartket.alcohol.model.GioHang;
 import com.beermartket.alcohol.model.SanPham;
+import com.beermartket.alcohol.model.TaiKhoan;
 import com.beermartket.alcohol.repository.ChiTietGioHangReponsitory;
 import com.beermartket.alcohol.repository.GioHangRepository;
 import com.beermartket.alcohol.repository.SanPhamRepository;
+import com.beermartket.alcohol.repository.TaiKhoanRepository;
 import com.beermartket.alcohol.service.gioHangService;
+
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 public class ChiTietGioHangController {
@@ -35,6 +40,35 @@ public class ChiTietGioHangController {
 
 	@Autowired
 	gioHangService gioHang;
+	
+	@Autowired
+	HttpSession session;
+	
+	@Autowired
+	TaiKhoanRepository taikhoanrp;
+
+	
+	
+	@GetMapping("/getUsername")
+    public int getUsername() {
+		int maGioHang = 0;
+        // Lấy tên đăng nhập từ session
+        String username = (String) session.getAttribute(SessionAttr.User);
+        
+        if (username != null) {
+        	TaiKhoan tk = taikhoanrp.findByTenDangNhap(username);
+        	List<GioHang> gh;
+        	gh = tk.getGioHangs();
+        	for (GioHang gioHang : gh) {
+        		maGioHang = gioHang.getMaGioHang();
+			}
+        	System.out.println(maGioHang);
+            return maGioHang;
+        }else {
+        	return maGioHang;
+        }
+       
+    }
 
 	@GetMapping("/rest/{maGioHang}/chitietgiohang")
 	public ResponseEntity<List<ChiTietGioHang>> getChiTietGioHang(@PathVariable Integer maGioHang) {
@@ -58,7 +92,7 @@ public class ChiTietGioHangController {
 	// lưu giở hàng vào cơ sở dữ liệu
 
 	@PostMapping("/add/{maGioHang}/{maSanPham}")
-	public ChiTietGioHang addToCart(@PathVariable Integer maSanPham, @PathVariable Integer maGioHang) {
+	public ChiTietGioHang addToCart(@PathVariable Integer maGioHang, @PathVariable Integer maSanPham) {
 		ChiTietGioHang ctgh = new ChiTietGioHang(); // Tạo một thể hiện mới
 		ctgh.setSoLuong(1);
 //	    ctgh.setSoLuong(maSanPham);
@@ -82,7 +116,7 @@ public class ChiTietGioHangController {
 		return ctgiohangDao.save(ctgh);
 	}
 	
-	@PutMapping("/3/update/{id}")
+	@PutMapping("/update/{id}")
     public ResponseEntity<ChiTietGioHang> updateQuantity(@PathVariable Integer id, @RequestBody ChiTietGioHang updatedChiTietGioHang) {
         ChiTietGioHang existingChiTietGioHang = ctgiohangDao.findById(id).orElse(null);
 

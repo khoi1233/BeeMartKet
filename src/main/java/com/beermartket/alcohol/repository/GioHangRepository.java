@@ -7,5 +7,5 @@ import com.beermartket.alcohol.model.GioHang;
 
 @Repository
 public interface GioHangRepository extends JpaRepository<GioHang, Integer>{
-	
+	GioHang findByTaiKhoan_MaTaiKhoan(int maTaiKhoan);
 }

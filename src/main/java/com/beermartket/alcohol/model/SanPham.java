@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -63,10 +65,12 @@ public class SanPham implements Serializable {
 //	private List<ChiTietGioHang> chiTietGioHangs;
 
 	//bi-directional many-to-one association to ChiTietHoaDon
+	@JsonIgnore
 	@OneToMany(mappedBy="sanPham")
 	private List<ChiTietHoaDon> chiTietHoaDons;
 
 	//bi-directional many-to-one association to DanhGia
+	@JsonIgnore
 	@OneToMany(mappedBy="sanPham")
 	private List<DanhGia> danhGias;
 
