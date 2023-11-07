@@ -19,7 +19,7 @@ public class HomeController {
 	LoaiSanPhamRepository lspDao;
 	
 	 @RequestMapping("/home/{page}")
-		public String mota(Model model, @PathVariable("page")String page) {
+		public String home(Model model, @PathVariable("page")String page) {
 	    	model.addAttribute("mix", page);
 	        return "customer/home/index";
 	    }

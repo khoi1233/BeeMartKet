@@ -11,4 +11,6 @@ import com.beermartket.alcohol.model.TaiKhoan;
 public interface TaiKhoanRepository extends JpaRepository<TaiKhoan, Integer>{
 	 @Query("SELECT t FROM TaiKhoan t WHERE t.tenDangNhap = :tenDangNhap")
 	 	TaiKhoan findByTenDangNhap(@Param("tenDangNhap") String tenDangNhap);
+	 @Query("SELECT MAX(maTaiKhoan) FROM TaiKhoan")
+	    Integer findMaxMaTaiKhoan();
 }
