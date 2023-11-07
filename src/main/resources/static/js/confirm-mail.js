@@ -10,19 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
   });
   
-//  document.getElementById("confirm").addEventListener("click", function() {
-//    var codeValue = document.getElementById("result").value;
-//    fetch('/access/checkconfirm-mail?code=' + encodeURIComponent(codeValue))
-//    .then(response => response.json())
-//    .then(data => {
-//        // Xử lý kết quả từ server nếu cần
-//        console.log(data);
-//    })
-//    .catch(error => {
-//        // Xử lý lỗi nếu có
-//        console.error(error);
-//    });
-//});
 
 document.getElementById("confirm").addEventListener("click", function() {
 	const confirmError = document.getElementById("confirm-error");
@@ -95,7 +82,7 @@ document.getElementById("resendLink").addEventListener("click", function () {
     } else {
     console.error("Dữ liệu không tồn tại trong localStorage");
   }
-  startCountdown(5);
+  startCountdown(60);
 });
 
 
@@ -223,7 +210,7 @@ function startCountdown(seconds) {
 	resendLink.addEventListener("click", function(e) {
 		
     e.preventDefault();
-		startCountdown(5); // Bắt đầu đếm ngược lại từ thời gian ban đầu
+		startCountdown(60); // Bắt đầu đếm ngược lại từ thời gian ban đầu
     	resendLink.style.display = "none";
     	document.getElementById("countdown").style.display = "inline";
 	});
@@ -233,7 +220,7 @@ function startCountdown(seconds) {
 // Bắt đầu đếm ngược khi trang tải xong
 // Bắt đầu đếm ngược khi trang tải
   window.addEventListener("load", function () {
-    startCountdown(5);
+    startCountdown(60);
   });
 
 const storedEmail = localStorage.getItem("storedEmail");
