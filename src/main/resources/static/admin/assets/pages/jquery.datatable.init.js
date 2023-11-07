@@ -22,8 +22,8 @@ $(document).ready(function () {
       .appendTo("#datatable-buttons_wrapper .col-md-6:eq(0)"),
     $("#row_callback").DataTable({
       createdRow: function (t, a, e) {
-        15e4 < 1 * a[6].replace(/[\$,]/g, "") &&
-          $("td", t).eq(6).addClass("highlight");
+        15e4 < 1 * a[12].replace(/[\$,]/g, "") &&
+          $("td", t).eq(12).addClass("highlight");
       },
     });
 }),
