@@ -1,5 +1,7 @@
 package com.beermartket.alcohol.user.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,17 +12,34 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.beermartket.alcohol.model.Hinh;
+import com.beermartket.alcohol.model.SanPham;
 import com.beermartket.alcohol.repository.HinhReponsitory;
+import com.beermartket.alcohol.repository.SanPhamRepository;
 
 @Controller
 @RequestMapping("/user")
 public class HomeController {
 	@Autowired
 	HinhReponsitory hinhDao;
+	
+	@Autowired
+	SanPhamRepository sanphamDao;
 
 	@RequestMapping("/home")
-	public String Home() {
+	public String Home(Model model) {
+       List<SanPham> sanPhams = sanphamDao.findAll();
+       List<SanPham> sanPhamThoiGian = new ArrayList<>();
+       Date now = new Date();
+       for(SanPham sanPham : sanPhams) {
+    	   long timeDiff = now.getTime() - sanPham.getNgayTao().getTime();
+           long thoiGianTaoTheoPhut = timeDiff / (1000 * 60);
 
+           if (thoiGianTaoTheoPhut < 2000) {
+        	   sanPhamThoiGian.add(sanPham);
+           }
+
+       }
+       model.addAttribute("sanPhamThoiGian", sanPhamThoiGian);
 		return "customer/view/home/home";
 	}
 

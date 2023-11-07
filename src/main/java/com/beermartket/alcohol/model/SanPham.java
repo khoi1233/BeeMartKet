@@ -59,6 +59,9 @@ public class SanPham implements Serializable {
 
 	@Column(name="HinhAnh")
 	private String hinhAnh;
+	
+	@Column(name="NoiBat")
+	private Boolean noiBat;
 
 	@JsonIgnore
 	@OneToMany(mappedBy="sanPham")
