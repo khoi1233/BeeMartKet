@@ -3,6 +3,7 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 	$scope.cartItems = [];
 	$scope.maGioHang;
 
+<<<<<<< HEAD
 
 	$http.get('/cart/getUsername')
 		.then(function(response) {
@@ -17,6 +18,11 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 		.catch(function(error) {
 			console.error('Lỗi khi lấy mã giỏ hàng:', error);
 		});
+=======
+	$http.get('/rest/4/chitietgiohang').then(function(response) {
+		$scope.cartItems = response.data;
+	});
+>>>>>>> 6c3b4e290ec63e24d0d9e68f8b18c8034527f072
 
 
 	$scope.addToCart = function(masp) {
@@ -29,10 +35,19 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 			//nếu có sản phẩm
 			selectedItem.soLuong += 1;
 			$scope.update(selectedItem);
+<<<<<<< HEAD
+			
+			
+=======
 
+>>>>>>> a52fef4fd03b58834c1361801eadc0144fe5f842
 		} else {
 			// Xử lý trường hợp khi không tìm thấy sản phẩm với "maSanPham" cụ thể.
+<<<<<<< HEAD
 			$http.post('/cart/add/' + $scope.maGioHang + '/' + masp).then(function(response) {
+=======
+			$http.post('/add/4/' + masp).then(function(response) {
+>>>>>>> 6c3b4e290ec63e24d0d9e68f8b18c8034527f072
 				// Xử lý phản hồi, ví dụ: cập nhật mảng cartItems
 				var newCartItem = response.data;
 				$scope.cartItems.push(newCartItem);
@@ -52,8 +67,18 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 	};
 
 	// Hàm cập nhật sản phẩm trong cơ sở dữ liệu 
+<<<<<<< HEAD
+    $scope.update = function(item) {
+        var url = '/4/update/' + item.maChiTietGH; 
+        
+=======
 	$scope.update = function(item) {
+<<<<<<< HEAD
 		var url = '/cart/update/' + item.maChiTietGH;
+=======
+		var url = '/3/update/' + item.maChiTietGH;
+>>>>>>> a52fef4fd03b58834c1361801eadc0144fe5f842
+>>>>>>> 6c3b4e290ec63e24d0d9e68f8b18c8034527f072
 
 
 		$http.put(url, item)

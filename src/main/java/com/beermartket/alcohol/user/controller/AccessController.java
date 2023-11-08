@@ -168,7 +168,7 @@ public class AccessController {
 
 	@RequestMapping("/access/register")
 	public String pageregisteraccess(Model model) {
+
 		return "access/register";
 	}
-
 }

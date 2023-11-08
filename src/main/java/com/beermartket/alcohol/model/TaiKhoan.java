@@ -46,10 +46,11 @@ public class TaiKhoan implements Serializable {
 
 	@Column(name="NgayTao")
 	private LocalDateTime ngayTao;
-
 	
 	@Column(name="MaHoaMatKhau")
 	private String maHoaMatKhau;
+
+
 	
 
 	@Column(name="SoDienThoai")
