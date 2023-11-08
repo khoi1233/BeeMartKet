@@ -1,15 +1,15 @@
 
 app.controller('giohang-controller', function($scope, $http, $window) {
 	$scope.cartItems = [];
+	$scope.maGioHang;
 
 
-	$http.get('/getUsername')
+	$http.get('/cart/getUsername')
 		.then(function(response) {
 			$scope.maGioHang = response.data;
-			console.log($scope.maGioHang);
 
 			// Gọi $http.get bên trong .then() để đảm bảo rằng $scope.maGioHang đã được cập nhật
-			$http.get('/rest/' + $scope.maGioHang + '/chitietgiohang')
+			$http.get('/cart/rest/' + $scope.maGioHang + '/chitietgiohang')
 				.then(function(response) {
 					$scope.cartItems = response.data;
 				});
@@ -32,13 +32,14 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 
 		} else {
 			// Xử lý trường hợp khi không tìm thấy sản phẩm với "maSanPham" cụ thể.
-			$http.post('/add/' + $scope.maGioHang + '/' + masp).then(function(response) {
+			$http.post('/cart/add/' + $scope.maGioHang + '/' + masp).then(function(response) {
 				// Xử lý phản hồi, ví dụ: cập nhật mảng cartItems
 				var newCartItem = response.data;
 				$scope.cartItems.push(newCartItem);
 				$scope.updateCartItemCount();
-
+				$scope.updateTotalCartItemCount();
 			});
+			
 
 		}
 		Swal.fire({
@@ -52,7 +53,7 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 
 	// Hàm cập nhật sản phẩm trong cơ sở dữ liệu 
 	$scope.update = function(item) {
-		var url = '/update/' + item.maChiTietGH;
+		var url = '/cart/update/' + item.maChiTietGH;
 
 
 		$http.put(url, item)
@@ -88,7 +89,7 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 				}
 
 				// xóa khỏi database
-				$http.delete('/delete/' + maChiTietGH).then(function(response) { });
+				$http.delete('/cart/delete/' + maChiTietGH).then(function(response) { });
 			}
 		})
 
@@ -105,6 +106,7 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 	};
 
 	// Hàm để tính tổng số lượng sản phẩm trong giỏ hàng (bao gồm số lượng của từng sản phẩm)
+	
 	$scope.getTotalCartItemCount = function() {
 		var totalItemCount = 0;
 		for (var i = 0; i < $scope.cartItems.length; i++) {
@@ -187,19 +189,38 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 		$scope.updateTotalCartPrice();
 	};
 
-	// Hàm để chuyển đến trang thanh toán
-	$scope.goToCheckout = function() {
-		// Sử dụng $window để điều hướng đến trang thanh toán và truyền danh sách giỏ hàng qua tham số URL
-		$window.location.href = '/user/checkout/4';
-	};
 
 	//thanh toán =============================================
 
 
+
+	// Hàm để chuyển đến trang thanh toán
+	$scope.goToCheckout = function() {
+		$http.get('/cart/getUsername')
+			.then(function(response) {
+				$scope.maGioHang = response.data;
+			})
+			.catch(function(error) {
+				console.error('Lỗi khi lấy mã giỏ hàng:', error);
+			});
+		// Sử dụng $window để điều hướng đến trang thanh toán và truyền danh sách giỏ hàng qua tham số URL
+		$window.location.href = '/checkout/' + $scope.maGioHang;
+	};
+	
+	
+	$scope.HoaDon;
 	$scope.createHoaDon = function() {
-		$http.post('/user/gotocheckout/' + 4).then(function(response) {
-			alert("tạo hóa đơn thành công");
+		$http.post('/createcheckout/' + $scope.maGioHang).then(function(response) {
+			$scope.HoaDon = response.data;
+			$window.location.href = `/invoice/` + $scope.maGioHang;
 		});
 	}
-
+	
+	
+	
+	$scope.getHoaDon = function() {
+		$http.get('invoice/').then(function(response) {
+			$scope.HoaDon = response.data;
+		});
+	}
 });

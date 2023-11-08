@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.beermartket.alcohol.constant.SessionAttr;
@@ -26,6 +27,7 @@ import com.beermartket.alcohol.service.gioHangService;
 
 import jakarta.servlet.http.HttpSession;
 
+@RequestMapping("/cart")
 @RestController
 public class ChiTietGioHangController {
 
@@ -62,7 +64,6 @@ public class ChiTietGioHangController {
         	for (GioHang gioHang : gh) {
         		maGioHang = gioHang.getMaGioHang();
 			}
-        	System.out.println(maGioHang);
             return maGioHang;
         }else {
         	return maGioHang;

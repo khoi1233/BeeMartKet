@@ -1,8 +1,7 @@
 package com.beermartket.alcohol.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
+
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +14,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQuery;
+
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -36,17 +38,12 @@ public class HoaDon implements Serializable {
 	@Column(name="MaHoaDon")
 	private int maHoaDon;
 
-	@Column(name="DiaChi")
-	private String diaChi;
-
 	@Column(name="GhiChu")
 	private String ghiChu;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="NgayMua")
 	private Date ngayMua;
-
-	@Column(name="TongTien")
-	private double tongTien;
 
 	@Column(name="TrangThaiHoaDon")
 	private String trangThaiHoaDon;

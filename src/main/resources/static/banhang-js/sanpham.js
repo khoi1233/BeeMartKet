@@ -8,8 +8,7 @@ app.controller('sanpham-controller', function($scope, $http, $window) {
 			$scope.sanpham = response.data;
 		});
 
-	 $scope.goToSinglePage = function(maSanPham) {
-		
+	 $scope.goToSinglePage = function(maSanPham) {		
 		window.location.href = `/user/product_detail/${maSanPham}`;
 		alert("123");
 	};
