@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.beermartket.alcohol.model.SanPham;
 import com.beermartket.alcohol.repository.SanPhamRepository;
 
@@ -24,14 +25,12 @@ public class SanPham_restController {
 	 @GetMapping("rest/{maSanPham}")
 	    public ResponseEntity<Optional<SanPham>> getSanPhamByMaSanPham(@PathVariable Integer maSanPham) {
 	        Optional<SanPham> sanPham = sanphamDao.findById(maSanPham);
-
+        
 	        if (sanPham != null) {
 	            return ResponseEntity.ok(sanPham);
 	        } else {
 	            return ResponseEntity.notFound().build();
 	        }
+	        	        
 	    }
-
-	
-
 }

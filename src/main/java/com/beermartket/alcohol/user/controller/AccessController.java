@@ -69,7 +69,8 @@ public class AccessController {
 		} else if (password.isEmpty()) {
 			model.addAttribute("error", "Vui lòng nhập mật khẩu!");
 		} else {
-			if (tk != null) {
+
+			if (tk != null) {				                
 
 				// Mã hóa mật khẩu người dùng với salt lấy từ cơ sở dữ liệu
 				String hashedUserInputPassword = BCrypt.hashpw(password, tk.getMaHoaMatKhau());
@@ -77,8 +78,9 @@ public class AccessController {
 				System.out.println(tk.getMatKhau());
 				// So sánh hashed version của mật khẩu người dùng với mật khẩu lấy từ cơ sở dữ
 				// liệu
-
+				
 				if (hashedUserInputPassword.equals(tk.getMatKhau())) {
+
 					model.addAttribute("error", "Đăng nhập thành công");
 					session.setAttribute(SessionAttr.CURRENT_USER, tk.getTenDangNhap());
 					session.setAttribute(SessionAttr.User, tk.getTenDangNhap());
@@ -171,4 +173,5 @@ public class AccessController {
 
 		return "access/register";
 	}
+
 }

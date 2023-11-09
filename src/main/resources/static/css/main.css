@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 :root {
     --h1size: 50px;
@@ -94,7 +94,6 @@ body {
     color: var(--text);
     background: var(--body);
     font-size: var(--bodysize);
-    font-family: var(--pfamily);
      font-family: 'Roboto', sans-serif;
     line-height: var(--bodyheight);
     overflow-x: hidden
@@ -6678,13 +6677,15 @@ tbody tr td:last-child {
 }
 
 .shop-widget-group {
+
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     margin: 15px 0;
+    
+   
 }
-
 
 .shop-widget-group input {
     width: 100%;

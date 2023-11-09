@@ -1,22 +1,16 @@
 package com.beermartket.alcohol.model;
 
 import java.io.Serializable;
-
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -34,16 +28,20 @@ public class HoaDon implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="MaHoaDon")
 	private int maHoaDon;
+
+	@Column(name="DiaChi")
+	private String diaChi;
 
 	@Column(name="GhiChu")
 	private String ghiChu;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="NgayMua")
-	private Date ngayMua;
+	private LocalDateTime ngayMua;
+
+	@Column(name="TongTien")
+	private double tongTien;
 
 	@Column(name="TrangThaiHoaDon")
 	private String trangThaiHoaDon;

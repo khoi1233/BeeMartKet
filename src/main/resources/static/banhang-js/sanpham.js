@@ -13,14 +13,8 @@ app.controller('sanpham-controller', function($scope, $http, $window, $sce) {
 			$scope.sanpham = response.data;
 		});
 
-<<<<<<< HEAD
-	 $scope.goToSinglePage = function(maSanPham) {		
-		window.location.href = `/user/product_detail/${maSanPham}`;
-		alert("123");
-=======
 	$scope.goToSinglePage = function(maSanPham) {
 			window.location.href = `/user/product_detail/${maSanPham}`;
->>>>>>> 6c3b4e290ec63e24d0d9e68f8b18c8034527f072
 	};
 
 	$scope.loadChiTietSanPham = function(maSanPham) {
