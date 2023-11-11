@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin/layout/layout :: content(~{::body},~{::title})}">
+
+<head>
+
+<title>Chi tiết sản phẩm</title>
+<body ng-controller="sanphamAdmin-controller">
+
+	<!-- Page Content-->
+	<div class="page-content">
+		<div class="container-fluid">
+			<!-- Page-Title -->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="page-title-box">
+						<div class="row">
+							<div class="col">
+								<h4 class="page-title">Chi Tiêt Sản Phẩm</h4>
+								<!-- 								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="javascript:void(0);">Dastone</a></li>
+									<li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
+									<li class="breadcrumb-item active">Form Elements</li>
+								</ol> -->
+							</div>
+							<!--end col-->
+							<div class="col-auto align-self-center">
+								<a href="#" class="btn btn-sm btn-outline-primary"
+									id="Dash_Date"> <span class="day-name" id="Day_Name">Today:</span>&nbsp;
+									<span class="" id="Select_date">Jan 11</span> <i
+									data-feather="calendar" class="align-self-center icon-xs ms-1"></i>
+								</a> <a href="#" class="btn btn-sm btn-outline-primary"> <i
+									data-feather="download" class="align-self-center icon-xs"></i>
+								</a>
+							</div>
+							<!--end col-->
+						</div>
+						<!--end row-->
+					</div>
+					<!--end page-title-box-->
+				</div>
+				<!--end col-->
+			</div>
+			<!--end row-->
+			<!-- end page title end breadcrumb -->
+
+
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">
+								Thông tin sản phẩm <span class="badge bg-soft-success font-12">New</span>
+							</h4>
+							<div class="d-flex justify-content-center mb-3">
+								<img src="/images/product/{{sanpham.hinhAnh}}" alt=""
+									style="width: 400px;" class="rounded-circle">
+
+
+							</div>
+							<p class="d-flex justify-content-center">
+								<button type="button"
+									class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm">
+									<i class="fas fa-camera"></i>
+								</button>
+							</p>
+						</div>
+						<!--end card-header-->
+
+						<div class="card-body">
+
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="maSanPham"
+									ng-model="sanpham.maSanPham" placeholder="Mã Sản Phẩm">
+								<label for="maSanPham">Mã Sản Phẩm</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="tenSanPham"
+									ng-model="sanpham.tenSanPham" placeholder="Tên Sản Phẩm">
+								<label for="tenSanPham">Tên Sản Phẩm</label>
+							</div>
+							<div class="form-floating mb-3">
+								<select class="form-select" id="loaiSanPham"
+									ng-model="sanpham.loaiSanPham.maLoaiSanPham"
+									aria-label="Floating label select example">
+									<option value="" disabled selected>Vui lòng chọn loại
+										sản phẩm</option>
+									<option ng-repeat="lsp in loaiSanPhams"
+										ng-value="lsp.maLoaiSanPham">{{lsp.tenLoaiSanPham}}</option>
+
+								</select> <label for="floatingSelect">Loại sản phẩm</label>
+
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="ngayTao"
+									ng-model="sanpham.ngayTao | date: 'HH:mm:ss dd/MM/yyyy'"
+									placeholder="Ngày tạo"> <label for="ngaytao">Ngày
+									Tạo</label>
+							</div>
+							<div class="form-floating mb-3">
+								<select class="form-select" id="donvitinh"
+									ng-model="sanpham.loaiSanPham.maLoaiSanPham"
+									aria-label="Floating label select example">
+									<option value="" disabled selected>Vui lòng chọn đơn vị tính</option>
+									<option ng-repeat="dvt in sanpham"
+										ng-value="dvt.maSanPham">{{dvt.donViTinh}}</option>
+
+								</select> <label for="floatingSelect">Đơn Vị Tính</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="floatingPassword"
+									placeholder="Password"> <label for="floatingPassword">Số
+									Lượng</label>
+							</div>
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+				</div>
+				<!--end col-->
+				<div class="col-lg-6">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">
+								Người Tạo Sản Phẩm <span class="badge bg-soft-success font-12">New</span>
+							</h4>
+							<p class="text-muted mb-0">Create beautifully simple form
+								labels that float over your input fields.</p>
+						</div>
+						<!--end card-header-->
+						<div class="card-body">
+							<div class="row g-2">
+								<div class="col-md">
+									<div class="media mb-3">
+										<img src="/admin/assets/images/users/user-6.jpg" alt=""
+											class="rounded-circle">
+										<div class="media-body align-self-center ms-3 text-truncate">
+											<h3 class="my-0 fw-bold">Tên Người Tạo</h3>
+											<p class="text-muted mb-2 font-13">Website</p>
+											<button type="button"
+												class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm">
+												<i class="fas fa-camera"></i>
+											</button>
+
+										</div>
+										<!--end media-body-->
+									</div>
+									<div class="form-floating mb-3">
+										<input type="email" class="form-control"
+											id="floatingInputGrid" placeholder="name@example.com">
+										<label for="floatingInputGrid">Email</label>
+									</div>
+									<div class="form-floating mb-3">
+										<input type="email" class="form-control"
+											id="floatingInputGrid" placeholder="name@example.com">
+										<label for="floatingInputGrid">Địa Chỉ</label>
+									</div>
+									<div class="form-floating mb-3">
+										<input type="email" class="form-control"
+											id="floatingInputGrid" placeholder="name@example.com">
+										<label for="floatingInputGrid">Số Điện Thoại</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">
+								Nhà Cung Cấp <span class="badge bg-soft-success font-12">New</span>
+							</h4>
+							<p class="text-muted mb-0">Create beautifully simple form
+								labels that float over your input fields.</p>
+						</div>
+						<!--end card-header-->
+						<div class="card-body">
+							<div class="row g-2">
+								<div class="col-md">
+									<div class="media mb-3">
+										<img src="/admin/assets/images/users/user-6.jpg" alt=""
+											class="rounded-circle">
+										<div class="media-body align-self-center ms-3 text-truncate">
+											<h3 class="my-0 fw-bold">Tên Nhà Cung Cấp</h3>
+											<p class="text-muted mb-2 font-13">Website</p>
+											<button type="button"
+												class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm">
+												<i class="fas fa-camera"></i>
+											</button>
+
+										</div>
+										<!--end media-body-->
+									</div>
+									<div class="form-floating mb-3">
+										<input type="email" class="form-control"
+											id="floatingInputGrid" placeholder="name@example.com">
+										<label for="floatingInputGrid">Email</label>
+									</div>
+									<div class="form-floating mb-3">
+										<input type="email" class="form-control"
+											id="floatingInputGrid" placeholder="name@example.com">
+										<label for="floatingInputGrid">Địa Chỉ</label>
+									</div>
+									<div class="form-floating mb-3">
+										<input type="email" class="form-control"
+											id="floatingInputGrid" placeholder="name@example.com">
+										<label for="floatingInputGrid">Số Điện Thoại</label>
+									</div>
+									<div class="form-floating">
+										<textarea class="form-control"
+											placeholder="Leave a comment here" id="floatingTextarea2"
+											style="height: 100px"></textarea>
+										<label for="floatingTextarea2">Ghi Chú</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+				</div>
+				<!--end col-->
+			</div>
+			<!--end row-->
+			<div class="row">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Giá Tiền</h4>
+						<p class="text-muted mb-0">
+							A switch has the markup of a custom checkbox but uses the
+							<code class="highlighter-rouge">.custom-switch</code>
+							class to render a toggle switch. Switches also support the
+							<code class="highlighter-rouge">disabled</code>
+							attribute.
+						</p>
+					</div>
+					<!--end card-header-->
+					<div class="card-body">
+						<div class="row">
+							<div class="col-lg-4">
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="floatingPassword"
+										placeholder="Password"> <label for="floatingPassword">Giá
+										Gốc</label>
+								</div>
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="floatingPassword"
+										placeholder="Password"> <label for="floatingPassword">Chiết
+										Khấu</label>
+								</div>
+							</div>
+							<!--end col-->
+							<div class="col-lg-4">
+
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="floatingPassword"
+										placeholder="Password"> <label for="floatingPassword">Giá
+										Tiền Giảm</label>
+								</div>
+
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="floatingPassword"
+										placeholder="Password"> <label for="floatingPassword">Giá
+										Khuyến Mãi</label>
+								</div>
+
+							</div>
+							<!--end col-->
+
+							<div class="col-lg-4">
+								<div class="row mb-3">
+									<label class="col-md-3 my-1 form-label">Trạng Thái</label>
+									<div class="col-md-10">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio"
+												name="inlineRadioOptions" id="inlineRadio1" value="option1">
+											<label class="form-check-label" for="inlineRadio1">Hoạt
+												Động</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio"
+												name="inlineRadioOptions" id="inlineRadio2" value="option2">
+											<label class="form-check-label" for="inlineRadio2">Hết
+												Hàng</label>
+										</div>
+										<div class="form-check form-check-inline mb-3">
+											<input class="form-check-input" type="radio"
+												name="inlineRadioOptions" id="inlineRadio3" value="option3">
+											<label class="form-check-label" for="inlineRadio3">Tạm
+												Ngưng</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-check form-switch form-switch-warning mb-3">
+									<input class="form-check-input" type="checkbox"
+										id="customSwitchWarning" checked> <label
+										class="form-check-label" for="customSwitchWarning">Nổi
+										Bật</label>
+								</div>
+							</div>
+							<!--end col-->
+						</div>
+						<!--end row-->
+					</div>
+					<!--end card-body-->
+				</div>
+				<!--end card-->
+				<div class="col-xl-6">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">Mô Tả</h4>
+							<p class="text-muted mb-0">For even more customization and
+								cross browser consistency, use our completely custom form
+								elements to replace the browser defaults. They’re built on top
+								of semantic and accessible markup, so they’re solid replacements
+								for any default form control.</p>
+						</div>
+						<!--end card-header-->
+						<div class="card-body">
+							<div class="general-label">
+								<form class="form">
+
+									<div class="mb-3 row">
+										<label class="col-md-3 my-2 form-label">Checkboxes</label>
+
+
+										<textarea id="mota"></textarea>
+
+									</div>
+									<!--end row-->
+								</form>
+								<!--end form-->
+							</div>
+							<!--end general-->
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+				</div>
+				<!-- end col -->
+
+				<div class="col-xl-6">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">Thông Tin</h4>
+							<p class="text-muted mb-0">For even more customization and
+								cross browser consistency, use our completely custom form
+								elements to replace the browser defaults. They’re built on top
+								of semantic and accessible markup, so they’re solid replacements
+								for any default form control.</p>
+						</div>
+						<!--end card-header-->
+						<div class="card-body">
+							<div class="general-label">
+								<form class="form">
+
+									<div class="mb-3 row">
+										<label class="col-md-3 my-2 form-label">Checkboxes</label>
+
+
+										<textarea id="thongtin"></textarea>
+
+									</div>
+									<!--end row-->
+								</form>
+								<!--end form-->
+							</div>
+							<!--end general-->
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+				</div>
+				<!-- end col -->
+
+			</div>
+			<!-- end row -->
+
+			<div id="row-container" class="row">
+				<div class="col-xl-3">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">File Upload 1</h4>
+							<p class="text-muted mb-0">Your so fresh input file — Default
+								version</p>
+						</div>
+						<!--end card-header-->
+						<div class="card-body">
+							<input type="file" id="input-file-now" class="dropify" />
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+					<p>
+						Tên tệp tin: <span id="file-name"></span>
+					</p>
+				</div>
+				<!--end col-->
+
+				<div class="col-xl-3">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">File Upload 2</h4>
+							<p class="text-muted mb-0">You can add a default value</p>
+						</div>
+						<!--end card-header-->
+						<div class="card-body">
+							<input type="file" id="input-file-now" class="dropify"
+								data-default-file="/admin/plugins/dropify/images/1.jpg" />
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+				</div>
+				<!--end col-->
+				<div class="col-xl-3">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">File Upload 1</h4>
+							<p class="text-muted mb-0">Your so fresh input file — Default
+								version</p>
+						</div>
+						<!--end card-header-->
+						<div class="card-body">
+							<input type="file" id="input-file-now" class="dropify" />
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+					<p>
+						Tên tệp tin: <span id="file-name"></span>
+					</p>
+				</div>
+				<!--end col-->
+
+				<div class="col-xl-3">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">File Upload 1</h4>
+							<p class="text-muted mb-0">Your so fresh input file — Default
+								version</p>
+						</div>
+						<!--end card-header-->
+						<div class="card-body">
+							<input type="file" id="input-file-now" class="dropify" />
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+					<p>
+						Tên tệp tin: <span id="file-name"></span>
+					</p>
+				</div>
+
+				<!--end col-->
+			</div>
+			<!--end row-->
+			<button type="button"
+				class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"
+				id="add-column-btn">
+				<i class="fas fa-plus"></i>
+			</button>
+
+
+
+		</div>
+		<!-- container -->
+
+		<footer class="footer text-center text-sm-start">
+			&copy;
+			<script>
+				document.write(new Date().getFullYear())
+			</script>
+			Dastone <span class="text-muted d-none d-sm-inline-block float-end">Crafted
+				with <i class="mdi mdi-heart text-danger"></i> by Mannatthemes
+			</span>
+		</footer>
+		<!--end footer-->
+	</div>
+	<!-- end page content -->
+	</div>
+	<!-- end page-wrapper -->
+	<script>
+		// Khởi tạo CKEditor với tùy chọn cơ bản
+		CKEDITOR.replace('thongtin');
+	</script>
+	<script>
+		// Khởi tạo CKEditor với tùy chọn cơ bản
+		CKEDITOR.replace('mota');
+	</script>
+</body>
+
+
+<!-- Mirrored from mannatthemes.com/dastone/default/forms-elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 06 Nov 2023 06:54:37 GMT -->
+</html>
