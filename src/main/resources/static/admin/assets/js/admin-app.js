@@ -5,6 +5,7 @@ app.controller('sanphamAdmin-controller', function($scope, $http, $window, $sce)
 	$scope.sanphamThoiGian = [];
 	$scope.phieuhang = [];
 	$scope.loaiSanPhams = [];
+	$scope.donvitinhs = [];
 
 	$http.get('/rest/sanpham')
 		.then(function(response) {
@@ -15,6 +16,11 @@ app.controller('sanphamAdmin-controller', function($scope, $http, $window, $sce)
 	$http.get('/rest/loaisanpham')
 		.then(function(response) {
 			$scope.loaiSanPhams = response.data;
+		});
+		
+		$http.get('/rest/donvitinh')
+		.then(function(response) {
+			$scope.donvitinhs = response.data;
 		});
 		
 	$http.get('/rest/phieuhang')

@@ -99,17 +99,17 @@
 							</div>
 							<div class="form-floating mb-3">
 								<select class="form-select" id="donvitinh"
-									ng-model="sanpham.loaiSanPham.maLoaiSanPham"
+									ng-model="sanpham.donViTinh.maDonViTinh"
 									aria-label="Floating label select example">
 									<option value="" disabled selected>Vui lòng chọn đơn vị tính</option>
-									<option ng-repeat="dvt in sanpham"
-										ng-value="dvt.maSanPham">{{dvt.donViTinh}}</option>
+									<option ng-repeat="dvt in donvitinhs"
+										ng-value="dvt.maDonViTinh">{{dvt.tenDonViTinh}}</option>
 
 								</select> <label for="floatingSelect">Đơn Vị Tính</label>
 							</div>
 							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="floatingPassword"
-									placeholder="Password"> <label for="floatingPassword">Số
+								<input type="text" class="form-control" id="soLuong"
+									placeholder="Số Lượng" ng-model="sanpham.soLuong"> <label for="soLuong">Số
 									Lượng</label>
 							</div>
 						</div>
@@ -132,11 +132,11 @@
 							<div class="row g-2">
 								<div class="col-md">
 									<div class="media mb-3">
-										<img src="/admin/assets/images/users/user-6.jpg" alt=""
-											class="rounded-circle">
+										<img src="/admin/assets/images/users/{{sanpham.taiKhoanAdmin.hinhAnh}}" alt=""
+										 style="width: 100px;" class="rounded-circle">
 										<div class="media-body align-self-center ms-3 text-truncate">
-											<h3 class="my-0 fw-bold">Tên Người Tạo</h3>
-											<p class="text-muted mb-2 font-13">Website</p>
+											<h3 class="my-0 fw-bold">{{sanpham.taiKhoanAdmin.hoTen}}</h3>
+											<p class="text-muted mb-2 font-13">{{sanpham.taiKhoanAdmin.email}}</p>
 											<button type="button"
 												class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm">
 												<i class="fas fa-camera"></i>
@@ -147,19 +147,29 @@
 									</div>
 									<div class="form-floating mb-3">
 										<input type="email" class="form-control"
-											id="floatingInputGrid" placeholder="name@example.com">
-										<label for="floatingInputGrid">Email</label>
-									</div>
-									<div class="form-floating mb-3">
-										<input type="email" class="form-control"
-											id="floatingInputGrid" placeholder="name@example.com">
-										<label for="floatingInputGrid">Địa Chỉ</label>
-									</div>
-									<div class="form-floating mb-3">
-										<input type="email" class="form-control"
-											id="floatingInputGrid" placeholder="name@example.com">
+											id="floatingInputGrid" placeholder="Sô Điện Thoại" ng-model="sanpham.taiKhoanAdmin.soDienThoai">
 										<label for="floatingInputGrid">Số Điện Thoại</label>
 									</div>
+									<div class="form-floating mb-3">
+										<input type="email" class="form-control"
+											id="floatingInputGrid" placeholder="Địa chỉ" ng-model="sanpham.taiKhoanAdmin.diaChi">
+										<label for="floatingInputGrid">Địa Chỉ</label>
+									</div>
+																<div class="row mb-3">
+									<label class="col-md-3 my-1 form-label">Chức Vụ</label>
+									<div class="col-md-10">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio"
+												name="inlineRadioOptions" id="inlineRadio1" value="option1">
+											<label class="form-check-label" for="inlineRadio1">Nhân Viên</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio"
+												name="inlineRadioOptions" id="inlineRadio2" value="option2">
+											<label class="form-check-label" for="inlineRadio2">Quản Trị Viên</label>
+										</div>
+									</div>
+								</div>
 								</div>
 							</div>
 						</div>
