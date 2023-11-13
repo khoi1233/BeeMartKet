@@ -4,7 +4,7 @@
 
 <head>
 
-<title>Blog-Grid</title>
+<title>Blog-standard</title>
 </head>
 <body>
 	<aside class="category-sidebar">
@@ -358,9 +358,9 @@
 				<li><a class="nav-link dropdown-link" href="#"><i
 						class="icofont-book-alt"></i>blogs</a>
 					<ul class="dropdown-list">
-						<li><a href="blog-grid.html">blog grid</a></li>
+						<li><a href="/user/blog-grid">blog grid</a></li>
 						<li><a href="blog-standard.html">blog standard</a></li>
-						<li><a href="blog-details.html">blog details</a></li>
+						<li><a href="/user/blog-details">blog details</a></li>
 						<li><a href="blog-author.html">blog author</a></li>
 					</ul></li>
 				<li><a class="nav-link" href="offer.html"><i
@@ -415,15 +415,15 @@
 	<section class="inner-section single-banner"
 		style="background: url(/images/single-banner.jpg) no-repeat center;">
 		<div class="container">
-			<h2>blog grid</h2>
+			<h2>blog Standard</h2>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
 				<li class="breadcrumb-item active" aria-current="page">Blog
-					grid</li>
+					Standard</li>
 			</ol>
 		</div>
 	</section>
-	<section class="inner-section blog-grid">
+	<section class="inner-section blog-standard">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-8">
@@ -448,16 +448,15 @@
 									</select>
 								</div>
 								<div class="filter-action">
-									<a href="blog-grid.html" class="active" title="Two Column"><i
-										class="fas fa-th-large"></i></a><a href="/user/blog-standard"
-										title="One Column"><i class="fas fa-th-list"></i></a>
+									<a href="/user/blog-grid" title="Two Column"><i
+										class="fas fa-th-large"></i></a><a href="blog-standard.html"
+										class="active" title="One Column"><i
+										class="fas fa-th-list"></i></a>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6 col-lg-6" th:each="tinTuc : ${listOfTinTuc}">
-							<div class="blog-card">
+						<div class="col-lg-12">
+							<div class="blog-card" th:each="tinTuc : ${listOfTinTuc}">
 								<div class="blog-media">
 									<a class="blog-img" href="#"><img
 										th:src="@{'/images/blog/' + ${tinTuc.hinhAnh}}"
@@ -465,24 +464,23 @@
 								</div>
 								<div class="blog-content">
 									<ul class="blog-meta">
-										<li><i class="fas fa-user"></i><span
-											th:text="${tinTuc.taiKhoanAdmin.tenDangNhap}"></span></li>
-										<li><i class="fas fa-calendar-alt"></i><span
+										<li><i class="icofont-ui-calendar"></i><span
 											th:text="${#temporals.format(tinTuc.ngayDang, 'dd, MMMM, yyyy')}"></span></li>
+										<li><i class="icofont-user-alt-3"></i><span
+											th:text="${tinTuc.taiKhoanAdmin.tenDangNhap}"></span></li>
+										<li><i class="icofont-speech-comments"></i><span>25
+												comments</span></li>
 									</ul>
 									<h4 class="blog-title">
 										<a href="/user/blog-details" th:text="${tinTuc.tieuDe}"></a>
 									</h4>
 									<p class="blog-desc" th:text="${tinTuc.noiDung}"></p>
-									<a class="blog-btn" href="#"><span>read more</span><i
-										class="icofont-arrow-right"></i></a>
+									<a class="blog-btn" href="/user/blog-details"><span>read
+											more</span><i class="icofont-arrow-right"></i></a>
 								</div>
 							</div>
+
 						</div>
-
-
-					</div>
-					<div class="row">
 						<div class="col-lg-12">
 							<div class="bottom-paginate">
 								<p class="page-info">Showing 12 of 60 Results</p>
@@ -501,43 +499,31 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-7 col-lg-4">
+				<div class="col-sm-10 col-md-7 col-lg-4">
 					<div class="blog-widget">
 						<h3 class="blog-widget-title">Find blogs</h3>
-						<form th:action="@{/user/search}" method="get" class="blog-widget-form">
-							<input type="text" name="tieuDe" placeholder="Search blogs">
-							<button type="submit" class="icofont-search-1"></button>
+						<form class="blog-widget-form">
+							<input type="text" placeholder="Search blogs">
+							<button class="icofont-search-1"></button>
 						</form>
 					</div>
 					<div class="blog-widget">
 						<h3 class="blog-widget-title">popular feeds</h3>
 						<ul class="blog-widget-feed">
 							<li><a class="blog-widget-media" href="#"><img
-									src="/images/blog/01.jpg" alt="blog-widget"></a>
+									src="/images/blog-widget/01.jpg" alt="blog-widget"></a>
 								<h6 class="blog-widget-text">
 									<a href="#">Lorem ipsum dolor sit amet consectetur</a><span>february
 										02, 2021</span>
 								</h6></li>
 							<li><a class="blog-widget-media" href="#"><img
-									src="/images/blog/02.jpg" alt="blog-widget"></a>
+									src="/images/blog-widget/02.jpg" alt="blog-widget"></a>
 								<h6 class="blog-widget-text">
 									<a href="#">Lorem ipsum dolor sit amet consectetur</a><span>february
 										02, 2021</span>
 								</h6></li>
 							<li><a class="blog-widget-media" href="#"><img
-									src="/images/blog/03.jpg" alt="blog-widget"></a>
-								<h6 class="blog-widget-text">
-									<a href="#">Lorem ipsum dolor sit amet consectetur</a><span>february
-										02, 2021</span>
-								</h6></li>
-							<li><a class="blog-widget-media" href="#"><img
-									src="/images/blog/04.jpg" alt="blog-widget"></a>
-								<h6 class="blog-widget-text">
-									<a href="#">Lorem ipsum dolor sit amet consectetur</a><span>february
-										02, 2021</span>
-								</h6></li>
-							<li><a class="blog-widget-media" href="#"><img
-									src="/images/blog/05.jpg" alt="blog-widget"></a>
+									src="/images/blog-widget/03.jpg" alt="blog-widget"></a>
 								<h6 class="blog-widget-text">
 									<a href="#">Lorem ipsum dolor sit amet consectetur</a><span>february
 										02, 2021</span>
@@ -551,7 +537,7 @@
 							<li><a href="#">agriculture <span>14</span></a></li>
 							<li><a href="#">organic food <span>35</span></a></li>
 							<li><a href="#">vegetables <span>67</span></a></li>
-							<li><a href="#">healthy life <span>89</span></a></li>
+							<li><a href="#">healthy life <span>38</span></a></li>
 						</ul>
 					</div>
 					<div class="blog-widget">
@@ -587,7 +573,6 @@
 			</div>
 		</div>
 	</section>
-
 
 </body>
 </html>

@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/customer/layout/index :: content(~{::body},~{::title})}">
+
+<head>
+
+<title>Blog-Grid</title>
+</head>
 <body>
     <aside class="category-sidebar">
         <div class="category-header">
@@ -113,7 +121,7 @@
         </div>
         <ul class="cart-list">
             <li class="cart-item">
-                <div class="cart-media"><a href="#"><img src="images/product/01.jpg" alt="product"></a><button
+                <div class="cart-media"><a href="#"><img src="/images/product/01.jpg" alt="product"></a><button
                         class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
@@ -130,7 +138,7 @@
                 </div>
             </li>
             <li class="cart-item">
-                <div class="cart-media"><a href="#"><img src="images/product/02.jpg" alt="product"></a><button
+                <div class="cart-media"><a href="#"><img src="/images/product/02.jpg" alt="product"></a><button
                         class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
@@ -147,7 +155,7 @@
                 </div>
             </li>
             <li class="cart-item">
-                <div class="cart-media"><a href="#"><img src="images/product/03.jpg" alt="product"></a><button
+                <div class="cart-media"><a href="#"><img src="/images/product/03.jpg" alt="product"></a><button
                         class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
@@ -164,7 +172,7 @@
                 </div>
             </li>
             <li class="cart-item">
-                <div class="cart-media"><a href="#"><img src="images/product/04.jpg" alt="product"></a><button
+                <div class="cart-media"><a href="#"><img src="/images/product/04.jpg" alt="product"></a><button
                         class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
@@ -181,7 +189,7 @@
                 </div>
             </li>
             <li class="cart-item">
-                <div class="cart-media"><a href="#"><img src="images/product/05.jpg" alt="product"></a><button
+                <div class="cart-media"><a href="#"><img src="/images/product/05.jpg" alt="product"></a><button
                         class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
                 <div class="cart-info-group">
                     <div class="cart-info">
@@ -206,7 +214,7 @@
         </div>
     </aside>
     <aside class="nav-sidebar">
-        <div class="nav-header"><a href="#"><img src="images/logo.png" alt="logo"></a><button class="nav-close"><i
+        <div class="nav-header"><a href="#"><img src="/images/logo.png" alt="logo"></a><button class="nav-close"><i
                     class="icofont-close"></i></button></div>
         <div class="nav-content">
             <div class="nav-btn"><a href="login.html" class="btn btn-inline"><i class="fa fa-unlock-alt"></i><span>join
@@ -306,7 +314,7 @@
                 class="fas fa-shopping-basket"></i><span>cartlist</span><sup>9+</sup></button><a href="wishlist.html"
             title="Wishlist"><i class="fas fa-heart"></i><span>wishlist</span><sup>0</sup></a><a href="compare.html"
             title="Compare List"><i class="fas fa-random"></i><span>compare</span><sup>0</sup></a></div>
-    <section class="inner-section single-banner" style="background: url(images/single-banner.jpg) no-repeat center;">
+    <section class="inner-section single-banner" style="background: url(/images/single-banner.jpg) no-repeat center;">
         <div class="container">
             <h2>blog author</h2>
             <ol class="breadcrumb">
@@ -325,7 +333,7 @@
                         <div class="col-lg-12">
                             <div class="author-single">
                                 <div class="author-content"><a href="#" class="author-image"><img
-                                            src="images/avatar/01.jpg" alt="avatar"></a>
+                                            src="/images/avatar/01.jpg" alt="avatar"></a>
                                     <div class="author-info">
                                         <h3 class="author-name">miron mahmud</h3>
                                         <h6 class="author-mail">mironcoder@gmail.com</h6>
@@ -374,7 +382,7 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-6">
                             <div class="blog-card">
-                                <div class="blog-media"><a class="blog-img" href="#"><img src="images/blog/01.jpg"
+                                <div class="blog-media"><a class="blog-img" href="#"><img src="/images/blog/01.jpg"
                                             alt="blog"></a></div>
                                 <div class="blog-content">
                                     <ul class="blog-meta">
@@ -391,7 +399,7 @@
                         </div>
                         <div class="col-md-6 col-lg-6">
                             <div class="blog-card">
-                                <div class="blog-media"><a class="blog-img" href="#"><img src="images/blog/02.jpg"
+                                <div class="blog-media"><a class="blog-img" href="#"><img src="/images/blog/02.jpg"
                                             alt="blog"></a></div>
                                 <div class="blog-content">
                                     <ul class="blog-meta">
@@ -408,7 +416,7 @@
                         </div>
                         <div class="col-md-6 col-lg-6">
                             <div class="blog-card">
-                                <div class="blog-media"><a class="blog-img" href="#"><img src="images/blog/03.jpg"
+                                <div class="blog-media"><a class="blog-img" href="#"><img src="/images/blog/03.jpg"
                                             alt="blog"></a></div>
                                 <div class="blog-content">
                                     <ul class="blog-meta">
@@ -425,7 +433,7 @@
                         </div>
                         <div class="col-md-6 col-lg-6">
                             <div class="blog-card">
-                                <div class="blog-media"><a class="blog-img" href="#"><img src="images/blog/04.jpg"
+                                <div class="blog-media"><a class="blog-img" href="#"><img src="/images/blog/04.jpg"
                                             alt="blog"></a></div>
                                 <div class="blog-content">
                                     <ul class="blog-meta">
@@ -442,7 +450,7 @@
                         </div>
                         <div class="col-md-6 col-lg-6">
                             <div class="blog-card">
-                                <div class="blog-media"><a class="blog-img" href="#"><img src="images/blog/05.jpg"
+                                <div class="blog-media"><a class="blog-img" href="#"><img src="/images/blog/05.jpg"
                                             alt="blog"></a></div>
                                 <div class="blog-content">
                                     <ul class="blog-meta">
@@ -459,7 +467,7 @@
                         </div>
                         <div class="col-md-6 col-lg-6">
                             <div class="blog-card">
-                                <div class="blog-media"><a class="blog-img" href="#"><img src="images/blog/06.jpg"
+                                <div class="blog-media"><a class="blog-img" href="#"><img src="/images/blog/06.jpg"
                                             alt="blog"></a></div>
                                 <div class="blog-content">
                                     <ul class="blog-meta">
@@ -476,7 +484,7 @@
                         </div>
                         <div class="col-md-6 col-lg-6">
                             <div class="blog-card">
-                                <div class="blog-media"><a class="blog-img" href="#"><img src="images/blog/07.jpg"
+                                <div class="blog-media"><a class="blog-img" href="#"><img src="/images/blog/07.jpg"
                                             alt="blog"></a></div>
                                 <div class="blog-content">
                                     <ul class="blog-meta">
@@ -493,7 +501,7 @@
                         </div>
                         <div class="col-md-6 col-lg-6">
                             <div class="blog-card">
-                                <div class="blog-media"><a class="blog-img" href="#"><img src="images/blog/08.jpg"
+                                <div class="blog-media"><a class="blog-img" href="#"><img src="/images/blog/08.jpg"
                                             alt="blog"></a></div>
                                 <div class="blog-content">
                                     <ul class="blog-meta">
@@ -537,27 +545,27 @@
                     <div class="blog-widget">
                         <h3 class="blog-widget-title">popular feeds</h3>
                         <ul class="blog-widget-feed">
-                            <li><a class="blog-widget-media" href="#"><img src="images/blog-widget/01.jpg"
+                            <li><a class="blog-widget-media" href="#"><img src="/images/blog/01.jpg"
                                         alt="blog-widget"></a>
                                 <h6 class="blog-widget-text"><a href="#">Lorem ipsum dolor sit amet
                                         consectetur</a><span>february 02, 2021</span></h6>
                             </li>
-                            <li><a class="blog-widget-media" href="#"><img src="images/blog-widget/02.jpg"
+                            <li><a class="blog-widget-media" href="#"><img src="/images/blog/02.jpg"
                                         alt="blog-widget"></a>
                                 <h6 class="blog-widget-text"><a href="#">Lorem ipsum dolor sit amet
                                         consectetur</a><span>february 02, 2021</span></h6>
                             </li>
-                            <li><a class="blog-widget-media" href="#"><img src="images/blog-widget/03.jpg"
+                            <li><a class="blog-widget-media" href="#"><img src="/images/blog/03.jpg"
                                         alt="blog-widget"></a>
                                 <h6 class="blog-widget-text"><a href="#">Lorem ipsum dolor sit amet
                                         consectetur</a><span>february 02, 2021</span></h6>
                             </li>
-                            <li><a class="blog-widget-media" href="#"><img src="images/blog-widget/04.jpg"
+                            <li><a class="blog-widget-media" href="#"><img src="/images/blog/04.jpg"
                                         alt="blog-widget"></a>
                                 <h6 class="blog-widget-text"><a href="#">Lorem ipsum dolor sit amet
                                         consectetur</a><span>february 02, 2021</span></h6>
                             </li>
-                            <li><a class="blog-widget-media" href="#"><img src="images/blog-widget/05.jpg"
+                            <li><a class="blog-widget-media" href="#"><img src="/images/blog/05.jpg"
                                         alt="blog-widget"></a>
                                 <h6 class="blog-widget-text"><a href="#">Lorem ipsum dolor sit amet
                                         consectetur</a><span>february 02, 2021</span></h6>
@@ -599,13 +607,13 @@
                             <li><a href="#" class="icofont-instagram"></a></li>
                         </ul>
                     </div>
-                    <div class="blog-widget"><a href="#"><img class="img-fluid" src="images/promo/blog/01.jpg"
+                    <div class="blog-widget"><a href="#"><img class="img-fluid" src="/images/promo/blog/01.jpg"
                                 alt="promo"></a></div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="news-part" style="background: url(images/newsletter.jpg) no-repeat center;">
+    <section class="news-part" style="background: url(/images/newsletter.jpg) no-repeat center;">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-5 col-lg-6 col-xl-7">
@@ -667,7 +675,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-xl-3">
-                    <div class="footer-widget"><a class="footer-logo" href="#"><img src="images/logo.png"
+                    <div class="footer-widget"><a class="footer-logo" href="#"><img src="/images/logo.png"
                                 alt="logo"></a>
                         <p class="footer-desc">Adipisci asperiores ipsum ipsa repellat consequatur repudiandae quisquam
                             assumenda dolor perspiciatis sit ipsum dolor amet.</p>
@@ -722,8 +730,8 @@
                         <h3 class="footer-title">Download App</h3>
                         <p class="footer-desc">Lorem ipsum dolor sit amet tenetur dignissimos ipsum eligendi autem
                             obcaecati minus ducimus totam reprehenderit exercitationem!</p>
-                        <div class="footer-app"><a href="#"><img src="images/google-store.png" alt="google"></a><a
-                                href="#"><img src="images/app-store.png" alt="app"></a></div>
+                        <div class="footer-app"><a href="#"><img src="/images/google-store.png" alt="google"></a><a
+                                href="#"><img src="/images/app-store.png" alt="app"></a></div>
                     </div>
                 </div>
             </div>
@@ -731,13 +739,14 @@
                 <div class="col-12">
                     <div class="footer-bottom">
                         <p class="footer-copytext">&copy; All Copyrights Reserved by <a href="#">Mironcoder</a></p>
-                        <div class="footer-card"><a href="#"><img src="images/payment/jpg/01.jpg" alt="payment"></a><a
-                                href="#"><img src="images/payment/jpg/02.jpg" alt="payment"></a><a href="#"><img
-                                    src="images/payment/jpg/03.jpg" alt="payment"></a><a href="#"><img
-                                    src="images/payment/jpg/04.jpg" alt="payment"></a></div>
+                        <div class="footer-card"><a href="#"><img src="/images/payment/jpg/01.jpg" alt="payment"></a><a
+                                href="#"><img src="/images/payment/jpg/02.jpg" alt="payment"></a><a href="#"><img
+                                    src="/images/payment/jpg/03.jpg" alt="payment"></a><a href="#"><img
+                                    src="/images/payment/jpg/04.jpg" alt="payment"></a></div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 </body>
+</html>

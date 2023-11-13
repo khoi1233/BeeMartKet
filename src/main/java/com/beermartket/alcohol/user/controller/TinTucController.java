@@ -18,24 +18,28 @@ import com.beermartket.alcohol.service.TinTucService;
 public class TinTucController {
 	@Autowired
 	TinTucService tinTucService;
-
+	@RequestMapping("/blog-author")
+	public String blog2() {
+		return "customer/view/home/blog-author";
+	}
 	@GetMapping("/blog-grid")
 	public String blog(Model model) {
 		List<TinTuc> listOfTinTuc = tinTucService.getAllTinTuc();
 		model.addAttribute("listOfTinTuc", listOfTinTuc);
 		return "customer/view/home/blog-grid";
 	}
-	@GetMapping("/blog-grid")
-	public String blog1(Model model) {
+	@GetMapping("/blog-standard")
+	public String blogstandard(Model model) {
 		List<TinTuc> listOfTinTuc = tinTucService.getAllTinTuc();
 		model.addAttribute("listOfTinTuc", listOfTinTuc);
-		return "customer/view/home/blog-grid";
+		return "customer/view/home/blog-standard";
 	}
 
 	@GetMapping("/search")
 	public String searchByTieuDe(@RequestParam("tieuDe") String tieuDe, Model model) {
-		List<TinTuc> searchResult = tinTucService.searchTinTucByTitle(tieuDe);
+		List<TinTuc> searchResult = tinTucService.searchByTieuDe(tieuDe);
 		model.addAttribute("listOfTinTuc", searchResult);
 		return "customer/view/home/blog-grid";
 	}
+	
 }
