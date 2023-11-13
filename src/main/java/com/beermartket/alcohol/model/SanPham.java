@@ -33,9 +33,6 @@ public class SanPham implements Serializable {
 	@Column(name="ChietKhauKH")
 	private double chietKhauKH;
 
-	@Column(name="DonViTinh")
-	private String donViTinh;
-
 	@Column(name="GiaGoc")
 	private double giaGoc;
 
@@ -81,11 +78,14 @@ public class SanPham implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="MaNhaCungCap")
 	private NhaCungCap nhaCungCap;
-//
-	//bi-directional many-to-one association to TaiKhoanAdmin
+
 	@ManyToOne
 	@JoinColumn(name="MaTaiKhoanAdmin")
 	private TaiKhoanAdmin taiKhoanAdmin;
+	
+	@ManyToOne
+	@JoinColumn(name="MaDonViTinh")
+	private DonViTinh donViTinh;
 
 
 }

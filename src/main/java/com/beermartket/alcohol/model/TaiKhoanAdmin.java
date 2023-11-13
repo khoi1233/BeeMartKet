@@ -16,7 +16,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @Entity
 @Table(name = "TaiKhoanAdmin")
@@ -26,53 +25,53 @@ public class TaiKhoanAdmin implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="MaTaiKhoan")
+	@Column(name = "MaTaiKhoan")
 	private int maTaiKhoan;
 
-	@Column(name="ChucVu")
+	@Column(name = "ChucVu")
 	private String chucVu;
 
-	@Column(name="DiaChi")
+	@Column(name = "DiaChi")
 	private String diaChi;
 
-	@Column(name="Email")
+	@Column(name = "Email")
 	private String email;
 
-	@Column(name="HinhAnh")
+	@Column(name = "HinhAnh")
 	private String hinhAnh;
 
-	@Column(name="HoTen")
+	@Column(name = "HoTen")
 	private String hoTen;
 
-	@Column(name="MatKhau")
+	@Column(name = "MatKhau")
 	private String matKhau;
 
-	@Column(name="NgayTao")
+	@Column(name = "NgayTao")
 	private LocalDateTime ngayTao;
-	
-	@Column(name="MaHoaMatKhau")
+
+	@Column(name = "MaHoaMatKhau")
 	private String maHoaMatKhau;
-	
-	@Column(name="SoDienThoai")
+
+	@Column(name = "SoDienThoai")
 	private String soDienThoai;
 
-	@Column(name="TenDangNhap")
+	@Column(name = "TenDangNhap")
 	private String tenDangNhap;
 
 	@JsonIgnore
-	@OneToMany(mappedBy="taiKhoanAdmin")
+	@OneToMany(mappedBy = "taiKhoanAdmin")
 	private List<PhieuNhapHang> phieuNhapHangs;
 
 	@JsonIgnore
-	@OneToMany(mappedBy="taiKhoanAdmin")
+	@OneToMany(mappedBy = "taiKhoanAdmin")
 	private List<SanPham> sanPhams;
 
 	@JsonIgnore
-	@OneToMany(mappedBy="taiKhoanAdmin")
+	@OneToMany(mappedBy = "taiKhoanAdmin")
 	private List<TinTuc> tinTucs;
 
 	@JsonIgnore
-	@OneToMany(mappedBy="taiKhoanAdmin")
+	@OneToMany(mappedBy = "taiKhoanAdmin")
 	private List<Trang> trangs;
 
 }

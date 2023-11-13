@@ -80,8 +80,8 @@ public class ThanhToanController {
 	
 		
 		LocalDateTime gioHienTai = LocalDateTime.now();
-		Timestamp timestamp = Timestamp.valueOf(gioHienTai);
-		hd.setNgayMua(timestamp);
+		
+		hd.setNgayMua(gioHienTai);
 		
 		hdDao.save(hd);
 		model.addAttribute("hoaDon", hd);

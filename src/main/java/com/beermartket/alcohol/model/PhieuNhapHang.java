@@ -19,7 +19,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @Entity
 @Table(name = "PhieuNhapHang")
@@ -29,33 +28,31 @@ public class PhieuNhapHang implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="MaPhieuNhap")
+	@Column(name = "MaPhieuNhap")
 	private int maPhieuNhap;
 
-	@Column(name="GhiChu")
+	@Column(name = "GhiChu")
 	private String ghiChu;
 
-	@Column(name="NgayNhap")
+	@Column(name = "NgayNhap")
 	private LocalDateTime ngayNhap;
 
-	@Column(name="TongTien")
+	@Column(name = "TongTien")
 	private double tongTien;
 
-	@Column(name="TrangThai")
+	@Column(name = "TrangThai")
 	private String trangThai;
 
-	//bi-directional many-to-one association to ChiTietPhieuNhapHang
-	@OneToMany(mappedBy="phieuNhapHang")
+	@JsonIgnore
+	@OneToMany(mappedBy = "phieuNhapHang")
 	private List<ChiTietPhieuNhapHang> chiTietPhieuNhapHangs;
 
-	//bi-directional many-to-one association to NhaCungCap
 	@ManyToOne
-	@JoinColumn(name="MaNhaCungCap")
+	@JoinColumn(name = "MaNhaCungCap")
 	private NhaCungCap nhaCungCap;
 
-	//bi-directional many-to-one association to TaiKhoanAdmin
 	@ManyToOne
-	@JoinColumn(name="MaTaiKhoan")
+	@JoinColumn(name = "MaTaiKhoan")
 	private TaiKhoanAdmin taiKhoanAdmin;
 
 }

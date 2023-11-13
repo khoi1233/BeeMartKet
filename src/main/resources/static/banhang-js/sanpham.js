@@ -11,6 +11,10 @@ app.controller('sanpham-controller', function($scope, $http, $window, $sce) {
 	$http.get('/rest/sanpham')
 		.then(function(response) {
 			$scope.sanpham = response.data;
+	$scope.sanphamNoiBat = response.data.filter(item => item.noiBat === true);
+			
+        
+
 		});
 
 	$scope.goToSinglePage = function(maSanPham) {

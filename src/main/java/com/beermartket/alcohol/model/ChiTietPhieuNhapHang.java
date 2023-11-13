@@ -12,7 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @Entity
 @Table(name = "ChiTietPhieuNhapHang")
@@ -22,24 +21,23 @@ public class ChiTietPhieuNhapHang implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="MaChiTietNH")
+	@Column(name = "MaChiTietNH")
 	private int maChiTietNH;
 
-	@Column(name="GhiChu")
+	@Column(name = "GhiChu")
 	private String ghiChu;
 
-	@Column(name="GiaNhap")
+	@Column(name = "GiaNhap")
 	private double giaNhap;
 
-	@Column(name="MaSanPham")
+	@Column(name = "MaSanPham")
 	private int maSanPham;
 
-	@Column(name="SoLuongNhap")
+	@Column(name = "SoLuongNhap")
 	private int soLuongNhap;
 
-	//bi-directional many-to-one association to PhieuNhapHang
 	@ManyToOne
-	@JoinColumn(name="MaPhieuNhap")
+	@JoinColumn(name = "MaPhieuNhap")
 	private PhieuNhapHang phieuNhapHang;
 
 }
