@@ -143,6 +143,8 @@ app.controller('sanphamAdmin-controller', function($scope, $http, $window, $sce)
 			$http.put('/rest/update/product/' + maSanPham, sanpham)
 				.then(function(response) {
 					alert("Cập nhật thành công")
+					 $scope.capnhat();
+					  window.location.href = `/admin/listProduct`;
 					 
 				})
 				.catch(function(error) {
