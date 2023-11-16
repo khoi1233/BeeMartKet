@@ -2,7 +2,6 @@
 app.controller('giohang-controller', function($scope, $http, $window) {
 	$scope.cartItems = [];
 	$scope.maGioHang;
-
 	$http.get('/cart/getUsername')
 		.then(function(response) {
 			$scope.maGioHang = response.data;
@@ -16,6 +15,14 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 		.catch(function(error) {
 			console.error('Lỗi khi lấy mã giỏ hàng:', error);
 		});
+
+	//hàm giới hạn từ ..................................
+	$scope.shortString = function(input, maxLength) {
+		if (input.length > maxLength) {
+			return input.substring(0, maxLength) + '...';
+		}
+		return input;
+	};
 
 
 	$scope.addToCart = function(masp) {
@@ -37,7 +44,7 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 				$scope.updateCartItemCount();
 				$scope.updateTotalCartItemCount();
 			});
-			
+
 
 		}
 		Swal.fire({
@@ -91,18 +98,7 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 
 	};
 
-	// Hàm để đếm số lượng sản phẩm trong giỏ hàng
-	$scope.countCartItems = function() {
-		return $scope.cartItems.length;
-	};
-
-	// Rest API gọi hàm này để cập nhật số lượng sản phẩm trong giỏ hàng
-	$scope.updateCartItemCount = function() {
-		$scope.cartItemCount = $scope.countCartItems();
-	};
-
 	// Hàm để tính tổng số lượng sản phẩm trong giỏ hàng (bao gồm số lượng của từng sản phẩm)
-	
 	$scope.getTotalCartItemCount = function() {
 		var totalItemCount = 0;
 		for (var i = 0; i < $scope.cartItems.length; i++) {
@@ -126,29 +122,6 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 
 		return parseInt(totalCartPrice);
 	};
-
-	// Hàm để tính tam tính khuyến mãi sản phẩm
-	$scope.getTamTinhSanPhamKM = function() {
-		var totalCartPrice = 0;
-		for (var i = 0; i < $scope.cartItems.length; i++) {
-			var item = $scope.cartItems[i];
-			totalCartPrice += (item.sanPham.giaGoc * item.sanPham.chietKhauKH / 100);
-		}
-
-		return parseInt(totalCartPrice);
-	};
-
-	// Hàm để tính thành tiền trong giỏ hàng (dựa trên số lượng và giá của từng sản phẩm)
-	$scope.getTotalCartPrice = function() {
-		var totalCartPrice = 0;
-		for (var i = 0; i < $scope.cartItems.length; i++) {
-			var item = $scope.cartItems[i];
-			totalCartPrice += (item.sanPham.giaGoc - (item.sanPham.giaGoc * item.sanPham.chietKhauKH / 100)) * item.soLuong;
-		}
-
-		return parseInt(totalCartPrice);
-	};
-
 
 	// Hàm để tăng số lượng sản phẩm
 	$scope.increaseQuantity = function(item) {
@@ -189,7 +162,6 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 	//thanh toán =============================================
 
 
-
 	// Hàm để chuyển đến trang thanh toán
 	$scope.goToCheckout = function() {
 		$http.get('/cart/getUsername')
@@ -202,8 +174,8 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 		// Sử dụng $window để điều hướng đến trang thanh toán và truyền danh sách giỏ hàng qua tham số URL
 		$window.location.href = '/checkout/' + $scope.maGioHang;
 	};
-	
-	
+
+
 	$scope.HoaDon;
 	$scope.createHoaDon = function() {
 		$http.post('/createcheckout/' + $scope.maGioHang).then(function(response) {
@@ -211,9 +183,120 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 			$window.location.href = `/invoice/` + $scope.maGioHang;
 		});
 	}
-	
-	
-	
+
+
+	// Hàm để tính tam tính khuyến mãi sản phẩm
+	$scope.getTamTinhSanPhamKM = function() {
+		var totalCartPrice = 0;
+		for (var i = 0; i < $scope.cartItems.length; i++) {
+			var item = $scope.cartItems[i];
+			totalCartPrice += (item.sanPham.giaGoc * item.sanPham.chietKhauKH / 100) * item.soLuong;
+		}
+
+		return parseInt(totalCartPrice);
+	};
+
+	// Hàm để tính thành tiền trong giỏ hàng (dựa trên số lượng và giá của từng sản phẩm)
+	$scope.getTotalCartPrice = function() {
+		var totalCartPrice = 0;
+		for (var i = 0; i < $scope.cartItems.length; i++) {
+			var item = $scope.cartItems[i];
+			totalCartPrice += (item.sanPham.giaGoc - (item.sanPham.giaGoc * item.sanPham.chietKhauKH / 100)) * item.soLuong;
+		}
+
+		// Kiểm tra tồn tại của applyCoupon và giaTriKhuyenMai
+		if ($scope.voucher && $scope.voucher.giaTriKhuyenMai !== undefined) {
+			// kiểm tra giá trị tối thiểu
+			if (totalCartPrice > $scope.voucher.giaTriToiThieu) {
+				// kiểm tra loại voucher
+				if (!$scope.voucher.loai) {
+					//tính giá trị khuyến mãi
+					$scope.giaTriKM = totalCartPrice * $scope.voucher.chiecKhau / 100;
+					if ($scope.giaTriKM > $scope.voucher.giaTriKhuyenMai) {
+						$scope.giaTriKM = $scope.voucher.giaTriKhuyenMai
+					}
+
+					// Kiểm tra nếu giaTriKM không phải NaN
+					if (!isNaN($scope.giaTriKM) && $scope.giaTriKM > 0) {
+						$scope.giaTriKM = $scope.giaTriKM * -1;
+						totalCartPrice += $scope.giaTriKM;
+					}
+				} else if ($scope.voucher.loai) {
+					$scope.khuyenMaiVC;
+				}
+			} else {
+				alert("Giá trị đơn hàng chưa đạt điều kiện >" + $scope.voucher.giaTriToiThieu);
+				$scope.voucher = null;
+			}
+		} else {
+			$scope.giaTriKM = 0;
+		}
+		return parseInt(totalCartPrice);
+	};
+
+
+	///////////////////////////////tính giảm giá hóa đơn
+	$scope.voucher = null;
+	$scope.voucherVC = null;
+	//hàm tính giảm giá theo mã
+	$scope.applyCoupon = function() {
+		if ($scope.couponCode) {
+			$http.post('/applyCoupon', $scope.couponCode)
+				.then(function(response) {
+					if (response.data && response.data.giaTriKhuyenMai !== undefined) {
+						if (response.data.loai) {
+							$scope.voucherVC = response.data;
+							alert($scope.voucherVC.giaTriKhuyenMai);
+						} else if (!response.data.loai){
+							$scope.voucher = response.data;
+						}
+
+					} else {
+						alert("Không tìm thấy mã giảm giá.");
+						$scope.voucherVC = null;
+						$scope.voucher = null;
+					}
+				})
+				.catch(function(error) {
+					console.error(error);
+				});
+		} else {
+			alert("Vui lòng nhập mã giảm giá.");
+			$scope.voucherVC = null;
+			$scope.voucher = null;
+		}
+	};
+
+	// tính voucher vận chuyển
+	$scope.getGiamGiaVanChuyen = function() {
+		var check = false;
+		// Kiểm tra tồn tại của applyCoupon và giaTriKhuyenMai
+		if ($scope.voucherVC && $scope.voucherVC.giaTriKhuyenMai !== undefined) {
+			// kiểm tra giá trị tối thiểu
+			if ($scope.getTotalCartPrice() > $scope.voucherVC.giaTriToiThieu) {
+				// kiểm tra loại voucher
+				if ($scope.voucherVC.loai) {
+					check= true;
+					//tính giá trị khuyến mãi vận chuyển
+					$scope.khuyenMaiVC = $scope.voucherVC.giaTriKhuyenMai;
+					/*if ($scope.giaTriKM > $scope.voucher.giaTriKhuyenMai) {
+						$scope.giaTriKM = $scope.voucher.giaTriKhuyenMai
+					}*/
+				}
+			} else {
+				alert("Giá trị đơn hàng chưa đạt điều kiện >" + $scope.voucherVC.giaTriToiThieu);
+				$scope.voucherVC = null;
+				check =false;
+			}
+		} else {
+			$scope.khuyenMaiVC = 0;
+			check =false;
+		}
+		return check;
+	};
+
+
+
 	$scope.getHoaDon = function() {
 		$http.get('invoice/').then(function(response) {
 			$scope.HoaDon = response.data;

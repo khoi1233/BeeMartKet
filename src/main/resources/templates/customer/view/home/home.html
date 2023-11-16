@@ -147,60 +147,7 @@
         </div>
     </section>
 
-    <!-- giỏ hàng bắt đầu -->
-    <aside class="cart-sidebar">
-        <div class="cart-header">
-            <div class="cart-total"><i class="fas fa-shopping-basket"></i><span>Tổng số sản phẩm
-                    ({{getTotalCartItemCount()}})</span></div><button class="cart-close"><i
-                    class="icofont-close"></i></button>
-        </div>
-        <ul class="cart-list">
-			<li class="cart-item" ng-repeat="item in cartItems">
-				<div class="cart-media">
-					<a href="#"><img
-						ng-src="../images/product/{{item.sanPham.hinhAnh}}" alt="product"></a>
-					<button
-						ng-click="remove(item.maChiTietGH, item.sanPham.tenSanPham)"
-						class="cart-delete">
-						<i class="far fa-trash-alt"></i>
-					</button>
-				</div>
-				<div class="cart-info-group">
-					<div class="cart-info">
-						<h6>
-							<a href="product-single.html">{{item.sanPham.tenSanPham}}</a>
-						</h6>
-						<p>Giá: {{(item.sanPham.giaGoc - (item.sanPham.giaGoc *
-							item.sanPham.chietKhauKH / 100)) | number}} đ</p>
-					</div>
-					<div class="cart-action-group">
-						<div class="product-action">
-							<button class="action-minus" title="Quantity Minus"
-								ng-click="decreaseQuantity(item)">
-								<i class="icofont-minus"></i>
-							</button>
-							<input class="action-input" title="Quantity Number" type="number"
-								name="quantity" ng-model="item.soLuong"
-								ng-change="updateQuantity(item)">
-							<button class="action-plus" title="Quantity Plus"
-								ng-click="increaseQuantity(item)">
-								<i class="icofont-plus"></i>
-							</button>
-						</div>
-						<h6>{{(item.sanPham.giaGoc - (item.sanPham.giaGoc *
-							item.sanPham.chietKhauKH / 100)) | number}} đ</h6>
-					</div>
-				</div>
-			</li>
-
-		</ul>
-        <div class="cart-footer"><button class="coupon-btn">Bạn đã có mã giảm giá?</button>
-            <form class="coupon-form"><input type="text" placeholder="Nhập mã phiếu giảm giá của bạn"><button
-                    type="submit"><span>áp dụng</span></button></form><a class="cart-checkout-btn"><span class="checkout-label" ng-click="goToCheckout()">Tiến hành Thanh Toán</span><span
-                    class="checkout-price">{{getTotalCartPrice() | number}} </span></a>
-        </div>
-    </aside>
-    <!-- giỏ hàng kết thúc -->
+    
 
     <div class="section promo-part">
         <div class="container">

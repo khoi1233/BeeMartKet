@@ -1,4 +1,189 @@
+<!-- giỏ hàng bắt đầu -->
+<aside class="cart-sidebar">
+	<div class="cart-header">
+		<div class="cart-total">
+			<i class="fas fa-shopping-basket"></i><span>Tổng số sản phẩm
+				({{getTotalCartItemCount()}})</span>
+		</div>
+		<button class="cart-close">
+			<i class="icofont-close"></i>
+		</button>
+	</div>
+	<ul class="cart-list">
+		<li class="cart-item" ng-repeat="item in cartItems">
+			<div class="cart-media">
+				<a href="#"><img
+					ng-src="../images/product/{{item.sanPham.hinhAnh}}" alt="product"></a>
+				<button ng-click="remove(item.maChiTietGH, item.sanPham.tenSanPham)"
+					class="cart-delete">
+					<i class="far fa-trash-alt"></i>
+				</button>
+			</div>
+			<div class="cart-info-group">
+				<div class="cart-info">
+					<h6>
+						<a href="product-single.html">{{item.sanPham.tenSanPham}}</a>
+					</h6>
+					<p>
+						Giá:
+						<del style="color: red;">{{item.sanPham.giaGoc | number}} đ</del>
+						<span style="color: green;"> {{(item.sanPham.giaGoc -
+							(item.sanPham.giaGoc * item.sanPham.chietKhauKH / 100)) |
+							number}} đ</span>
+					</p>
+				</div>
+				<div class="cart-action-group">
+					<div class="product-action">
+						<button class="action-minus" title="Quantity Minus"
+							ng-click="decreaseQuantity(item)">
+							<i class="icofont-minus"></i>
+						</button>
+						<input class="action-input" title="Quantity Number" type="number"
+							name="quantity" ng-model="item.soLuong"
+							ng-change="updateQuantity(item)">
+						<button class="action-plus" title="Quantity Plus"
+							ng-click="increaseQuantity(item)">
+							<i class="icofont-plus"></i>
+						</button>
+					</div>
+					<h6>{{((item.sanPham.giaGoc - (item.sanPham.giaGoc *
+						item.sanPham.chietKhauKH / 100)) *item.soLuong) | number}} đ</h6>
+				</div>
+			</div>
+		</li>
 
+	</ul>
+	<aside class="category-sidebar">
+		<div class="category-header">
+			<h4 class="category-title">
+				<i class="fas fa-align-left"></i><span>categories</span>
+			</h4>
+			<button class="category-close">
+				<i class="icofont-close"></i>
+			</button>
+		</div>
+		<ul class="category-list">
+			<li class="category-item"><a class="category-link dropdown-link"
+				href="#"><i class="flaticon-vegetable"></i><span>vegetables</span></a>
+				<ul class="dropdown-list">
+					<li><a href="#">asparagus</a></li>
+					<li><a href="#">broccoli</a></li>
+					<li><a href="#">carrot</a></li>
+				</ul></li>
+			<li class="category-item"><a class="category-link dropdown-link"
+				href="#"><i class="flaticon-groceries"></i><span>groceries</span></a>
+				<ul class="dropdown-list">
+					<li><a href="#">Grains & Bread</a></li>
+					<li><a href="#">Dairy & Eggs</a></li>
+					<li><a href="#">Oil & Fat</a></li>
+				</ul></li>
+			<li class="category-item"><a class="category-link dropdown-link"
+				href="#"><i class="flaticon-fruit"></i><span>fruits</span></a>
+				<ul class="dropdown-list">
+					<li><a href="#">Apple</a></li>
+					<li><a href="#">Orange</a></li>
+					<li><a href="#">Strawberry</a></li>
+				</ul></li>
+			<li class="category-item"><a class="category-link dropdown-link"
+				href="#"><i class="flaticon-dairy-products"></i><span>dairy
+						farm</span></a>
+				<ul class="dropdown-list">
+					<li><a href="#">Egg</a></li>
+					<li><a href="#">milk</a></li>
+					<li><a href="#">butter</a></li>
+				</ul></li>
+			<li class="category-item"><a class="category-link dropdown-link"
+				href="#"><i class="flaticon-crab"></i><span>sea foods</span></a>
+				<ul class="dropdown-list">
+					<li><a href="#">Lobster</a></li>
+					<li><a href="#">Octopus</a></li>
+					<li><a href="#">Shrimp</a></li>
+				</ul></li>
+			<li class="category-item"><a class="category-link dropdown-link"
+				href="#"><i class="flaticon-salad"></i><span>diet foods</span></a>
+				<ul class="dropdown-list">
+					<li><a href="#">Salmon</a></li>
+					<li><a href="#">Potatoes</a></li>
+					<li><a href="#">Greens</a></li>
+				</ul></li>
+			<li class="category-item"><a class="category-link dropdown-link"
+				href="#"><i class="flaticon-dried-fruit"></i><span>dry
+						foods</span></a>
+				<ul class="dropdown-list">
+					<li><a href="#">noodles</a></li>
+					<li><a href="#">Powdered milk</a></li>
+					<li><a href="#">nut & yeast</a></li>
+				</ul></li>
+			<li class="category-item"><a class="category-link dropdown-link"
+				href="#"><i class="flaticon-fast-food"></i><span>fast
+						foods</span></a>
+				<ul class="dropdown-list">
+					<li><a href="#">mango</a></li>
+					<li><a href="#">plumsor</a></li>
+					<li><a href="#">raisins</a></li>
+				</ul></li>
+			<li class="category-item"><a class="category-link dropdown-link"
+				href="#"><i class="flaticon-cheers"></i><span>drinks</span></a>
+				<ul class="dropdown-list">
+					<li><a href="#">Wine</a></li>
+					<li><a href="#">Juice</a></li>
+					<li><a href="#">Water</a></li>
+				</ul></li>
+			<li class="category-item"><a class="category-link dropdown-link"
+				href="#"><i class="flaticon-beverage"></i><span>coffee</span></a>
+				<ul class="dropdown-list">
+					<li><a href="#">Cappuchino</a></li>
+					<li><a href="#">Espresso</a></li>
+					<li><a href="#">Latte</a></li>
+				</ul></li>
+			<li class="category-item"><a class="category-link dropdown-link"
+				href="#"><i class="flaticon-barbecue"></i><span>meats</span></a>
+				<ul class="dropdown-list">
+					<li><a href="#">Meatball</a></li>
+					<li><a href="#">Sausage</a></li>
+					<li><a href="#">Poultry</a></li>
+				</ul></li>
+			<li class="category-item"><a class="category-link dropdown-link"
+				href="#"><i class="flaticon-fish"></i><span>fishes</span></a>
+				<ul class="dropdown-list">
+					<li><a href="#">Agujjim</a></li>
+					<li><a href="#">saltfish</a></li>
+					<li><a href="#">pazza</a></li>
+				</ul></li>
+		</ul>
+		<div class="category-footer">
+			<p>
+				All Rights Reserved by <a href="#">Mironcoder</a>
+			</p>
+		</div>
+	</aside>
+	<div class="mobile-menu">
+		<a href="index.html" title="Home Page"><i class="fas fa-home"></i><span>Home</span></a>
+		<button class="cate-btn" title="Category List">
+			<i class="fas fa-list"></i><span>category</span>
+		</button>
+		<button class="cart-btn" title="Cartlist">
+			<i class="fas fa-shopping-basket"></i><span>cartlist</span><sup>9+</sup>
+		</button>
+		<a href="wishlist.html" title="Wishlist"><i class="fas fa-heart"></i><span>wishlist</span><sup>0</sup></a><a
+			href="compare.html" title="Compare List"><i class="fas fa-random"></i><span>compare</span><sup>0</sup></a>
+	</div>
+	
+	<div class="cart-footer">
+		<button class="coupon-btn">Bạn đã có mã giảm giá?</button>
+		<form class="coupon-form">
+			<input type="text" placeholder="Nhập mã giảm giá"
+				ng-model="couponCode">
+			<button ty ng-click="applyCoupon()">
+				<span>Áp Dụng</span>
+			</button>
+		</form>
+		<a class="cart-checkout-btn"><span class="checkout-label"
+			ng-click="goToCheckout()">Tiến hành Thanh Toán</span><span
+			class="checkout-price">{{getTotalCartPrice() | number}} </span></a>
+	</div>
+</aside>
+<!-- giỏ hàng kết thúc -->
 <div class="backdrop"></div>
 <a class="backtop fas fa-arrow-up" href="#"></a>
 <div class="header-top">
@@ -62,8 +247,9 @@
 					class="header-widget" title="Wishlist"><i class="fas fa-heart"></i><sup>0</sup></a>
 				<button class="header-widget header-cart" title="Cartlist">
 					<i ng-controller='giohang-controller'
-						class="fas fa-shopping-basket"></i><sup>{{countCartItems()}}+</sup><span>total
-						price<small>$345.00</small>
+						class="fas fa-shopping-basket"></i><sup>{{getTotalCartItemCount()}}+</sup><span>total
+						price<small>{{getTotalCartPrice() | number}}<b
+							style="text-transform: lowercase;">đ</b></small>
 					</span>
 				</button>
 			</div>
@@ -90,18 +276,7 @@
 							<div class="megamenu">
 								<div class="container">
 									<div class="row">
-										<div class="col-lg-3">
-											<div class="megamenu-wrap">
-												<h5 class="megamenu-title">shop pages</h5>
-												<ul class="megamenu-list">
-													<li><a href="/home/shop-5column">shop 5 column</a></li>
-													<li><a href="/home/shop-4column">shop 4 column</a></li>
-													<li><a href="/home/shop-3column">shop 3 column</a></li>
-													<li><a href="/home/shop-2column">shop 2 column</a></li>
-													<li><a href="/home/shop-1column">shop 1 column</a></li>
-												</ul>
-											</div>
-										</div>
+
 										<div class="col-lg-3">
 											<div class="megamenu-wrap">
 												<h5 class="megamenu-title">product pages</h5>
@@ -116,28 +291,7 @@
 												</ul>
 											</div>
 										</div>
-										<div class="col-lg-3">
-											<div class="megamenu-wrap">
-												<h5 class="megamenu-title">user action</h5>
-												<ul class="megamenu-list">
-													<li><a href="/cart/wishlist">wishlist</a></li>
-													<li><a href="/cart/compare">compare</a></li>
-													<li><a href="/cart/checkout">checkout</a></li>
-													<li><a href="/cart/orderlist">order history</a></li>
-													<li><a href="/cart/invoice">order invoice</a></li>
-												</ul>
-											</div>
-										</div>
-										<div class="col-lg-3">
-											<div class="megamenu-wrap">
-												<h5 class="megamenu-title">other pages</h5>
-												<ul class="megamenu-list">
-													<li><a href="/home/all-category">all Category</a></li>
-													<li><a href="/home/brand-list">brand list</a></li>
-													<li><a href="/home/brand-single">brand single</a></li>
-												</ul>
-											</div>
-										</div>
+
 									</div>
 								</div>
 							</div></li>
@@ -272,13 +426,13 @@
 						<li class="navbar-item dropdown"><a
 							class="navbar-link dropdown-arrow" href="#">Trang</a>
 							<ul class="dropdown-position-list">
-								<li><a th:href ="@{/user/faq}">Câu hỏi thường gặp</a></li>
-								<li><a th:href ="@{/user/offerl}">Ưu đãi</a></li>
-								<li><a th:href ="@{/user/profile}">Hồ sơ của tôi</a></li>								
-								<li><a th:href ="@{/user/about}">Về chúng tôi</a></li>
-								<li><a th:href ="@{/user/contact}">Liên hệ chúng tôi</a></li>
-								<li><a th:href ="@{/user/privacy}">Chính sách bảo mật</a></li>								
-								<li><a th:href ="@{/user/error}">Lỗi 404</a></li>
+								<li><a th:href="@{/user/faq}">Câu hỏi thường gặp</a></li>
+								<li><a th:href="@{/user/offerl}">Ưu đãi</a></li>
+								<li><a th:href="@{/user/profile}">Hồ sơ của tôi</a></li>
+								<li><a th:href="@{/user/about}">Về chúng tôi</a></li>
+								<li><a th:href="@{/user/contact}">Liên hệ chúng tôi</a></li>
+								<li><a th:href="@{/user/privacy}">Chính sách bảo mật</a></li>
+								<li><a th:href="@{/user/error}">Lỗi 404</a></li>
 								<!-- <li><a th:href ="@{/user/email_en}">Mẫu email</a></li> -->
 								<!-- <li><a th:href ="@{/user/coming-soon}">Sắp có</a></li> -->
 								<!-- <li><a href="/home/wallet">Ví của tôi</a></li> -->

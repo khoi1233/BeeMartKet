@@ -6,11 +6,13 @@ import java.sql.Timestamp;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.beermartket.alcohol.constant.SessionAttr;
@@ -18,12 +20,13 @@ import com.beermartket.alcohol.model.ChiTietGioHang;
 import com.beermartket.alcohol.model.ChiTietHoaDon;
 import com.beermartket.alcohol.model.GioHang;
 import com.beermartket.alcohol.model.HoaDon;
-
+import com.beermartket.alcohol.model.KhuyenMaiHoaDon;
 import com.beermartket.alcohol.model.TaiKhoan;
 import com.beermartket.alcohol.repository.ChiTietGioHangReponsitory;
 import com.beermartket.alcohol.repository.ChiTietHoaDonReponsitory;
 import com.beermartket.alcohol.repository.GioHangRepository;
 import com.beermartket.alcohol.repository.HoaDonReponsitory;
+import com.beermartket.alcohol.repository.KhuyenMaiHoaDonReponsitory;
 import com.beermartket.alcohol.repository.TaiKhoanRepository;
 
 
@@ -49,6 +52,9 @@ public class ThanhToanController {
 	
 	@Autowired
 	TaiKhoanRepository taikhoanrp;
+	
+	@Autowired
+	KhuyenMaiHoaDonReponsitory kmhoadonDao;
 
 	@RequestMapping("/checkout/{maGioHang}")
 	public String checkout() {
@@ -104,5 +110,18 @@ public class ThanhToanController {
 		}
 		return "customer/view/cart/invoice";
 	}
+	
+	@PostMapping("/applyCoupon")
+	public ResponseEntity<KhuyenMaiHoaDon> giamGia(@RequestBody String maGiamGia) {
+	    KhuyenMaiHoaDon voucher = kmhoadonDao.findByMaKhuyenMai(maGiamGia);
+	    if (voucher != null) {
+	        System.out.println(voucher.getGiaTriKhuyenMai());
+	        return ResponseEntity.ok(voucher);
+	    } else {
+	    	voucher = null;
+	        return ResponseEntity.ok(voucher); // hoặc giá trị mặc định khác
+	    }
+	}
+
 
 }

@@ -12,6 +12,13 @@
 	content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, products, farm, grocery, natural, online">
 <title th:replace="${title}"></title>
 
+<!-- thông báo -->
+<link
+	href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css "
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
+
 <link rel="icon" href="/images/favicon.png">
 
 <link rel="stylesheet" href="/assets/fonts/flaticon/flaticon.css">
@@ -32,8 +39,9 @@
 <link rel="stylesheet" href="/css/contact.css">
 <link rel="stylesheet" href="/css/privacy.css">
 <link rel="stylesheet" href="/css/error.css">
-<link rel="stylesheet" href="/css/checkout	.css">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" href="/css/checkout.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <link rel="stylesheet" href="/css/blog-standard.css">
 </head>
 
@@ -44,8 +52,8 @@
 
 	<div th:replace="~{/customer/layout/footer}"></div>
 
-<!-- xử lý -->
-    <script src="https://cdn.ckeditor.com/4.17.0/standard/ckeditor.js"></script>
+	<!-- xử lý -->
+	<script src="https://cdn.ckeditor.com/4.17.0/standard/ckeditor.js"></script>
 	<script src="/vendor/bootstrap/jquery-1.12.4.min.js"></script>
 	<script src="/vendor/bootstrap/popper.min.js"></script>
 	<script src="/vendor/bootstrap/bootstrap.min.js"></script>
@@ -53,10 +61,19 @@
 	<script src="/vendor/niceselect/nice-select.min.js"></script>
 	<script src="/vendor/slickslider/slick.min.js"></script>
 	<script src="/vendor/venobox/venobox.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script src="/banhang-js/sanpham.js"></script>
 	<script src="/banhang-js/giohang.js"></script>
-	
+	<script src="/banhang-js/voucher.js"></script>
+
+	//chip
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.3.0/ZeroClipboard.min.js"></script>
+	<script
+		src="https://cdn.rawgit.com/alexandernst/ngClipboard/master/dist/ng-clipboard.min.js"></script>
+
+
 
 	<script src="/js/nice-select.js"></script>
 	<script src="/js/countdown.js"></script>
@@ -65,7 +82,7 @@
 	<script src="/js/slick.js"></script>
 	<script src="/js/main.js"></script>
 
-	
+
 </body>
 
 </html>

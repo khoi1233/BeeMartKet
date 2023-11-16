@@ -18,7 +18,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @Entity
 @Table(name = "HoaDon")
@@ -28,40 +27,40 @@ public class HoaDon implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="MaHoaDon")
+	@Column(name = "MaHoaDon")
 	private int maHoaDon;
 
-	@Column(name="DiaChi")
+	@Column(name = "DiaChi")
 	private String diaChi;
 
-	@Column(name="GhiChu")
+	@Column(name = "GhiChu")
 	private String ghiChu;
 
-	@Column(name="NgayMua")
+	@Column(name = "NgayMua")
 	private LocalDateTime ngayMua;
 
-	@Column(name="TongTien")
+	@Column(name = "TongTien")
 	private double tongTien;
 
-	@Column(name="TrangThaiHoaDon")
+	@Column(name = "TrangThaiHoaDon")
 	private String trangThaiHoaDon;
 
-	@Column(name="TrangThaiThanhToan")
+	@Column(name = "TrangThaiThanhToan")
 	private boolean trangThaiThanhToan;
 
-	//bi-directional many-to-one association to ChiTietHoaDon
+	// bi-directional many-to-one association to ChiTietHoaDon
 	@JsonIgnore
-	@OneToMany(mappedBy="hoaDon")
+	@OneToMany(mappedBy = "hoaDon")
 	private List<ChiTietHoaDon> chiTietHoaDons;
 
-	//bi-directional many-to-one association to TaiKhoan
+	// bi-directional many-to-one association to TaiKhoan
 	@ManyToOne
-	@JoinColumn(name="MaTaiKhoan")
+	@JoinColumn(name = "MaTaiKhoan")
 	private TaiKhoan taiKhoan;
 
-	//bi-directional many-to-one association to LienKetKhuyenMai
-	@JsonIgnore
-	@OneToMany(mappedBy="hoaDon")
-	private List<LienKetKhuyenMai> lienKetKhuyenMais;
+	// bi-directional many-to-one association to KhuyenMaiHoaDon
+	@ManyToOne
+	@JoinColumn(name = "MaKhuyenMai")
+	private KhuyenMaiHoaDon khuyenMaiHoaDon;
 
 }
