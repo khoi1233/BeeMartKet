@@ -77,6 +77,14 @@ app.controller('sanphamAdmin-controller', function($scope, $http, $window, $sce)
 			});
 
 	};
+	
+		$scope.capnhat = function(ncc) {
+		$http.get('/rest/sanpham')
+		.then(function(response) {
+			$scope.sanphams = response.data;
+		});
+
+	};
 
 	$scope.loadOrder = function(maHoaDon) {
 		$http.get('/rest/hoadon/' + maHoaDon)
@@ -202,6 +210,16 @@ $scope.create = async function() {
     } catch (error) {
         console.log("Lỗi2", error);
     }
+};
+
+$scope.delete = async function(masanpham) {
+        $http.delete('/delete/product/'+masanpham).then(resp => {
+            alert("Thành công")
+           $scope.capnhat();
+        }).catch(error => {
+            console.log("Lỗi1", error);
+        });
+
 };
 
 

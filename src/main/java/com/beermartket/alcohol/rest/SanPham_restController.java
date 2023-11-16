@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -92,6 +93,25 @@ public class SanPham_restController {
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 	    }
 	}
+	
+	 @DeleteMapping("/delete/product/{masanpham}")
+	    public ResponseEntity<Void> deleteProduct(@PathVariable int masanpham) {
+	        try {
+	            // Kiểm tra xem sản phẩm có tồn tại không
+	            if (!sanphamDao.existsById(masanpham)) {
+	                return ResponseEntity.notFound().build();
+	            }
+
+	            // Xóa sản phẩm từ cơ sở dữ liệu
+	            sanphamDao.deleteById(masanpham);
+
+	            return ResponseEntity.noContent().build();
+	        } catch (Exception e) {
+	            // In ra lỗi nếu có
+	            e.printStackTrace();
+	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+	        }
+	    }
 
 
 
