@@ -8,6 +8,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -27,14 +29,15 @@ public class SanPham implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="MaSanPham")
 	private int maSanPham;
 
 	@Column(name="ChietKhauKH")
-	private double chietKhauKH;
+	private Double chietKhauKH;
 
 	@Column(name="GiaGoc")
-	private double giaGoc;
+	private Double giaGoc;
 
 	@Column(name="MoTa")
 	private String moTa;
@@ -43,7 +46,7 @@ public class SanPham implements Serializable {
 	private Timestamp ngayTao;
 
 	@Column(name="SoLuong")
-	private int soLuong;
+	private Integer soLuong;
 
 	@Column(name="TenSanPham")
 	private String tenSanPham;
@@ -52,10 +55,14 @@ public class SanPham implements Serializable {
 	private String thongTin;
 
 	@Column(name="TrangThai")
-	private boolean trangThai;
+	private Boolean  trangThai;
 
 	@Column(name="HinhAnh")
 	private String hinhAnh;
+	
+	@Column(name="NoiBat")
+	private Boolean noiBat;
+	
 
 	@JsonIgnore
 	@OneToMany(mappedBy="sanPham")
@@ -86,6 +93,5 @@ public class SanPham implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="MaDonViTinh")
 	private DonViTinh donViTinh;
-
 
 }

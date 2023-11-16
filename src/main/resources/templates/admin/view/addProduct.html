@@ -4,8 +4,8 @@
 
 <head>
 
-<title>Trang chủ</title>
-<body>
+<title>Thêm sản phẩm</title>
+<body ng-controller="sanphamAdmin-controller">
 
 	<!-- Page Content-->
 	<div class="page-content">
@@ -16,12 +16,12 @@
 					<div class="page-title-box">
 						<div class="row">
 							<div class="col">
-								<h4 class="page-title">Form Elements</h4>
-								<ol class="breadcrumb">
+								<h4 class="page-title">Thêm sản Phẩm</h4>
+								<!-- 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="javascript:void(0);">Dastone</a></li>
 									<li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
 									<li class="breadcrumb-item active">Form Elements</li>
-								</ol>
+								</ol> -->
 							</div>
 							<!--end col-->
 							<div class="col-auto align-self-center">
@@ -29,10 +29,13 @@
 									id="Dash_Date"> <span class="day-name" id="Day_Name">Today:</span>&nbsp;
 									<span class="" id="Select_date">Jan 11</span> <i
 									data-feather="calendar" class="align-self-center icon-xs ms-1"></i>
-								</a> <a href="#" class="btn btn-sm btn-outline-primary"> <i
-									data-feather="download" class="align-self-center icon-xs"></i>
+								</a> <a type="button"
+									class="btn btn-outline-secondary btn-square btn-skew ms-2"
+									ng-click="create()"> <!-- Thêm lớp margin ms-2 --> 
+									<span>Thêm Sản Phẩm</span>
 								</a>
 							</div>
+
 							<!--end col-->
 						</div>
 						<!--end row-->
@@ -45,81 +48,71 @@
 			<!-- end page title end breadcrumb -->
 
 
-			<div class="row">
-				<div class="col-lg-6">
+			<div class="row justify-content-center">
+				<div class="col-lg-10 mx-auto">
 					<div class="card">
 						<div class="card-header">
 							<h4 class="card-title">
-								Floating labels <span class="badge bg-soft-success font-12">New</span>
+								Thông tin sản phẩm <span class="badge bg-soft-success font-12">New</span>
 							</h4>
-							<p class="text-muted mb-0">Create beautifully simple form
-								labels that float over your input fields.</p>
+
+							<div class="upload">
+								<img id="previewImage" src="{{sanpham.hinhAnh}}"
+									width="400" height="400" alt="">
+								<div class="round mb-3">
+									<input type="file" id="fileInput" onchange="previewImage()">
+									<i class="fa fa-camera" style="color: #fff;"></i>
+								</div>
+							</div>
+
 						</div>
 						<!--end card-header-->
+
 						<div class="card-body">
 							<div class="form-floating mb-3">
-								<input type="email" class="form-control" id="floatingInput"
-									placeholder="name@example.com"> <label
-									for="floatingInput">Email address</label>
+								<input type="text" class="form-control" id="tenSanPham"
+									ng-model="sanpham.tenSanPham" placeholder="Tên Sản Phẩm">
+								<label for="tenSanPham">Tên Sản Phẩm</label>
 							</div>
 							<div class="form-floating mb-3">
-								<input type="password" class="form-control"
-									id="floatingPassword" placeholder="Password"> <label
-									for="floatingPassword">Password</label>
-							</div>
-							<div class="form-floating">
-								<textarea class="form-control"
-									placeholder="Leave a comment here" id="floatingTextarea2"
-									style="height: 100px"></textarea>
-								<label for="floatingTextarea2">Comments</label>
-							</div>
-						</div>
-						<!--end card-body-->
-					</div>
-					<!--end card-->
-				</div>
-				<!--end col-->
-				<div class="col-lg-6">
-					<div class="card">
-						<div class="card-header">
-							<h4 class="card-title">
-								Floating labels Selects <span
-									class="badge bg-soft-success font-12">New</span>
-							</h4>
-							<p class="text-muted mb-0">Create beautifully simple form
-								labels that float over your input fields.</p>
-						</div>
-						<!--end card-header-->
-						<div class="card-body">
-							<div class="form-floating mb-3">
-								<select class="form-select" id="floatingSelect"
+								<select class="form-select" id="loaiSanPham"
+									ng-model="sanpham.loaiSanPham.maLoaiSanPham"
 									aria-label="Floating label select example">
-									<option selected>Open this select menu</option>
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
-								</select> <label for="floatingSelect">Works with selects</label>
+									<option value="" disabled selected>Vui lòng chọn loại
+										sản phẩm</option>
+									<option ng-repeat="lsp in loaiSanPhams"
+										ng-value="lsp.maLoaiSanPham">{{lsp.tenLoaiSanPham}}</option>
+
+								</select> <label for="floatingSelect">Loại sản phẩm</label>
+
 							</div>
-							<div class="row g-2">
-								<div class="col-md">
-									<div class="form-floating">
-										<input type="email" class="form-control"
-											id="floatingInputGrid" placeholder="name@example.com"
-											value="mdo@example.com"> <label
-											for="floatingInputGrid">Email address</label>
-									</div>
-								</div>
-								<div class="col-md">
-									<div class="form-floating">
-										<select class="form-select" id="floatingSelectGrid"
-											aria-label="Floating label select example">
-											<option selected>Open this select menu</option>
-											<option value="1">One</option>
-											<option value="2">Two</option>
-											<option value="3">Three</option>
-										</select> <label for="floatingSelectGrid">Works with selects</label>
-									</div>
-								</div>
+							<div class="form-floating mb-3">
+								<select class="form-select" id="loaiSanPham"
+									ng-model="sanpham.nhaCungCap.maNhaCungCap"
+									aria-label="Floating label select example">
+									<option value="" disabled selected>Vui lòng nhà cung
+										cấp</option>
+									<option ng-repeat="ncc in nhacungcap"
+										ng-value="ncc.maNhaCungCap">{{ncc.tenNhaCungCap}}
+										{{'- ' + ncc.ghiChu}}</option>
+
+								</select> <label for="floatingSelect">Nhà cung cấp</label>
+							</div>
+							<div class="form-floating mb-3">
+								<select class="form-select" id="donvitinh"
+									ng-model="sanpham.donViTinh.maDonViTinh"
+									aria-label="Floating label select example">
+									<option value="" disabled selected>Vui lòng chọn đơn
+										vị tính</option>
+									<option ng-repeat="dvt in donvitinhs"
+										ng-value="dvt.maDonViTinh">{{dvt.tenDonViTinh}}</option>
+
+								</select> <label for="floatingSelect">Đơn Vị Tính</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="soLuong"
+									placeholder="Số Lượng" ng-model="sanpham.soLuong"> <label
+									for="soLuong">Số Lượng</label>
 							</div>
 						</div>
 						<!--end card-body-->
@@ -127,570 +120,184 @@
 					<!--end card-->
 				</div>
 				<!--end col-->
+				
 			</div>
 			<!--end row-->
-			  <div class="row">
-			   <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Switches</h4>
-                                    <p class="text-muted mb-0">
-                                        A switch has the markup of a custom checkbox but uses the <code class="highlighter-rouge">.custom-switch</code> class to render 
-                                        a toggle switch. Switches also support the <code class="highlighter-rouge">disabled</code> attribute.
-                                    </p> 
-                                </div><!--end card-header-->
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                                <label class="form-check-label" for="flexSwitchCheckDefault">Default switch</label>
-                                            </div>
-    
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDisabled" disabled>
-                                                <label class="form-check-label" for="flexSwitchCheckDisabled">Disabled switch </label>
-                                            </div>
-                                        </div><!--end col-->
-                                        <div class="col-lg-4">
-    
-                                            <div class="form-check form-switch form-switch-secondary">
-                                                <input class="form-check-input" type="checkbox" id="customSwitchSecondary" checked>
-                                                <label class="form-check-label" for="customSwitchSecondary">Secondary</label>
-                                            </div>
-    
-                                            <div class="form-check form-switch form-switch-success">
-                                                <input class="form-check-input" type="checkbox" id="customSwitchSuccess" checked>
-                                                <label class="form-check-label" for="customSwitchSuccess">Success</label>
-                                            </div>
-    
-                                            <div class="form-check form-switch form-switch-warning">
-                                                <input class="form-check-input" type="checkbox" id="customSwitchWarning" checked>
-                                                <label class="form-check-label" for="customSwitchWarning">Warning</label>
-                                            </div>
-    
-                                            <div class="form-check form-switch form-switch-info">
-                                                <input class="form-check-input" type="checkbox" id="customSwitchInfo" checked>
-                                                <label class="form-check-label" for="customSwitchInfo">Info</label>
-                                            </div>
-    
-                                        </div><!--end col-->
-    
-                                        <div class="col-lg-4">
-                                            <div class="form-check form-switch form-switch-danger">
-                                                <input class="form-check-input" type="checkbox" id="customSwitchDanger" checked>
-                                                <label class="form-check-label" for="customSwitchDanger">Danger</label>
-                                            </div>
-    
-                                            <div class="form-check form-switch form-switch-dark">
-                                                <input class="form-check-input" type="checkbox" id="customSwitchDark" checked>
-                                                <label class="form-check-label" for="customSwitchDark">Dark</label>
-                                            </div>
-    
-                                            <div class="form-check form-switch form-switch-purple">
-                                                <input class="form-check-input" type="checkbox" id="customSwitchPurple" checked>
-                                                <label class="form-check-label" for="customSwitchPurple">Purple</label>
-                                            </div>
-    
-                                            <div class="form-check form-switch form-switch-pink">
-                                                <input class="form-check-input" type="checkbox" id="customSwitchPink" checked>
-                                                <label class="form-check-label" for="customSwitchPink">Pink</label>
-                                            </div>
-                                        </div><!--end col-->
-                                    </div><!--end row-->
-                                </div><!--end card-body-->
-                            </div><!--end card-->      
-                        <div class="col-xl-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Checkboxs</h4>
-                                    <p class="text-muted mb-0">For even more customization and cross browser consistency, use our completely custom form elements to replace the browser defaults.
-                                        They’re built on top of semantic and accessible markup, so they’re solid replacements for any default form control.
-                                    </p>
-                                </div><!--end card-header-->
-                                <div class="card-body">
-                                    <div class="general-label">
-                                        <form class="form">
-    
-                                            <div class="mb-3 row">
-                                                <label class="col-md-3 my-2 form-label">Checkboxes</label>
-                                                <div class="col-md-9">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                        <label class="form-check-label" for="flexCheckDefault">
-                                                          Default checkbox
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                                        <label class="form-check-label" for="flexCheckChecked">
-                                                            Checked checkbox
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
-                                                        <label class="form-check-label" for="flexCheckDisabled">
-                                                            Disabled checkbox
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled>
-                                                        <label class="form-check-label" for="flexCheckCheckedDisabled">
-                                                            Disabled checked checkbox
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div> <!--end row-->
-                                            
-                                            <div class="row mb-3">
-                                                <label class="col-md-3 my-2 form-label">Inline Checkboxes</label>
-                                                <div class="col-md-9">
-    
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                        <label class="form-check-label" for="inlineCheckbox1">HTML5</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                        <label class="form-check-label" for="inlineCheckbox2">Css3</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                                        <label class="form-check-label" for="inlineCheckbox3">Javascript</label>
-                                                    </div>
-                                                </div>
-                                            </div><!--end row-->   
-                                            
-                                            <div class="row">
-                                                <label class="col-md-3 my-1 form-label">Button Checkbox</label>
-                                                <div class="col-md-9">                                                
-                                                    <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
-                                                    <label class="btn btn-outline-primary btn-sm" for="btn-check-outlined">Single toggle</label><br>
-                                                </div>
-                                            </div> <!--end row-->  
-                                        </form><!--end form-->
-                                    </div><!--end general-->
-                                </div><!--end card-body-->
-                            </div><!--end card-->                                 
-                        </div> <!-- end col -->
-    
-                        <div class="col-xl-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Radios</h4>
-                                    <p class="text-muted mb-0">For even more customization and cross browser consistency, use our completely custom form elements to replace the browser defaults. 
-                                        They’re built on top of semantic and accessible markup, so they’re solid replacements for any default form control.
-                                    </p>
-                                </div><!--end card-header-->
-                                <div class="card-body">
-                                    <div class="general-label">
-                                        <form class="form">
-                                            <div class="mb-3 row">
-                                                <label class="col-md-3 my-2 form-label">Radios</label>
-                                                <div class="col-md-9">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                                        <label class="form-check-label" for="exampleRadios1">
-                                                          Default radio
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                                        <label class="form-check-label" for="exampleRadios2">
-                                                          Second default radio
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
-                                                        <label class="form-check-label" for="exampleRadios3">
-                                                          Disabled radio
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div> <!-- end row -->
-    
-                                            <div class="row mb-3">
-                                                <label class="col-md-3 my-1 form-label">Inline Radios</label>
-                                                <div class="col-md-9">
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                        <label class="form-check-label" for="inlineRadio1">HTML5</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                        <label class="form-check-label" for="inlineRadio2">Css</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-                                                        <label class="form-check-label" for="inlineRadio3">Javascript</label>
-                                                    </div>
-                                                </div>
-                                            </div> <!--end row-->   
-                                            
-                                            <div class="row">
-                                                <label class="col-md-3 my-1 form-label">Button Radios</label>
-                                                <div class="col-md-9">                                                
-                                                    <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
-                                                    <label class="btn btn-outline-success btn-sm" for="success-outlined">Checked success radio</label>
-    
-                                                    <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
-                                                    <label class="btn btn-outline-danger btn-sm" for="danger-outlined">Danger radio</label>   
-                                                </div>
-                                            </div> <!--end row-->  
-                                        </form><!--end form-->
-                                    </div><!--end general-->
-                                </div><!--end card-body-->
-                            </div><!--end card-->                                 
-                        </div> <!-- end col -->
-                    </div> <!-- end row --> 
-                    
-			<div id="row-container" class="row">
-			<button class="btn btn-sm btn-outline-primary" id="add-column-btn">Add
-                                        Element</button>
-				<div class="col-xl-3">
-					<div class="card">
-						<div class="card-header">
-							<h4 class="card-title">File Upload 1</h4>
-							<p class="text-muted mb-0">Your so fresh input file — Default
-								version</p>
-						</div>
-						<!--end card-header-->
-						<div class="card-body">
-							<input type="file" id="input-file-now" class="dropify" />
-						</div>
-						<!--end card-body-->
+			<div class="row">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Giá Tiền</h4>
+						<p class="text-muted mb-0">
+							A switch has the markup of a custom checkbox but uses the
+							<code class="highlighter-rouge">.custom-switch</code>
+							class to render a toggle switch. Switches also support the
+							<code class="highlighter-rouge">disabled</code>
+							attribute.
+						</p>
 					</div>
-					<!--end card-->
-					<p>
-						Tên tệp tin: <span id="file-name"></span>
-					</p>
-				</div>
-				<!--end col-->
+					<!--end card-header-->
+					<div class="card-body">
+						<div class="row">
+							<div class="col-lg-4">
+								<div class="form-floating mb-3">
+									<input type="number" class="form-control" id="giaGoc"
+										placeholder="Giá Gốc" ng-model="sanpham.giaGoc"> <label
+										for="giaGoc">Giá Gốc</label>
+								</div>
+								<div class="form-floating mb-3">
+									<input type="number" class="form-control" id="chietKhau"
+										placeholder="Chiết khấu" ng-model="sanpham.chietKhauKH">
+									<label for="floatingPassword">Chiết Khấu</label>
+								</div>
+							</div>
+							<!--end col-->
+<!-- 							<div class="col-lg-4">
 
-				<div class="col-xl-3">
-					<div class="card">
-						<div class="card-header">
-							<h4 class="card-title">File Upload 2</h4>
-							<p class="text-muted mb-0">You can add a default value</p>
-						</div>
-						<!--end card-header-->
-						<div class="card-body">
-							<input type="file" id="input-file-now" class="dropify"
-								data-default-file="/admin/plugins/dropify/images/1.jpg" />
-						</div>
-						<!--end card-body-->
-					</div>
-					<!--end card-->
-				</div>
-				<!--end col-->
-				<div class="col-xl-3">
-					<div class="card">
-						<div class="card-header">
-							<h4 class="card-title">File Upload 1</h4>
-							<p class="text-muted mb-0">Your so fresh input file — Default
-								version</p>
-						</div>
-						<!--end card-header-->
-						<div class="card-body">
-							<input type="file" id="input-file-now" class="dropify" />
-						</div>
-						<!--end card-body-->
-					</div>
-					<!--end card-->
-					<p>
-						Tên tệp tin: <span id="file-name"></span>
-					</p>
-				</div>
-				<!--end col-->
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="tienGiam"
+										placeholder="Tiền giảm"
+										ng-model="sanpham.giaGoc * sanpham.chietKhauKH / 100 | number">
+									<label for="floatingPassword">Giá Tiền Giảm</label>
+								</div>
 
-				<div class="col-xl-3">
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="giakhuyenmai"
+										placeholder="Giá Khuyến Mãi"
+										ng-model="sanpham.giaGoc - (sanpham.giaGoc * sanpham.chietKhauKH / 100) | number">
+									<label for="floatingPassword">Giá Khuyến Mãi</label>
+								</div>
+
+							</div> -->
+							<!--end col-->
+
+							<div class="col-lg-4">
+								<div class="row mb-3">
+									<label class="col-md-3 my-1 form-label">Trạng Thái</label>
+									<div class="col-md-10">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="trangThai"
+												id="hoatdong" ng-value="true" ng-model="sanpham.trangThai">
+											<label class="form-check-label" for="inlineRadio1">Hoạt
+												Động</label>
+										</div>
+										<div class="form-check form-check-inline mb-3">
+											<input class="form-check-input" type="radio" name="trangThai"
+												id="tamngung" ng-value="false" ng-model="sanpham.trangThai">
+											<label class="form-check-label" for="inlineRadio3">Tạm
+												Ngưng</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio"
+												name="inlineRadioOptions" id="inlineRadio2" value="option2"
+												disabled> <label class="form-check-label"
+												for="inlineRadio2">Hết Hàng</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-check form-switch form-switch-warning mb-3">
+									<input class="form-check-input" type="checkbox" id="noiBat"
+										ng-model="sanpham.noiBat" ng-checked="sanpham.noiBat">
+									<label class="form-check-label" for="noiBat">Nổi Bật</label>
+								</div>
+							</div>
+							<!--end col-->
+						</div>
+						<!--end row-->
+					</div>
+					<!--end card-body-->
+				</div>
+				<!--end card-->
+				<div class="col-xl-6">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">File Upload 1</h4>
-							<p class="text-muted mb-0">Your so fresh input file — Default
-								version</p>
+							<h4 class="card-title">Mô Tả</h4>
+							<p class="text-muted mb-0">For even more customization and
+								cross browser consistency, use our completely custom form
+								elements to replace the browser defaults. They’re built on top
+								of semantic and accessible markup, so they’re solid replacements
+								for any default form control.</p>
 						</div>
 						<!--end card-header-->
 						<div class="card-body">
-							<input type="file" id="input-file-now" class="dropify" />
+							<div class="general-label">
+								<form class="form">
+
+									<div class="mb-3 row">
+										<label class="col-md-3 my-2 form-label">Checkboxes</label>
+
+
+										<textarea id="moTa" name="moTa" ng-model="sanpham.moTa"></textarea>
+										<script>
+											// Khởi tạo CKEditor với tùy chọn cơ bản
+											CKEDITOR.replace('moTa');
+										</script>
+									</div>
+									<!--end row-->
+								</form>
+								<!--end form-->
+							</div>
+							<!--end general-->
 						</div>
 						<!--end card-body-->
 					</div>
 					<!--end card-->
-					<p>
-						Tên tệp tin: <span id="file-name"></span>
-					</p>
 				</div>
-				<!--end col-->
+				<!-- end col -->
+
+				<div class="col-xl-6">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">Thông Tin</h4>
+							<p class="text-muted mb-0">For even more customization and
+								cross browser consistency, use our completely custom form
+								elements to replace the browser defaults. They’re built on top
+								of semantic and accessible markup, so they’re solid replacements
+								for any default form control.</p>
+						</div>
+						<!--end card-header-->
+						<div class="card-body">
+							<div class="general-label">
+								<form class="form">
+
+									<div class="mb-3 row">
+										<label class="col-md-3 my-2 form-label">Checkboxes</label>
+
+
+										<textarea id="thongTin" name="thongTin"
+											ng-model="sanpham.thongTin"></textarea>
+										<script>
+											// Khởi tạo CKEditor với tùy chọn cơ bản
+											CKEDITOR.replace('thongTin');
+										</script>
+									</div>
+									<!--end row-->
+								</form>
+								<!--end form-->
+							</div>
+							<!--end general-->
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+				</div>
+				<!-- end col -->
+
 			</div>
+			<!-- end row -->
+
+		
 			<!--end row-->
-			 <!-- Page-Title -->
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="page-title-box">
-                                <div class="row">
-                                    <div class="col">
-                                        <h4 class="page-title">Wizard</h4>
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="javascript:void(0);">Dastone</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
-                                            <li class="breadcrumb-item active">Wizard</li>
-                                        </ol>
-                                    </div><!--end col-->
-                                    <div class="col-auto align-self-center">
-                                        <a href="#" class="btn btn-sm btn-outline-primary" id="Dash_Date">
-                                            <span class="day-name" id="Day_Name">Today:</span>&nbsp;
-                                            <span class="" id="Select_date">Jan 11</span>
-                                            <i data-feather="calendar" class="align-self-center icon-xs ml-1"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-outline-primary">
-                                            <i data-feather="download" class="align-self-center icon-xs"></i>
-                                        </a>
-                                    </div><!--end col-->  
-                                </div><!--end row-->                                                              
-                            </div><!--end page-title-box-->
-                        </div><!--end col-->
-                    </div><!--end row-->
-                    <!-- end page title end breadcrumb -->
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Jquery Steps Wizard</h4>
-                                    <p class="text-muted mb-0">A powerful jQuery wizard plugin that
-                                        supports accessibility and HTML5</p>
-                                </div><!--end card-header-->
-                                <div class="card-body">
-                                    <form id="form-horizontal" class="form-horizontal form-wizard-wrapper">
-                                        <h3>Seller Details</h3>
-                                        <fieldset>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtFirstNameBilling" class="col-lg-3 col-form-label">Contact Person</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtFirstNameBilling" name="txtFirstNameBilling" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtLastNameBilling" class="col-lg-3 col-form-label">Mobile No.</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtLastNameBilling" name="txtLastNameBilling" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                            </div><!--end row-->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtCompanyBilling" class="col-lg-3 col-form-label">Landline No.</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtCompanyBilling" name="txtCompanyBilling" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtEmailAddressBilling" class="col-lg-3 col-form-label">Email Address</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtEmailAddressBilling" name="txtEmailAddressBilling" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                            </div><!--end row-->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtAddress1Billing" class="col-lg-3 col-form-label">Address 1</label>
-                                                        <div class="col-lg-9">
-                                                            <textarea id="txtAddress1Billing" name="txtAddress1Billing" rows="4" class="form-control"></textarea>
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtAddress2Billing" class="col-lg-3 col-form-label">Warehouse Address</label>
-                                                        <div class="col-lg-9">
-                                                            <textarea id="txtAddress2Billing" name="txtAddress2Billing" rows="4" class="form-control"></textarea>
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                            </div><!--end row-->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtCityBilling" class="col-lg-3 col-form-label">Company Type</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtCityBilling" name="txtCityBilling" type="text" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtStateProvinceBilling" class="col-lg-3 col-form-label">Live Market A/C</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtStateProvinceBilling" name="txtStateProvinceBilling" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                            </div><!--end row-->
+			<button type="button mb-3"
+				class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"
+				id="add-column-btn">
+				<i class="fas fa-plus"></i>
+			</button>
+			<br> <br>
 
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtTelephoneBilling" class="col-lg-3 col-form-label">Product Category</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtTelephoneBilling" name="txtTelephoneBilling" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtFaxBilling" class="col-lg-3 col-form-label">Product Sub Category</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtFaxBilling" name="txtFaxBilling" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                            </div><!--end row-->
-                                        </fieldset><!--end fieldset-->
-
-                                        <h3>Company Document</h3>
-                                        <fieldset>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtFirstNameShipping" class="col-lg-3 col-form-label">PAN Card</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtFirstNameShipping" name="txtFirstNameShipping" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtLastNameShipping" class="col-lg-3 col-form-label">VAT/TIN No.</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtLastNameShipping" name="txtLastNameShipping" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                            </div><!--end row-->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtCompanyShipping" class="col-lg-3 col-form-label">CST No.</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtCompanyShipping" name="txtCompanyShipping" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtEmailAddressShipping" class="col-lg-3 col-form-label">Service Tax No.</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtEmailAddressShipping" name="txtEmailAddressShipping" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                            </div><!--end row-->
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtCityShipping" class="col-lg-3 col-form-label">Company UIN</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtCityShipping" name="txtCityShipping" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtStateProvinceShipping" class="col-lg-3 col-form-label">Declaration</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtStateProvinceShipping" name="txtStateProvinceShipping" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                            </div><!--end row-->
-                                        </fieldset><!--end fieldset-->
-
-                                        <h3>Bank Details</h3>
-                                        <fieldset>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtNameCard" class="col-lg-3 col-form-label">Name on Card</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtNameCard" name="txtNameCard" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="ddlCreditCardType" class="col-lg-3 col-form-label">Credit Card Type</label>
-                                                        <div class="col-lg-9">
-                                                            <select id="ddlCreditCardType" name="ddlCreditCardType" class="form-control">
-                                                                <option value="">--Please Select--</option>
-                                                                <option value="AE">American Express</option>
-                                                                <option value="VI">Visa</option>
-                                                                <option value="MC">MasterCard</option>
-                                                                <option value="DI">Discover</option>
-                                                            </select>
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                            </div><!--end row-->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtCreditCardNumber" class="col-lg-3 col-form-label">Credit Card Number</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtCreditCardNumber" name="txtCreditCardNumber" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtCardVerificationNumber" class="col-lg-3 col-form-label">Card Verification Number</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtCardVerificationNumber" name="txtCardVerificationNumber" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                            </div><!--end row-->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label for="txtExpirationDate" class="col-lg-3 col-form-label">Expiration Date</label>
-                                                        <div class="col-lg-9">
-                                                            <input id="txtExpirationDate" name="txtExpirationDate" type="text" class="form-control">
-                                                        </div>
-                                                    </div><!--end form-group-->
-                                                </div><!--end col-->
-                                            </div><!--end row-->
-                                        </fieldset><!--end fieldset-->
-
-                                        <h3>Confirm Detail</h3>
-                                        <fieldset>
-                                            <div class="p-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                    <label class="form-check-label" for="flexCheckDefault">
-                                                        I agree with the Terms and Conditions.
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </fieldset><!--end fieldset-->
-                                    </form><!--end form-->
-                                </div><!--end card-body-->
-                            </div><!--end card-->
-                        </div><!--end col-->
-                    </div><!--end row-->
 		</div>
 		<!-- container -->
 
-		<footer class="footer text-center text-sm-start">
+		<footer class="footer text-center text-sm-start ">
 			&copy;
 			<script>
 				document.write(new Date().getFullYear())
@@ -704,8 +311,22 @@
 	<!-- end page content -->
 	</div>
 	<!-- end page-wrapper -->
+
+	<script>
+		function previewImage() {
+			var preview = document.getElementById('previewImage');
+			var fileInput = document.getElementById('fileInput');
+			var files = fileInput.files;
+
+			if (files.length > 0) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					preview.src = e.target.result;
+				};
+				reader.readAsDataURL(files[0]);
+			}
+		}
+	</script>
 </body>
 
-
-<!-- Mirrored from mannatthemes.com/dastone/default/forms-elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 06 Nov 2023 06:54:37 GMT -->
 </html>

@@ -7,5 +7,5 @@ import com.beermartket.alcohol.model.HoaDon;
 
 @Repository
 public interface HoaDonReponsitory extends JpaRepository<HoaDon, Integer>{
-
+	
 }
