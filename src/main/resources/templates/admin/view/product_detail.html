@@ -29,10 +29,13 @@
 									id="Dash_Date"> <span class="day-name" id="Day_Name">Today:</span>&nbsp;
 									<span class="" id="Select_date">Jan 11</span> <i
 									data-feather="calendar" class="align-self-center icon-xs ms-1"></i>
-								</a> <a href="#" class="btn btn-sm btn-outline-primary"> <i
-									data-feather="download" class="align-self-center icon-xs"></i>
+								</a> <a type="button"
+									class="btn btn-outline-secondary btn-square btn-skew ms-2"
+									ng-click="updateProduct(sanpham)"> <!-- Thêm lớp margin ms-2 -->
+									<span>Lưu Thông Tin</span>
 								</a>
 							</div>
+
 							<!--end col-->
 						</div>
 						<!--end row-->
@@ -52,18 +55,16 @@
 							<h4 class="card-title">
 								Thông tin sản phẩm <span class="badge bg-soft-success font-12">New</span>
 							</h4>
-							<div class="d-flex justify-content-center mb-3">
-								<img src="/images/product/{{sanpham.hinhAnh}}" alt=""
-									style="width: 400px;" class="rounded-circle">
 
-
+							<div class="upload">
+								<img id="previewImage" src="{{sanpham.hinhAnh}}"
+									width="400" height="400" alt="">
+								<div class="round mb-3">
+									<input type="file" id="fileInput" onchange="previewImage()">
+									<i class="fa fa-camera" style="color: #fff;"></i>
+								</div>
 							</div>
-							<p class="d-flex justify-content-center">
-								<button type="button"
-									class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm">
-									<i class="fas fa-camera"></i>
-								</button>
-							</p>
+
 						</div>
 						<!--end card-header-->
 
@@ -92,6 +93,18 @@
 
 							</div>
 							<div class="form-floating mb-3">
+								<select class="form-select" id="loaiSanPham"
+									ng-model="sanpham.nhaCungCap.maNhaCungCap"
+									aria-label="Floating label select example">
+									<option value="" disabled selected>Vui lòng nhà cung
+										cấp</option>
+									<option ng-repeat="ncc in nhacungcap"
+										ng-value="ncc.maNhaCungCap">{{ncc.tenNhaCungCap}}
+										{{'- ' + ncc.ghiChu}}</option>
+
+								</select> <label for="floatingSelect">Nhà cung cấp</label>
+							</div>
+							<div class="form-floating mb-3">
 								<input type="text" class="form-control" id="ngayTao"
 									ng-model="sanpham.ngayTao | date: 'HH:mm:ss dd/MM/yyyy'"
 									placeholder="Ngày tạo"> <label for="ngaytao">Ngày
@@ -101,7 +114,8 @@
 								<select class="form-select" id="donvitinh"
 									ng-model="sanpham.donViTinh.maDonViTinh"
 									aria-label="Floating label select example">
-									<option value="" disabled selected>Vui lòng chọn đơn vị tính</option>
+									<option value="" disabled selected>Vui lòng chọn đơn
+										vị tính</option>
 									<option ng-repeat="dvt in donvitinhs"
 										ng-value="dvt.maDonViTinh">{{dvt.tenDonViTinh}}</option>
 
@@ -109,8 +123,8 @@
 							</div>
 							<div class="form-floating mb-3">
 								<input type="text" class="form-control" id="soLuong"
-									placeholder="Số Lượng" ng-model="sanpham.soLuong"> <label for="soLuong">Số
-									Lượng</label>
+									placeholder="Số Lượng" ng-model="sanpham.soLuong"> <label
+									for="soLuong">Số Lượng</label>
 							</div>
 						</div>
 						<!--end card-body-->
@@ -132,44 +146,54 @@
 							<div class="row g-2">
 								<div class="col-md">
 									<div class="media mb-3">
-										<img src="/admin/assets/images/users/{{sanpham.taiKhoanAdmin.hinhAnh}}" alt=""
-										 style="width: 100px;" class="rounded-circle">
+										<img
+											src="/admin/assets/images/users/{{sanpham.taiKhoanAdmin.hinhAnh}}"
+											alt="" style="width: 100px;" class="rounded-circle">
 										<div class="media-body align-self-center ms-3 text-truncate">
 											<h3 class="my-0 fw-bold">{{sanpham.taiKhoanAdmin.hoTen}}</h3>
 											<p class="text-muted mb-2 font-13">{{sanpham.taiKhoanAdmin.email}}</p>
-											<button type="button"
-												class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm">
-												<i class="fas fa-camera"></i>
-											</button>
+
 
 										</div>
 										<!--end media-body-->
 									</div>
 									<div class="form-floating mb-3">
 										<input type="email" class="form-control"
-											id="floatingInputGrid" placeholder="Sô Điện Thoại" ng-model="sanpham.taiKhoanAdmin.soDienThoai">
-										<label for="floatingInputGrid">Số Điện Thoại</label>
+											id="floatingInputGrid" placeholder="Sô Điện Thoại"
+											ng-model="sanpham.taiKhoanAdmin.soDienThoai"> <label
+											for="floatingInputGrid">Số Điện Thoại</label>
 									</div>
 									<div class="form-floating mb-3">
-										<input type="email" class="form-control"
-											id="floatingInputGrid" placeholder="Địa chỉ" ng-model="sanpham.taiKhoanAdmin.diaChi">
-										<label for="floatingInputGrid">Địa Chỉ</label>
+										<input type="text" class="form-control"
+											id="floatingInputGrid" placeholder="Địa chỉ"
+											ng-model="sanpham.taiKhoanAdmin.diaChi"> <label
+											for="floatingInputGrid">Địa Chỉ</label>
 									</div>
-																<div class="row mb-3">
-									<label class="col-md-3 my-1 form-label">Chức Vụ</label>
-									<div class="col-md-10">
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio"
-												name="inlineRadioOptions" id="inlineRadio1" value="option1">
-											<label class="form-check-label" for="inlineRadio1">Nhân Viên</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio"
-												name="inlineRadioOptions" id="inlineRadio2" value="option2">
-											<label class="form-check-label" for="inlineRadio2">Quản Trị Viên</label>
-										</div>
+									<div class="row " ng-if="sanpham.taiKhoanAdmin.chucVu == 1">
+										<div class="form-floating mb-3">
+										<input type="text" class="form-control"
+											id="floatingInputGrid" placeholder="Chức Vụ"
+											value="Admin"> <label
+											for="floatingInputGrid">Chức Vụ</label>
 									</div>
-								</div>
+									</div>
+									<div class="row " ng-if="sanpham.taiKhoanAdmin.chucVu == 2">
+										<div class="form-floating mb-3">
+										<input type="text" class="form-control"
+											id="floatingInputGrid" placeholder="Chức Vụ"
+											value="Supper Admin"> <label
+											for="floatingInputGrid">Chức Vụ</label>
+									</div>
+									</div>
+									<div class="row " ng-if="sanpham.taiKhoanAdmin.chucVu == 3">
+										<div class="form-floating mb-3">
+										<input type="text" class="form-control"
+											id="floatingInputGrid" placeholder="Chức Vụ"
+											value="Staff"> <label
+											for="floatingInputGrid">Chức Vụ</label>
+									</div>
+									</div>
+
 								</div>
 							</div>
 						</div>
@@ -181,52 +205,111 @@
 							<h4 class="card-title">
 								Nhà Cung Cấp <span class="badge bg-soft-success font-12">New</span>
 							</h4>
+							<!-- <button type="button"
+								class="btn btn-outline-secondary btn-round dropdown-toggle"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								{{sanpham.nhaCungCap.tenNhaCungCap}} {{'- ' +
+								sanpham.nhaCungCap.ghiChu}} <i class="mdi mdi-chevron-down"></i>
+							</button>
+							<div class="dropdown-menu"
+								ng-model="sanpham.nhaCungCap.maNhaCungCap">
+								<a ng-repeat="ncc in nhacungcap" ng-value="ncc.maNhaCungCap"
+									class="dropdown-item" ng-click="uploadNCC(ncc)">
+									{{ncc.tenNhaCungCap}} {{'- ' + ncc.ghiChu}} </a>
+								<div class="dropdown-divider" ng-repeat="ncc in nhacungcap"></div>
+							</div> -->
 							<p class="text-muted mb-0">Create beautifully simple form
 								labels that float over your input fields.</p>
 						</div>
 						<!--end card-header-->
-						<div class="card-body">
+						<div ng-show="showCard" class="card-body">
 							<div class="row g-2">
 								<div class="col-md">
 									<div class="media mb-3">
-										<img src="/admin/assets/images/users/user-6.jpg" alt=""
-											class="rounded-circle">
+										<img
+											src="/admin/assets/images/users/{{sanpham.nhaCungCap.hinhAnh}}"
+											alt="" style="width: 100px;" class="rounded-circle">
 										<div class="media-body align-self-center ms-3 text-truncate">
-											<h3 class="my-0 fw-bold">Tên Nhà Cung Cấp</h3>
-											<p class="text-muted mb-2 font-13">Website</p>
-											<button type="button"
+											<h3 class="my-0 fw-bold">{{sanpham.nhaCungCap.tenNhaCungCap}}</h3>
+											<p class="text-muted mb-2 font-13">{{sanpham.nhaCungCap.email}}</p>
+											<!-- <button type="button"
 												class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm">
 												<i class="fas fa-camera"></i>
-											</button>
+											</button> -->
 
 										</div>
 										<!--end media-body-->
 									</div>
 									<div class="form-floating mb-3">
-										<input type="email" class="form-control"
-											id="floatingInputGrid" placeholder="name@example.com">
-										<label for="floatingInputGrid">Email</label>
+										<input type="text" class="form-control" id="Website"
+											placeholder="Website" ng-model="sanpham.nhaCungCap.website">
+										<label for="Website">Website</label>
 									</div>
 									<div class="form-floating mb-3">
 										<input type="email" class="form-control"
-											id="floatingInputGrid" placeholder="name@example.com">
-										<label for="floatingInputGrid">Địa Chỉ</label>
+											id="floatingInputGrid" placeholder="Địa chỉ"
+											ng-model="sanpham.nhaCungCap.diaChi"> <label
+											for="floatingInputGrid">Địa Chỉ</label>
 									</div>
 									<div class="form-floating mb-3">
 										<input type="email" class="form-control"
-											id="floatingInputGrid" placeholder="name@example.com">
-										<label for="floatingInputGrid">Số Điện Thoại</label>
+											id="floatingInputGrid" placeholder="Số Điện Thoại"
+											ng-model="sanpham.nhaCungCap.soDienThoai"> <label
+											for="floatingInputGrid">Số Điện Thoại</label>
 									</div>
 									<div class="form-floating">
 										<textarea class="form-control"
 											placeholder="Leave a comment here" id="floatingTextarea2"
-											style="height: 100px"></textarea>
+											style="height: 100px" ng-model="sanpham.nhaCungCap.ghiChu"></textarea>
 										<label for="floatingTextarea2">Ghi Chú</label>
 									</div>
 								</div>
 							</div>
 						</div>
 						<!--end card-body-->
+						<div ng-show="!showCard">
+							<div class="row g-2">
+								<div class="col-md">
+									<div class="media mb-3">
+										<img src="/admin/assets/images/users/{{nhacungcap1.hinhAnh}}"
+											alt="" style="width: 100px;" class="rounded-circle">
+										<div class="media-body align-self-center ms-3 text-truncate">
+											<h3 class="my-0 fw-bold">{{nhacungcap1.tenNhaCungCap}}</h3>
+											<p class="text-muted mb-2 font-13">{{nhacungcap1.email}}</p>
+											<!-- <button type="button"
+												class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm">
+												<i class="fas fa-camera"></i>
+											</button> -->
+
+										</div>
+										<!--end media-body-->
+									</div>
+									<div class="form-floating mb-3">
+										<input type="text" class="form-control" id="Website"
+											placeholder="Website" ng-model="nhacungcap1.website">
+										<label for="Website">Website</label>
+									</div>
+									<div class="form-floating mb-3">
+										<input type="email" class="form-control"
+											id="floatingInputGrid" placeholder="Địa chỉ"
+											ng-model="nhacungcap1.diaChi"> <label
+											for="floatingInputGrid">Địa Chỉ</label>
+									</div>
+									<div class="form-floating mb-3">
+										<input type="email" class="form-control"
+											id="floatingInputGrid" placeholder="Số Điện Thoại"
+											ng-model="nhacungcap1.soDienThoai"> <label
+											for="floatingInputGrid">Số Điện Thoại</label>
+									</div>
+									<div class="form-floating">
+										<textarea class="form-control"
+											placeholder="Leave a comment here" id="floatingTextarea2"
+											style="height: 100px" ng-model="nhacungcap1.ghiChu"></textarea>
+										<label for="floatingTextarea2">Ghi Chú</label>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<!--end card-->
 				</div>
@@ -250,29 +333,31 @@
 						<div class="row">
 							<div class="col-lg-4">
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="floatingPassword"
-										placeholder="Password"> <label for="floatingPassword">Giá
-										Gốc</label>
+									<input type="number" class="form-control" id="giaGoc"
+										placeholder="Giá Gốc" ng-model="sanpham.giaGoc"> <label
+										for="giaGoc">Giá Gốc</label>
 								</div>
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="floatingPassword"
-										placeholder="Password"> <label for="floatingPassword">Chiết
-										Khấu</label>
+									<input type="number" class="form-control" id="chietKhau"
+										placeholder="Chiết khấu" ng-model="sanpham.chietKhauKH">
+									<label for="floatingPassword">Chiết Khấu</label>
 								</div>
 							</div>
 							<!--end col-->
 							<div class="col-lg-4">
 
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="floatingPassword"
-										placeholder="Password"> <label for="floatingPassword">Giá
-										Tiền Giảm</label>
+									<input type="text" class="form-control" id="tienGiam"
+										placeholder="Tiền giảm"
+										ng-model="sanpham.giaGoc * sanpham.chietKhauKH / 100 | number">
+									<label for="floatingPassword">Giá Tiền Giảm</label>
 								</div>
 
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="floatingPassword"
-										placeholder="Password"> <label for="floatingPassword">Giá
-										Khuyến Mãi</label>
+									<input type="text" class="form-control" id="giakhuyenmai"
+										placeholder="Giá Khuyến Mãi"
+										ng-model="sanpham.giaGoc - (sanpham.giaGoc * sanpham.chietKhauKH / 100) | number">
+									<label for="floatingPassword">Giá Khuyến Mãi</label>
 								</div>
 
 							</div>
@@ -283,30 +368,29 @@
 									<label class="col-md-3 my-1 form-label">Trạng Thái</label>
 									<div class="col-md-10">
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio"
-												name="inlineRadioOptions" id="inlineRadio1" value="option1">
+											<input class="form-check-input" type="radio" name="trangThai"
+												id="hoatdong" ng-value="true" ng-model="sanpham.trangThai">
 											<label class="form-check-label" for="inlineRadio1">Hoạt
 												Động</label>
 										</div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio"
-												name="inlineRadioOptions" id="inlineRadio2" value="option2">
-											<label class="form-check-label" for="inlineRadio2">Hết
-												Hàng</label>
-										</div>
 										<div class="form-check form-check-inline mb-3">
-											<input class="form-check-input" type="radio"
-												name="inlineRadioOptions" id="inlineRadio3" value="option3">
+											<input class="form-check-input" type="radio" name="trangThai"
+												id="tamngung" ng-value="false" ng-model="sanpham.trangThai">
 											<label class="form-check-label" for="inlineRadio3">Tạm
 												Ngưng</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio"
+												name="inlineRadioOptions" id="inlineRadio2" value="option2"
+												disabled> <label class="form-check-label"
+												for="inlineRadio2">Hết Hàng</label>
 										</div>
 									</div>
 								</div>
 								<div class="form-check form-switch form-switch-warning mb-3">
-									<input class="form-check-input" type="checkbox"
-										id="customSwitchWarning" checked> <label
-										class="form-check-label" for="customSwitchWarning">Nổi
-										Bật</label>
+									<input class="form-check-input" type="checkbox" id="noiBat"
+										ng-model="sanpham.noiBat" ng-checked="sanpham.noiBat">
+									<label class="form-check-label" for="noiBat">Nổi Bật</label>
 								</div>
 							</div>
 							<!--end col-->
@@ -335,8 +419,11 @@
 										<label class="col-md-3 my-2 form-label">Checkboxes</label>
 
 
-										<textarea id="mota"></textarea>
-
+										<textarea id="moTa" name="moTa" ng-model="sanpham.moTa"></textarea>
+										<script>
+											// Khởi tạo CKEditor với tùy chọn cơ bản
+											CKEDITOR.replace('moTa');
+										</script>
 									</div>
 									<!--end row-->
 								</form>
@@ -369,8 +456,12 @@
 										<label class="col-md-3 my-2 form-label">Checkboxes</label>
 
 
-										<textarea id="thongtin"></textarea>
-
+										<textarea id="thongTin" name="thongTin"
+											ng-model="sanpham.thongTin"></textarea>
+										<script>
+											// Khởi tạo CKEditor với tùy chọn cơ bản
+											CKEDITOR.replace('thongTin');
+										</script>
 									</div>
 									<!--end row-->
 								</form>
@@ -388,6 +479,24 @@
 			<!-- end row -->
 
 			<div id="row-container" class="row">
+				<div class="col-xl-3" ng-repeat="item in hinh">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">File Upload 1</h4>
+							<p class="text-muted mb-0">Your so fresh input file — Default
+								version</p>
+						</div>
+						<!--end card-header-->
+						<div class="card-body">
+							<img class="object-fit" id="image"
+								ng-src="/admin/plugins/dropify/images/{{item.tenHinh}}"
+								alt="Uploaded Image" name="tenHinh" ng-required="true"
+								style="max-height: 100%; max-width: 100%;">
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+				</div>
 				<div class="col-xl-3">
 					<div class="card">
 						<div class="card-header">
@@ -397,87 +506,33 @@
 						</div>
 						<!--end card-header-->
 						<div class="card-body">
-							<input type="file" id="input-file-now" class="dropify" />
+							<img class="object-fit" id="image"
+								ng-src="/admin/plugins/dropify/images/{{item.tenHinh}}"
+								alt="Uploaded Image" name="tenHinh" ng-required="true"
+								style="max-height: 100%; max-width: 100%;">
 						</div>
 						<!--end card-body-->
 					</div>
 					<!--end card-->
-					<p>
-						Tên tệp tin: <span id="file-name"></span>
-					</p>
-				</div>
-				<!--end col-->
-
-				<div class="col-xl-3">
-					<div class="card">
-						<div class="card-header">
-							<h4 class="card-title">File Upload 2</h4>
-							<p class="text-muted mb-0">You can add a default value</p>
-						</div>
-						<!--end card-header-->
-						<div class="card-body">
-							<input type="file" id="input-file-now" class="dropify"
-								data-default-file="/admin/plugins/dropify/images/1.jpg" />
-						</div>
-						<!--end card-body-->
-					</div>
-					<!--end card-->
-				</div>
-				<!--end col-->
-				<div class="col-xl-3">
-					<div class="card">
-						<div class="card-header">
-							<h4 class="card-title">File Upload 1</h4>
-							<p class="text-muted mb-0">Your so fresh input file — Default
-								version</p>
-						</div>
-						<!--end card-header-->
-						<div class="card-body">
-							<input type="file" id="input-file-now" class="dropify" />
-						</div>
-						<!--end card-body-->
-					</div>
-					<!--end card-->
-					<p>
-						Tên tệp tin: <span id="file-name"></span>
-					</p>
-				</div>
-				<!--end col-->
-
-				<div class="col-xl-3">
-					<div class="card">
-						<div class="card-header">
-							<h4 class="card-title">File Upload 1</h4>
-							<p class="text-muted mb-0">Your so fresh input file — Default
-								version</p>
-						</div>
-						<!--end card-header-->
-						<div class="card-body">
-							<input type="file" id="input-file-now" class="dropify" />
-						</div>
-						<!--end card-body-->
-					</div>
-					<!--end card-->
-					<p>
-						Tên tệp tin: <span id="file-name"></span>
-					</p>
 				</div>
 
+
+
 				<!--end col-->
+
 			</div>
 			<!--end row-->
-			<button type="button"
+			<button type="button mb-3"
 				class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"
 				id="add-column-btn">
 				<i class="fas fa-plus"></i>
 			</button>
-
-
+			<br> <br>
 
 		</div>
 		<!-- container -->
 
-		<footer class="footer text-center text-sm-start">
+		<footer class="footer text-center text-sm-start ">
 			&copy;
 			<script>
 				document.write(new Date().getFullYear())
@@ -491,16 +546,22 @@
 	<!-- end page content -->
 	</div>
 	<!-- end page-wrapper -->
+
 	<script>
-		// Khởi tạo CKEditor với tùy chọn cơ bản
-		CKEDITOR.replace('thongtin');
-	</script>
-	<script>
-		// Khởi tạo CKEditor với tùy chọn cơ bản
-		CKEDITOR.replace('mota');
+		function previewImage() {
+			var preview = document.getElementById('previewImage');
+			var fileInput = document.getElementById('fileInput');
+			var files = fileInput.files;
+
+			if (files.length > 0) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					preview.src = e.target.result;
+				};
+				reader.readAsDataURL(files[0]);
+			}
+		}
 	</script>
 </body>
 
-
-<!-- Mirrored from mannatthemes.com/dastone/default/forms-elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 06 Nov 2023 06:54:37 GMT -->
 </html>

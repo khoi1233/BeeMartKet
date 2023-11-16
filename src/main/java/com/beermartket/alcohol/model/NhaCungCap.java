@@ -42,6 +42,12 @@ public class NhaCungCap implements Serializable {
 
 	@Column(name="Website")
 	private String website;
+	
+	@Column(name="HinhAnh")
+	private String hinhAnh;
+	
+	@Column(name="Email")
+	private String email;
 
 	
 	  @JsonIgnore	  

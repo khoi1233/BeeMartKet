@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -48,16 +50,15 @@ public class HoaDon implements Serializable {
 	@Column(name="TrangThaiThanhToan")
 	private boolean trangThaiThanhToan;
 
-	//bi-directional many-to-one association to ChiTietHoaDon
+	@JsonIgnore
 	@OneToMany(mappedBy="hoaDon")
 	private List<ChiTietHoaDon> chiTietHoaDons;
 
-	//bi-directional many-to-one association to TaiKhoan
 	@ManyToOne
 	@JoinColumn(name="MaTaiKhoan")
 	private TaiKhoan taiKhoan;
 
-	//bi-directional many-to-one association to LienKetKhuyenMai
+	@JsonIgnore
 	@OneToMany(mappedBy="hoaDon")
 	private List<LienKetKhuyenMai> lienKetKhuyenMais;
 

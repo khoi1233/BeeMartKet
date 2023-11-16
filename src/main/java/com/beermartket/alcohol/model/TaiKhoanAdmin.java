@@ -28,9 +28,6 @@ public class TaiKhoanAdmin implements Serializable {
 	@Column(name = "MaTaiKhoan")
 	private int maTaiKhoan;
 
-	@Column(name = "ChucVu")
-	private String chucVu;
-
 	@Column(name = "DiaChi")
 	private String diaChi;
 
@@ -57,6 +54,9 @@ public class TaiKhoanAdmin implements Serializable {
 
 	@Column(name = "TenDangNhap")
 	private String tenDangNhap;
+	
+	@Column(name = "ChucVu")
+	private String chucVu;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "taiKhoanAdmin")
@@ -64,7 +64,7 @@ public class TaiKhoanAdmin implements Serializable {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "taiKhoanAdmin")
-	private List<SanPham> sanPhams;
+	private List<SanPham> sanPham;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "taiKhoanAdmin")

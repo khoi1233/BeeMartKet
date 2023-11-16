@@ -92,7 +92,7 @@ public class ChiTietGioHangController {
 
         // Kiểm tra và xử lý số lượng không âm
         if (updatedChiTietGioHang.getSoLuong() >= 0) {
-            existingChiTietGioHang.setSoLuong(updatedChiTietGioHang.getSoLuong());
+            existingChiTietGioHang.setSoLuong(20);
 
             // Lưu lại thông tin sản phẩm vào cơ sở dữ liệu
             ctgiohangDao.save(existingChiTietGioHang);
