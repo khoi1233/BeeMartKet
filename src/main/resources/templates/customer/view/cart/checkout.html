@@ -206,8 +206,8 @@
 											| number}}đ</span></li>
 									<li><span>Tạm tính giỏ hàng:</span><span>{{getTamTinhGioHang()-getTamTinhSanPhamKM()
 											| number}}đ</span></li>
-									<li><span>Voucher:</span> {{ voucher ? shortString(voucher.tenKhuyenMai, 50) : 'Chưa nhập voucher' }}<span>{{giaTriKM | number}}đ</span></li>
-									<li><span>Phí vận chuyển: </span>{{ voucherVC ? shortString(voucherVC.tenKhuyenMai, 40) : '' }}<span ng-if="!getGiamGiaVanChuyen()"> 40,000đ</span><span ng-if="getGiamGiaVanChuyen()"><del>40,000đ </del> {{40000 - voucherVC.giaTriKhuyenMai}}đ</span></li>
+									<li><span>Voucher:</span><a ng-click="clearVoucher(voucher)">{{ voucher ? shortString(voucher.tenKhuyenMai, 50) : 'Chưa nhập voucher' }}</a><span>{{giaTriKM | number}}đ</span></li>
+									<li><span>Phí vận chuyển: </span><a ng-click="clearVoucherVC(voucherVC)">{{ voucherVC ? shortString(voucherVC.tenKhuyenMai, 40) : '' }}</a><span ng-if="!getGiamGiaVanChuyen()"> 40,000đ</span><span ng-if="getGiamGiaVanChuyen()"><del>40,000đ </del> {{40000 - voucherVC.giaTriKhuyenMai}}đ</span></li>
 									<li><span>Thành tiền<small>(đã bao gồm.
 												VAT)</small></span><span>{{getTotalCartPrice() + 40000 - voucherVC.giaTriKhuyenMai | number}}đ</span></li>
 								</ul>

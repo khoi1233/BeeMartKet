@@ -246,24 +246,64 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 					if (response.data && response.data.giaTriKhuyenMai !== undefined) {
 						if (response.data.loai) {
 							$scope.voucherVC = response.data;
-							alert($scope.voucherVC.giaTriKhuyenMai);
-						} else if (!response.data.loai){
+							const Toast = Swal.mixin({
+								toast: true,
+								position: "top-end",
+								showConfirmButton: false,
+								timer: 2000,
+								timerProgressBar: true,
+								didOpen: (toast) => {
+									toast.onmouseenter = Swal.stopTimer;
+									toast.onmouseleave = Swal.resumeTimer;
+								}
+							});
+							Toast.fire({
+								icon: "success",
+								title: "Đã áp dụng voucher!"
+							});
+							$scope.couponCode = '';
+						} else if (!response.data.loai) {
+							const Toast = Swal.mixin({
+								toast: true,
+								position: "top-end",
+								showConfirmButton: false,
+								timer: 2000,
+								timerProgressBar: true,
+								didOpen: (toast) => {
+									toast.onmouseenter = Swal.stopTimer;
+									toast.onmouseleave = Swal.resumeTimer;
+								}
+							});
+							Toast.fire({
+								icon: "success",
+								title: "Đã áp dụng voucher!"
+							});
 							$scope.voucher = response.data;
 						}
+						$scope.couponCode = '';
 
 					} else {
-						alert("Không tìm thấy mã giảm giá.");
-						$scope.voucherVC = null;
-						$scope.voucher = null;
+						Swal.fire({
+							position: "top-end",
+							icon: "error",
+							title: "Mã voucher không chính xác!",
+							showConfirmButton: false,
+							timer: 2000
+						});
 					}
 				})
 				.catch(function(error) {
 					console.error(error);
 				});
 		} else {
-			alert("Vui lòng nhập mã giảm giá.");
-			$scope.voucherVC = null;
-			$scope.voucher = null;
+			Swal.fire({
+				position: "top-end",
+				icon: "warning",
+				title: "Vui lòng nhập mã",
+				showConfirmButton: false,
+				timer: 2000
+			});
+
 		}
 	};
 
@@ -276,7 +316,7 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 			if ($scope.getTotalCartPrice() > $scope.voucherVC.giaTriToiThieu) {
 				// kiểm tra loại voucher
 				if ($scope.voucherVC.loai) {
-					check= true;
+					check = true;
 					//tính giá trị khuyến mãi vận chuyển
 					$scope.khuyenMaiVC = $scope.voucherVC.giaTriKhuyenMai;
 					/*if ($scope.giaTriKM > $scope.voucher.giaTriKhuyenMai) {
@@ -286,15 +326,58 @@ app.controller('giohang-controller', function($scope, $http, $window) {
 			} else {
 				alert("Giá trị đơn hàng chưa đạt điều kiện >" + $scope.voucherVC.giaTriToiThieu);
 				$scope.voucherVC = null;
-				check =false;
+				check = false;
 			}
 		} else {
 			$scope.khuyenMaiVC = 0;
-			check =false;
+			check = false;
 		}
 		return check;
 	};
+	// clear voucher
+	$scope.clearVoucher = function(voucher) {
+		if (voucher != null) {
+			Swal.fire({
+				title: "Bạn có muốn gỡ voucher này?",
+				showCancelButton: true,
+				confirmButtonText: "Có",
+				confirmButtonColor: '#119744',
+				cancelButtonText: 'Không!'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$scope.$apply(function() {
+						$scope.voucher = null;
+					});
 
+
+				}
+			});
+		} else {
+		}
+
+	}
+
+	// clear voucherVC
+	$scope.clearVoucherVC = function(voucherVC) {
+		if (voucherVC != null) {
+			Swal.fire({
+				title: "Bạn có muốn gỡ voucher này?",
+				showCancelButton: true,
+				confirmButtonText: "Có",
+				confirmButtonColor: '#119744',
+				cancelButtonText: 'Không!'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$scope.$apply(function() {
+						$scope.voucherVC = null;
+					});
+
+
+				}
+			});
+		} else {
+		}
+	}
 
 
 	$scope.getHoaDon = function() {
