@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin/layout/layout :: content(~{::body},~{::title})}">
+<head>
+<title>Trang chủ</title>
+<body>
+	<!-- Page Content-->
+	<div class="page-content">
+		<div class="container-fluid">
+			<!-- Page-Title -->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="page-title-box">
+						
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Thêm tài khoản mới</h4>
+                                    <p class="text-muted mb-0">Tính năng thêm tài khoản, phân quyền</p>
+                                </div><!--end card-header-->
+                                <div class="card-body">
+<!--                                     <form id="horizontal" class="form-horizontal form-wizard-wrapper"> -->
+<!--                                         <h3>Thông tin tài khoản</h3> -->
+<!--                                         <fieldset> -->
+<!--                                             <div class="row"> -->
+<!--                                                 <div class="col-md-6"> -->
+<!--                                                     <div class="form-group row"> -->
+<!--                                                         <label for="txtFirstNameBilling" class="col-lg-3 col-form-label">Họ tên</label> -->
+<!--                                                         <div class="col-lg-9"> -->
+<!--                                                             <input id="txtFirstNameBilling" name="txtFirstNameBilling" type="text" class="form-control"> -->
+<!--                                                         </div> -->
+<!--                                                     </div>end form-group -->
+<!--                                                 </div>end col -->
+<!--                                                 <div class="col-md-6"> -->
+<!--                                                     <div class="form-group row"> -->
+<!--                                                         <label for="txtLastNameBilling" class="col-lg-3 col-form-label">Số điện thoại</label> -->
+<!--                                                         <div class="col-lg-9"> -->
+<!--                                                             <input id="txtLastNameBilling" name="txtLastNameBilling" type="text" class="form-control"> -->
+<!--                                                         </div> -->
+<!--                                                     </div>end form-group -->
+<!--                                                 </div>end col -->
+<!--                                             </div>end row -->
+<!--                                             <div class="row"> -->
+<!--                                                 <div class="col-md-6"> -->
+<!--                                                     <div class="form-group row"> -->
+<!--                                                         <label for="txtCompanyBilling" class="col-lg-3 col-form-label">Tên tài khoản</label> -->
+<!--                                                         <div class="col-lg-9"> -->
+<!--                                                             <input id="txtCompanyBilling" name="txtCompanyBilling" type="text" class="form-control"> -->
+<!--                                                         </div> -->
+<!--                                                     </div>end form-group -->
+<!--                                                 </div>end col -->
+<!--                                                 <div class="col-md-6"> -->
+<!--                                                     <div class="form-group row"> -->
+<!--                                                         <label for="txtEmailAddressBilling" class="col-lg-3 col-form-label">Mật khẩu</label> -->
+<!--                                                         <div class="col-lg-9"> -->
+<!--                                                             <input id="txtEmailAddressBilling" name="txtEmailAddressBilling" type="text" class="form-control"> -->
+<!--                                                         </div> -->
+<!--                                                     </div>end form-group -->
+<!--                                                 </div>end col -->
+<!--                                                 <div class="col-md-6"> -->
+<!--                                                     <div class="form-group row"> -->
+<!--                                                         <label for="txtEmailAddressBilling" class="col-lg-3 col-form-label">Email</label> -->
+<!--                                                         <div class="col-lg-9"> -->
+<!--                                                             <input id="txtEmailAddressBilling" name="txtEmailAddressBilling" type="text" class="form-control"> -->
+<!--                                                         </div> -->
+<!--                                                     </div>end form-group -->
+<!--                                                 </div>end col -->
+<!--                                                 <div class="col-md-6"> -->
+<!--                                                     <div class="form-group row"> -->
+<!--                                                     <label for="txtEmailAddressBilling" class="col-lg-3 col-form-label">Quyền</label> -->
+<!-- 															<div class="col-md-3"> -->
+<!-- 																<div class="form-check"> -->
+<!-- 																	<input class="form-check-input" type="radio" -->
+<!-- 																		name="role" id="user" value="user"> <label -->
+<!-- 																		class="form-check-label" for="user"> User </label> -->
+<!-- 																</div> -->
+<!-- 															</div> -->
+<!-- 															<div class="col-md-3"> -->
+<!-- 																<div class="form-check"> -->
+<!-- 																	<input class="form-check-input" type="radio" -->
+<!-- 																		name="role" id="admin" value="admin"> <label -->
+<!-- 																		class="form-check-label" for="admin"> Admin </label> -->
+<!-- 																</div> -->
+<!-- 															</div> -->
+<!-- 															<div class="col-md-3"> -->
+<!-- 																<div class="form-check"> -->
+<!-- 																	<input class="form-check-input" type="radio" -->
+<!-- 																		name="role" id="superadmin" value="superadmin"> -->
+<!-- 																	<label class="form-check-label" for="superadmin"> -->
+<!-- 																		Super Admin </label> -->
+<!-- 																</div> -->
+<!-- 															</div> -->
+<!-- 														</div>end form-group -->
+<!--                                                 </div>end col -->
+<!--                                             </div>end row -->
+                                            
+<!--                                              <div class="row"> -->
+                                             
+<!--                                              		<div class="card-body"> -->
+<!-- 													<input type="file" id="input-file-now" class="dropify" /> -->
+<!-- 											</div> -->
+<!--                                              </div>end row -->
+<!--                                         </fieldset>end fieldset -->
+<!-- 									<div class="tab-pane fade" id="tab2" role="tabpanel"> -->
+<!--                                         <h3>Xác nhận email</h3> -->
+<!--                                         <fieldset> -->
+<!--                                             <div class="row"> -->
+<!--                                                 <div class="col-md-6"> -->
+<!--                                                     <div class="form-group row"> -->
+<!--                                                         <label for="txtFirstNameShipping" class="col-lg-3 col-form-label">Xác nhận email</label> -->
+<!--                                                         <div class="col-lg-9"> -->
+<!--                                                             <input id="txtFirstNameShipping" name="txtFirstNameShipping" type="text" class="form-control"> -->
+<!--                                                         </div> -->
+<!--                                                     </div> -->
+<!--                                                 </div> -->
+                                                
+<!--                                         </fieldset> -->
+<!--                                         </div> -->
+<!-- 											</form> -->
+										
+										
+										
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Thông tin tài khoản</button>
+  </li>
+  <li class="nav-item">
+    <p class="nav-link" style="color: gray;">></p>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Xác nhận email</button>
+  </li>
+    <li class="nav-item">
+    <p class="nav-link" style="color: gray;">></p>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Hoàn tất quá trình</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  	<div class="card-body">
+  	<form action="">
+  	
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label for="txtFirstNameBilling" class="col-lg-3 col-form-label">Họ tên</label>
+                                                        <div class="col-lg-9">
+                                                            <input id="txtFirstNameBilling" name="txtFirstNameBilling" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label for="txtLastNameBilling" class="col-lg-3 col-form-label">Số điện thoại</label>
+                                                        <div class="col-lg-9">
+                                                            <input id="txtLastNameBilling" name="txtLastNameBilling" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label for="txtCompanyBilling" class="col-lg-3 col-form-label">Tên tài khoản</label>
+                                                        <div class="col-lg-9">
+                                                            <input id="txtCompanyBilling" name="txtCompanyBilling" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label for="txtEmailAddressBilling" class="col-lg-3 col-form-label">Mật khẩu</label>
+                                                        <div class="col-lg-9">
+                                                            <input id="txtEmailAddressBilling" name="txtEmailAddressBilling" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label for="txtEmailAddressBilling" class="col-lg-3 col-form-label">Email</label>
+                                                        <div class="col-lg-9">
+                                                            <input id="txtEmailAddressBilling" name="txtEmailAddressBilling" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                    <label for="txtEmailAddressBilling" class="col-lg-3 col-form-label">Quyền</label>
+															<div class="col-md-3">
+																<div class="form-check">
+																	<input class="form-check-input" type="radio"
+																		name="role" id="user" value="user"> <label
+																		class="form-check-label" for="user"> User </label>
+																</div>
+															</div>
+															<div class="col-md-3">
+																<div class="form-check">
+																	<input class="form-check-input" type="radio"
+																		name="role" id="admin" value="admin"> <label
+																		class="form-check-label" for="admin"> Admin </label>
+																</div>
+															</div>
+															<div class="col-md-3">
+																<div class="form-check">
+																	<input class="form-check-input" type="radio"
+																		name="role" id="superadmin" value="superadmin">
+																	<label class="form-check-label" for="superadmin">
+																		Super Admin </label>
+																</div>
+															</div>
+														</div>
+                                                </div>
+                                            </div>
+                                            
+                                             <div class="row">
+                                             
+                                             		<div class="card-body">
+													<input type="file" id="input-file-now" class="dropify" />
+											</div>
+                                             </div>
+                                             <button id="nextButton" class="btn btn-primary">Next</button>
+                                        
+  	</form>
+  	</div>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+												<div class="card-body">
+													<form action="">
+														
+															<div class="row">
+																<div class="col-md-6">
+																	<div class="form-group row">
+																		<label for="txtFirstNameShipping"
+																			class="col-lg-3 col-form-label">Xác nhận
+																			email</label>
+																		<div class="col-lg-9">
+																			<input id="txtFirstNameShipping"
+																				name="txtFirstNameShipping" type="text"
+																				class="form-control">
+																		</div>
+																	</div>
+																</div>
+															</div>
+														
+													</form>
+												</div>
+											</div>
+											
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+</div>
+							<br>			
+		</div>
+		<!-- container -->
+	
+		<footer class="footer text-center text-sm-start">
+			&copy;
+			<script>
+				document.write(new Date().getFullYear())
+			</script>
+			Dastone <span class="text-muted d-none d-sm-inline-block float-end">Crafted
+				with <i class="mdi mdi-heart text-danger"></i> by Mannatthemes
+			</span>
+		</footer>
+		<!--end footer-->
+	</div>
+	<!-- end page content -->
+	</div>
+	<!-- end page-wrapper -->
+	<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Lấy thông tin về các tab và nút next
+    var tabs = document.querySelectorAll('.nav-link');
+    var nextButton = document.getElementById('nextButton');
+    // Xử lý sự kiện khi nút "Next" được click
+    nextButton.addEventListener('click', function () {
+        // Lặp qua các tab để tìm tab đang active
+        for (var i = 0; i < tabs.length; i++) {
+            if (tabs[i].classList.contains('active')) {
+                // Chuyển sang trang mới khi đến tab "Xác nhận email"
+                if (tabs[i + 1]) {
+                    var tabId = tabs[i + 1].getAttribute('data-bs-target').substring(1);
+                    window.location.href = 'url_cua_trang_xac_nhan_email'; // Thay 'url_cua_trang_xac_nhan_email' bằng đường dẫn thực tế
+                }
+                break;
+            }
+        }
+    });
+});
+</script>
+</body>
+<!-- Mirrored from mannatthemes.com/dastone/default/forms-elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 06 Nov 2023 06:54:37 GMT -->
+</html>

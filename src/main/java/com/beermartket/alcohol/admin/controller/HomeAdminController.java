@@ -7,21 +7,34 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.beermartket.alcohol.model.SanPham;
+import com.beermartket.alcohol.model.TaiKhoan;
 import com.beermartket.alcohol.repository.SanPhamRepository;
+import com.beermartket.alcohol.repository.TaiKhoanRepository;
 
 @Controller
 @RequestMapping("/admin")
 public class HomeAdminController {
 	@Autowired
 	SanPhamRepository spDaoPhamRepository;
-
+	
+	@Autowired
+	private TaiKhoanRepository taiKhoanRepository;
+	
 	@RequestMapping("/home")
 	public String Home() {
 
 		return "admin/view/index";
 	}
-
+	@RequestMapping("/listAccount")
+	public String listAccount(Model model) {
+		List<TaiKhoan> taiKhoanList = taiKhoanRepository.findAll();
+        model.addAttribute("taiKhoanList", taiKhoanList);
+		return "admin/view/listAccount";
+	}
+	@RequestMapping("/addAccount")
+	public String addAccount() {
+		return "admin/view/addAccount";
+	}
 	@RequestMapping("/listProduct")
 	public String listProduct(Model model) {
 		/*
