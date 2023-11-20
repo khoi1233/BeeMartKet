@@ -9,25 +9,14 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/admin")
-public class TinTucAdminController {
+public class ThanhVienAdminController {
 
-    private final TinTucService tinTucService;
+   
 
-    @Autowired
-    public TinTucAdminController(TinTucService tinTucService) {
-        this.tinTucService = tinTucService;
-    }
-
-    @RequestMapping("/ListTinTuc")
+	@RequestMapping("/ListThanhVien")
 	public String listProduct() {
 		
-		return "admin/view/ListTinTuc";
+		return "admin/view/ListThanhVien";
 	}
-	
-	/*
-	 * @RequestMapping("/news_detail/${maTinTuc}}") public String detailProduct() {
-	 * 
-	 * return "admin/view/news_detail"; }
-	 */
 	 
 }
