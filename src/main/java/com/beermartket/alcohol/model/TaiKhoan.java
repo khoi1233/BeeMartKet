@@ -28,8 +28,6 @@ public class TaiKhoan implements Serializable {
 	@Column(name="MaTaiKhoan")
 	private int maTaiKhoan;
 
-	@Column(name="DiaChi")
-	private String diaChi;
 
 	@Column(name="Email")
 	private String email;
@@ -49,8 +47,7 @@ public class TaiKhoan implements Serializable {
 	@Column(name="MaHoaMatKhau")
 	private String maHoaMatKhau;
 
-	@Column(name="SoDienThoai")
-	private String soDienThoai;
+
 
 	@Column(name="TenDangNhap")
 	private String tenDangNhap;

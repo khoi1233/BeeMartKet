@@ -42,14 +42,73 @@
 				</button>
 				<a href="/user/home"><img th:src="@{/images/logo.png}"
 					alt="logo"></a>
+					
+					
 				<button class="header-src">
 					<i class="fas fa-search"></i>
 				</button>
 			</div>
 			<a href="/user/home" class="header-logo"><img
-				th:src="@{/images/logo.png}" alt="logo"></a><a
-				th:href="@{/access/login}" class="header-widget" title="My Account"><img
-				th:src="@{/images/user.png}" alt="user"><span>join</span></a>
+				th:src="@{/images/logo.png}" alt="logo"></a>
+
+
+			<th:block
+				th:if="${session.user == null and session.admin == null and session.superadmin == null}">
+				<a th:href="@{/access/login}" class="header-widget"
+					title="My Account"> <img th:src="@{/images/user.png}"
+					alt="user"> <span>join</span>
+				</a>
+			</th:block>
+			
+			<th:block th:if="${session.user != null}" th:with="userImage=${session.image}">
+				<th:block th:if="${userImage == null}">
+					<a th:href="@{/home/home}" class="header-widget" title="My Account"><img
+						th:src="@{/images/user.png}" alt="user"> <span
+						th:text="${session.user}"></span> </a>
+				</th:block>
+				<th:block th:if="${userImage != null}">
+					<a th:href="@{/home/home}" class="header-widget" title="My Account"
+						th:if="${userImage != null}"> <!-- If userImage is not null, display the image and user information -->
+						<img th:src="@{'/images/avatar/' + ${userImage}}" alt="user">
+						<span th:text="${session.user}"></span>
+					</a>
+				</th:block>
+			</th:block>
+
+			<th:block th:if="${session.admin != null}"
+				th:with="userImage=${session.image}">
+				<th:block th:if="${userImage == null}">
+					<a th:href="@{/home/home}" class="header-widget" title="My Account"><img
+						th:src="@{/images/user.png}" alt="user"> <span
+						th:text="${session.admin}"></span> </a>
+				</th:block>
+				<th:block th:if="${userImage != null}">
+					<a th:href="@{/home/home}" class="header-widget" title="My Account"
+						th:if="${userImage != null}"> <!-- If userImage is not null, display the image and user information -->
+						<img th:src="@{'/images/avatar/' + ${userImage}}" alt="user">
+						<span th:text="${session.admin}"></span>
+					</a>
+				</th:block>
+			</th:block>
+
+
+			<th:block th:if="${session.superadmin != null}" th:with="userImage=${session.image}">
+
+				<th:block th:if="${userImage == null}">
+					<a th:href="@{/home/home}" class="header-widget" title="My Account"><img
+						th:src="@{/images/user.png}" alt="user"> <span
+						th:text="${session.superadmin}"></span> </a>
+				</th:block>
+				<th:block th:if="${userImage != null}">
+					<a th:href="@{/home/home}" class="header-widget" title="My Account"
+						th:if="${userImage != null}"> <!-- If userImage is not null, display the image and user information -->
+						<img th:src="@{'/images/avatar/' + ${userImage}}" alt="user">
+						<span th:text="${session.superadmin}"></span>
+					</a>
+				</th:block>
+			</th:block>
+
+
 			<form class="header-form">
 				<input type="text" placeholder="Search anything...">
 				<button>
@@ -291,6 +350,30 @@
 								<li><a href="/access/register">register</a></li>
 								<li><a href="/access/reset-password">reset password</a></li>
 								<li><a href="/access/change-password">change password</a></li>
+								
+								<th:block
+									th:if="${session.user == null and session.admin == null and session.superadmin == null}">
+
+									</a>
+								</th:block>
+								<th:block th:if="${session.user != null}">
+
+									<li><a th:href="@{/home/log-out}" class="">Đăng xuất</a></li>
+
+								</th:block>
+
+								<th:block th:if="${session.admin != null}">
+
+									<li><a th:href="@{/home/log-out}" class="">Đăng xuất</a></li>
+
+								</th:block>
+
+								<th:block th:if="${session.superadmin != null}">
+
+									<li><a th:href="@{/home/log-out}" class="">Đăng xuất</a></li>
+
+								</th:block>
+
 							</ul></li>
 						<li class="navbar-item dropdown"><a
 							class="navbar-link dropdown-arrow" href="#">blogs</a>

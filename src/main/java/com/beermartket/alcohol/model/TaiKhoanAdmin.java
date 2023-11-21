@@ -29,7 +29,7 @@ public class TaiKhoanAdmin implements Serializable {
 	private int maTaiKhoan;
 
 	@Column(name = "ChucVu")
-	private String chucVu;
+	private int chucVu;
 
 	@Column(name = "DiaChi")
 	private String diaChi;

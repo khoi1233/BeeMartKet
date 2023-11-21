@@ -91,7 +91,7 @@ public class AccessController {
 					model.addAttribute("error", "Đăng nhập thành công");
 					session.setAttribute(SessionAttr.CURRENT_USER, tk.getTenDangNhap());
 					session.setAttribute(SessionAttr.User, tk.getTenDangNhap());
-
+					session.setAttribute(SessionAttr.IMAGE, tk.getHinhAnh());
 					if (remember) {
 						// Lưu thông tin tài khoản vào cookie
 						Cookie usernameCookie = new Cookie("username", username);
@@ -133,8 +133,9 @@ public class AccessController {
 		session.removeAttribute(SessionAttr.CURRENT_USER);
 		session.removeAttribute(SessionAttr.Admin);
 		session.removeAttribute(SessionAttr.User);
-
-		return "customer/home/index";
+		session.removeAttribute(SessionAttr.SUPER_ADMIN);
+		session.removeAttribute(SessionAttr.IMAGE);
+		return "redirect:/user/home";
 	}
 
 	
