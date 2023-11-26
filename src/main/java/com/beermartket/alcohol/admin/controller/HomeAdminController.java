@@ -62,6 +62,12 @@ public class HomeAdminController {
 		return "admin/view/listCoupon";
 	}
 	
+	@RequestMapping("/addCoupon")
+	public String addCoupon() {
+
+		return "admin/view/addCoupon";
+	}
+	
 	@RequestMapping("/coupon_detail/{maPhieuNhap}")
 	public String detailCoupon() {
 
@@ -77,6 +83,66 @@ public class HomeAdminController {
 	public String HoaDon2() {
         
 		return "admin/view/listOrderDetail";
+	}
+	
+	@RequestMapping("/listCategory")
+	public String listCategory() {
+
+		return "admin/view/listCategory";
+	}
+	
+	@RequestMapping("/detail_Category/{maLoaiSanPham}")
+	public String detailCategory() {
+
+		return "admin/view/category_detail";
+	}
+	
+	@RequestMapping("/add/Category")
+	public String addCategory() {
+
+		return "admin/view/addCategory";
+	}
+	
+	@RequestMapping("/listSupplier")
+	public String listSupplier() {
+
+		return "admin/view/listSupplier";
+	}
+	
+	@RequestMapping("/detail_supplier/{maNhaCungCap}")
+	public String detailSupplier() {
+
+		return "admin/view/Supplier_detail";
+	}
+	
+	@RequestMapping("/add/supplier")
+	public String addSupplier() {
+
+		return "admin/view/addSupplier";
+	}
+	
+	@RequestMapping("/listPromotion")
+	public String lisPromotion() {
+
+		return "admin/view/listpromotion";
+	}
+	
+	@RequestMapping("/promotion/{maKhuyenMai}")
+	public String detailPromotion() {
+
+		return "admin/view/Promotion_detail";
+	}
+	
+	@RequestMapping("/add/promotion")
+	public String addPromotion() {
+
+		return "admin/view/addPromotion";
+	}
+	
+	@RequestMapping("/listAccount")
+	public String lisAccount() {
+
+		return "admin/view/listAccount";
 	}
 	
 }

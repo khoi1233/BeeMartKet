@@ -6,9 +6,10 @@
 
 <title>Danh sách sản phẩm</title>
 </head>
-<body ng-controller="sanphamAdmin-controller">
+<body>
 	<!-- Page Content-->
-	<div class="page-content" >
+
+	<div class="page-content" ng-controller="sanphamAdmin-controller">
 		<div class="container-fluid">
 			<!-- Page-Title -->
 			<div class="row">
@@ -17,15 +18,20 @@
 						<div class="row">
 							<div class="col">
 								<h4 class="page-title">Danh Sách Sản Phẩm</h4>
+
 							</div>
+
 							<!--end col-->
 							<div class="col-auto align-self-center">
 								<a href="#" class="btn btn-sm btn-outline-primary"
 									id="Dash_Date"> <span class="day-name" id="Day_Name">Today:</span>&nbsp;
 									<span class="" id="Select_date">Jan 11</span> <i
 									data-feather="calendar" class="align-self-center icon-xs ms-1"></i>
-								</a> <a href="#" class="btn btn-sm btn-outline-primary"> <i
+								</a> <a href="#" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" title="Xuất Excel"> <i
 									data-feather="download" class="align-self-center icon-xs"></i>
+								</a> <a th:href="@{/admin/addProduct}" class="btn btn-sm btn-outline-primary"
+									data-toggle="tooltip" title="Thêm sản phẩm mới"> <i
+									class="mdi mdi-plus"></i>
 								</a>
 							</div>
 							<!--end col-->
@@ -41,7 +47,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
-						
+
 						<!--end card-header-->
 						<div class="card-body">
 							<table class="table mb-0 table-centered">
@@ -54,6 +60,7 @@
 										<th>Nhà Cung Cấp</th>
 										<th>Tên Sản Phẩm</th>
 										<th>Chiết Khấu(%)</th>
+										<th>Giá Góc</th>
 										<th>Đơn Vị Tính</th>
 										<th>Số Lượng</th>
 										<th>Ngày Tạo</th>
@@ -68,16 +75,18 @@
 									<tr ng-repeat="item in sanphams">
 										<td><img ng-src="{{item.hinhAnh}}" alt=""
 											class="rounded-circle thumb-xs me-1"></td>
+										<td>{{item.maSanPham}}</td>
+										<td>{{item.loaiSanPham.tenLoaiSanPham}}</td>
+										<td>{{item.nhaCungCap.tenNhaCungCap}}</td>
 										<td>{{item.tenSanPham}}</td>
-										<td>Tokyo</td>
-										<td>63</td>
-										<td>Tokyo</td>
-										<td>63</td>		
-										<td>Tokyo</td>
-										<td>63</td>
-										<td>Tokyo</td>
-										<td>$170,750</td>
-										<td>$170,750</td>
+										<td>{{item.chietKhauKH}}%</td>
+										<td>{{item.giaGoc | number}}</td>
+										<td>{{item.donViTinh.tenDonViTinh}}</td>
+										<td>{{item.soLuong}}</td>
+										<td>{{ item.ngayTao | date:'dd/MM/yyyy HH:mm:ss' }}</td>
+										<td>{{ item.soLuong === 0 ? 'Hết Hàng' : (item.trangThai
+											? 'Đang Bán' : 'Ngừng Bán') }}</td>
+										<td>{{item.noiBat ?'Có':'Không'}}</td>
 										<td class="text-right">
 											<div class="dropdown d-inline-block">
 												<a class="dropdown-toggle arrow-none" id="dLabel11"
@@ -87,14 +96,16 @@
 												</a>
 												<div class="dropdown-menu dropdown-menu-right"
 													aria-labelledby="dLabel11">
-													<a class="dropdown-item" ng-click="goToSinglePage(item.maSanPham)">Chi tiết sản phẩm</a> <a
-														class="dropdown-item" ng-click="delete(item.maSanPham)">Delete</a> <a
+													<a class="dropdown-item"
+														ng-click="goToSinglePage(item.maSanPham)">Chi tiết sản
+														phẩm</a> <a class="dropdown-item"
+														ng-click="delete(item.maSanPham)">Delete</a> <a
 														class="dropdown-item" href="#">Tasks Details</a>
 												</div>
 											</div>
 										</td>
 									</tr>
-									
+
 								</tbody>
 							</table>
 						</div>

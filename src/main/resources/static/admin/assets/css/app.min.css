@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Roboto:wght@300;400;500;700&amp;display=swap");
-
+.card{
+box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+#previewImage{
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
 .left-sidenav {
     min-width: 230px;
     max-width: 230px;
@@ -23,7 +28,7 @@
 }
 
 .left-sidenav .brand .logo .logo-sm {
-    height: 22px
+    height: 40px
 }
 
 .left-sidenav .brand .logo .logo-lg {
@@ -2875,7 +2880,7 @@ dt {
 }
 
 .modal-content .modal-header {
-    background-color: #1c2d41
+    background-color: #119744
 }
 
 .modal-content .modal-header .modal-title {

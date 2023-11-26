@@ -1,5 +1,7 @@
 package com.beermartket.alcohol.rest;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +35,7 @@ public class SanPham_restController {
 		return ResponseEntity.ok(sanphamDao.findAll());
 	}
 
-	@GetMapping("rest/{maSanPham}")
+	@GetMapping("/rest/{maSanPham}")
 	public ResponseEntity<Optional<SanPham>> getSanPhamByMaSanPham(@PathVariable Integer maSanPham) {
 		Optional<SanPham> sanPham = sanphamDao.findById(maSanPham);
 
@@ -45,12 +47,23 @@ public class SanPham_restController {
 
 	}
 
-	@GetMapping("rest/hinh/{maSanPham}")
+	@GetMapping("/rest/hinh/{maSanPham}")
 	public ResponseEntity<List<Hinh>> getHinhMaSanPham(@PathVariable Integer maSanPham) {
 		List<Hinh> hinhs = hinhDao.findHinhByMaSanPham(maSanPham);
 
 		if (hinhs != null) {
 			return ResponseEntity.ok(hinhs);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+
+	}
+	@GetMapping("/rest/sanpham/{maNhaCungCap}")
+	public ResponseEntity<List<SanPham>> getSanPhamNCC(@PathVariable Integer maNhaCungCap) {
+		List<SanPham> sanPhams = sanphamDao.findByNhaCungCap(maNhaCungCap);
+
+		if (sanPhams != null) {
+			return ResponseEntity.ok(sanPhams);
 		} else {
 			return ResponseEntity.notFound().build();
 		}
@@ -81,9 +94,34 @@ public class SanPham_restController {
 
 	}
 	
+	@PutMapping("/rest/update/gianhap/product/{maSanPham}")
+	public ResponseEntity<SanPham> updateGiaNhapSanPham(@PathVariable int maSanPham, @RequestBody SanPham sanPham) {
+	    // Kiểm tra xem sản phẩm có tồn tại không
+	    SanPham existingSanPham = sanphamDao.findById(maSanPham).orElse(null);
+	    
+	    if (existingSanPham != null) {
+	        // Cập nhật giaNhap thay vì soLuong
+	        existingSanPham.setGiaNhap(sanPham.getGiaNhap());
+	        sanphamDao.save(existingSanPham);
+	        return ResponseEntity.ok(existingSanPham);
+	    } else {
+	        return ResponseEntity.badRequest().build();
+	    }
+	}
+
+	
 	@PostMapping("/add/product")
 	public ResponseEntity<SanPham> addSanPham(@RequestBody SanPham sanpham) {
 	    try {
+	    	// Lấy thời gian hiện tại
+            LocalDateTime currentTime = LocalDateTime.now();
+            
+            // Chuyển đổi thành kiểu Timestamp
+            Timestamp currentTimestamp = Timestamp.valueOf(currentTime);
+
+            // Gán thời gian hiện tại cho trường NgayTao
+            sanpham.setNgayTao(currentTimestamp);
+	    	sanpham.setSoLuong(0);
 SanPham newSanPham = sanphamDao.save(sanpham); // Lưu item vào cơ sở dữ liệu
 	        return ResponseEntity.status(HttpStatus.CREATED).body(newSanPham);
 	    } catch (Exception e) {

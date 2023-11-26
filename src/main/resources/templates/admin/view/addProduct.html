@@ -5,10 +5,10 @@
 <head>
 
 <title>Thêm sản phẩm</title>
-<body ng-controller="sanphamAdmin-controller">
+<body >
 
 	<!-- Page Content-->
-	<div class="page-content">
+	<div class="page-content" ng-controller="sanphamAdmin-controller">
 		<div class="container-fluid">
 			<!-- Page-Title -->
 			<div class="row">
@@ -29,10 +29,6 @@
 									id="Dash_Date"> <span class="day-name" id="Day_Name">Today:</span>&nbsp;
 									<span class="" id="Select_date">Jan 11</span> <i
 									data-feather="calendar" class="align-self-center icon-xs ms-1"></i>
-								</a> <a type="button"
-									class="btn btn-outline-secondary btn-square btn-skew ms-2"
-									ng-click="create()"> <!-- Thêm lớp margin ms-2 --> 
-									<span>Thêm Sản Phẩm</span>
 								</a>
 							</div>
 
@@ -57,7 +53,7 @@
 							</h4>
 
 							<div class="upload">
-								<img id="previewImage" src="{{sanpham.hinhAnh}}"
+								<img id="previewImage" src="https://firebasestorage.googleapis.com/v0/b/formal-facet-395516.appspot.com/o/M%C3%A0u%20be%20V%C3%A0%20V%C3%B2ng%20tr%C3%B2n%20Gia%20%C4%91%C3%ACnh%20%E1%BA%A2nh%20v%C3%A0%20M%C3%A0u%20n%C6%B0%E1%BB%9Bc%20L%C3%A1%20%E1%BA%A2nh%20In%20%C4%90%C3%B3ng%20khung.png?alt=media&token=91d924a8-c300-4b9b-b7b6-4b802a8a15b9"
 									width="400" height="400" alt="">
 								<div class="round mb-3">
 									<input type="file" id="fileInput" onchange="previewImage()">
@@ -109,11 +105,6 @@
 
 								</select> <label for="floatingSelect">Đơn Vị Tính</label>
 							</div>
-							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="soLuong"
-									placeholder="Số Lượng" ng-model="sanpham.soLuong"> <label
-									for="soLuong">Số Lượng</label>
-							</div>
 						</div>
 						<!--end card-body-->
 					</div>
@@ -151,7 +142,7 @@
 								</div>
 							</div>
 							<!--end col-->
-<!-- 							<div class="col-lg-4">
+							<div class="col-lg-4">
 
 								<div class="form-floating mb-3">
 									<input type="text" class="form-control" id="tienGiam"
@@ -167,7 +158,7 @@
 									<label for="floatingPassword">Giá Khuyến Mãi</label>
 								</div>
 
-							</div> -->
+							</div>
 							<!--end col-->
 
 							<div class="col-lg-4">
@@ -287,11 +278,9 @@
 
 		
 			<!--end row-->
-			<button type="button mb-3"
-				class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"
-				id="add-column-btn">
-				<i class="fas fa-plus"></i>
-			</button>
+		<button type="button" ng-click="create()" class="btn btn-outline-secondary float-end"><i class="mdi mdi-plus me-2"></i>Thêm</button>
+
+			<br> <br>
 			<br> <br>
 
 		</div>

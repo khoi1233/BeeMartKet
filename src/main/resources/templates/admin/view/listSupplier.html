@@ -4,11 +4,11 @@
 
 <head>
 
-<title>Danh sách sản phẩm</title>
+<title>Danh sách nhà cung cấp</title>
 </head>
 <body >
 	<!-- Page Content-->
-	<div class="page-content" ng-controller="sanphamAdmin-controller" >
+	<div class="page-content" ng-controller="sanphamAdmin-controller">
 		<div class="container-fluid">
 			<!-- Page-Title -->
 			<div class="row">
@@ -16,7 +16,7 @@
 					<div class="page-title-box">
 						<div class="row">
 							<div class="col">
-								<h4 class="page-title">Danh Sách Nhập Hàng</h4>
+								<h4 class="page-title">Danh Sách Nhà Cung Cấp</h4>
 							</div>
 							<!--end col-->
 							<div class="col-auto align-self-center">
@@ -27,8 +27,8 @@
 								</a> <a href="#" class="btn btn-sm btn-outline-primary"> <i
 									data-feather="download" class="align-self-center icon-xs"></i>
 								</a>
-								<a th:href="@{/admin/addCoupon}" class="btn btn-sm btn-outline-primary"
-									data-toggle="tooltip" title="Tạo phiếu nhập mới"> <i
+								<a th:href="@{/admin/add/supplier}" class="btn btn-sm btn-outline-primary"
+									data-toggle="tooltip" title="Thêm nhà cung cấp"> <i
 									class="mdi mdi-plus"></i>
 								</a>
 							</div>
@@ -45,32 +45,34 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
-						
+
 						<!--end card-header-->
 						<div class="card-body">
 							<table class="table mb-0 table-centered">
 								<thead>
 									<tr>
-										<th>Mã Phiếu Nhập</th>
-										<th>Nhà Cung Cấp</th>
-										<th>Người Tạo</th>
-										<th>Ngày Nhập</th>
-										<th>Tổng Tiền</th>
-										<th>Trạng Thái</th>
-										<th>Ghi Chú</th>
+										<th></th>
+										<th>Mã Nhà Cung Cấp</th>
+										<th>Tên Nhà Cung Cấp</th>
+										<th>Số Điện Thoại</th>
+										<th>Website</th>
+										<th>Email</th>
+										<th>Địa Chỉ</th>
 										<th></th>
 									</tr>
 								</thead>
 
 
 								<tbody>
-									<tr ng-repeat="item in phieuhang">
-										<td>{{item.maPhieuNhap}}</td>
-										<td>{{item.nhaCungCap.tenNhaCungCap}}</td>
-										<td>{{item.taiKhoanAdmin.hoTen}}</td>
-										<td>{{item.ngayNhap}}</td>
-										<td>{{item.tongTien}}</td>
-										<td>{{item.trangThai}}</td>	
+									<tr ng-repeat="item in nhacungcap">
+										<td><img ng-src="{{item.hinhAnh}}" alt=""
+											class="rounded-circle thumb-xs me-1"></td>
+										<td>{{item.maNhaCungCap}}</td>
+										<td>{{item.tenNhaCungCap}}</td>
+										<td>{{item.soDienThoai}}</td>
+										<td>{{item.website}}</td>
+										<td>{{item.email}}</td>
+										<td>{{item.diaChi}}</td>
 										<td class="text-right">
 											<div class="dropdown d-inline-block">
 												<a class="dropdown-toggle arrow-none" id="dLabel11"
@@ -80,14 +82,16 @@
 												</a>
 												<div class="dropdown-menu dropdown-menu-right"
 													aria-labelledby="dLabel11">
-													<a class="dropdown-item" ng-click="goTodetailCoupon(item.maPhieuNhap)">Chi tiết phiếu nhập</a> <a
-														class="dropdown-item" href="#">Open Project</a> <a
+													<a class="dropdown-item"
+														ng-click="goNhaCungCap(item.maNhaCungCap)">Chi tiết
+														loại sản phẩm</a> <a class="dropdown-item"
+														ng-click="deleteLoai(item.maLoaiSanPham)">Delete</a> <a
 														class="dropdown-item" href="#">Tasks Details</a>
 												</div>
 											</div>
 										</td>
 									</tr>
-									
+
 								</tbody>
 							</table>
 						</div>

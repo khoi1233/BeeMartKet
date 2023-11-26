@@ -9,6 +9,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -38,21 +40,21 @@ public class KhuyenMaiHoaDon implements Serializable {
 	private int giaTriToiThieu;
 
 	@Column(name = "NgayTao")
-	private LocalDateTime ngayTao;
+	private Timestamp ngayTao;
 
 	@Column(name = "TenKhuyenMai")
 	private String tenKhuyenMai;
 
 	@Column(name = "Loai")
-	private boolean loai;
+	private Boolean loai;
 
 	@Column(name = "TrangThai")
-	private boolean trangThai;
+	private Boolean trangThai;
 
 	@Column(name = "SoLuong")
 	private int soLuong;
 
-	@Column(name = "ChieuKhau")
+	@Column(name = "ChietKhau")
 	private Integer chiecKhau;
 	
 	@Column(name = "NgayKetThuc")

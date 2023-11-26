@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin/layout/layout :: content(~{::body},~{::title})}">
+
+<head>
+
+<title>Chi tiết loại sản phẩm</title>
+<body >
+
+	<!-- Page Content-->
+	<div class="page-content" ng-controller="sanphamAdmin-controller">
+		<div class="container-fluid">
+			<!-- Page-Title -->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="page-title-box">
+						<div class="row">
+							<div class="col">
+								<h4 class="page-title">Chi Tiêt Loại Sản Phẩm</h4>
+								<!-- 								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="javascript:void(0);">Dastone</a></li>
+									<li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
+									<li class="breadcrumb-item active">Form Elements</li>
+								</ol> -->
+							</div>
+							<!--end col-->
+							<div class="col-auto align-self-center">
+								<a href="#" class="btn btn-sm btn-outline-primary"
+									id="Dash_Date"> <span class="day-name" id="Day_Name">Today:</span>&nbsp;
+									<span class="" id="Select_date">Jan 11</span> <i
+									data-feather="calendar" class="align-self-center icon-xs ms-1"></i>
+								</a>
+							</div>
+
+							<!--end col-->
+						</div>
+						<!--end row-->
+					</div>
+					<!--end page-title-box-->
+				</div>
+				<!--end col-->
+			</div>
+			<!--end row-->
+			<!-- end page title end breadcrumb -->
+
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">
+								Thông tin sản phẩm <span class="badge bg-soft-success font-12">New</span>
+							</h4>
+
+						</div>
+						<!--end card-header-->
+
+						<div class="card-body">
+
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="maLoaiSanPham"
+									ng-model="loaiSanPham.maLoaiSanPham"
+									placeholder="Mã Loại Sản Phẩm"> <label
+									for="maLoaiSanPham">Mã Loại Sản Phẩm</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="tenLoaiSanPham"
+									ng-model="loaiSanPham.tenLoaiSanPham"
+									placeholder="Tên Loại Sản Phẩm"> <label
+									for="tenLoaiSanPham">Tên Loại Sản Phẩm</label>
+							</div>
+							<div class="form-floating">
+								<textarea class="form-control"
+									placeholder="Leave a comment here" id="floatingTextarea2"
+									style="height: 100px" ng-model="loaiSanPham.ghiChu"></textarea>
+								<label for="floatingTextarea2">Ghi Chú</label>
+							</div>
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+				</div>
+				<!--end col-->
+			</div>
+			<!--end row-->
+
+			<!--end row-->
+			<button type="button" ng-click="updateCategoty(loaiSanPham)"
+				class="btn btn-outline-secondary float-end">
+				<i class="fas fa-save me-2"></i>Lưu
+			</button>
+
+			<br> <br>
+
+		</div>
+		<!-- container -->
+
+		<footer class="footer text-center text-sm-start ">
+			&copy;
+			<script>
+				document.write(new Date().getFullYear())
+			</script>
+			Dastone <span class="text-muted d-none d-sm-inline-block float-end">Crafted
+				with <i class="mdi mdi-heart text-danger"></i> by Mannatthemes
+			</span>
+		</footer>
+		<!--end footer-->
+	</div>
+	<!-- end page content -->
+	</div>
+	<!-- end page-wrapper -->
+
+</body>
+
+</html>

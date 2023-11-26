@@ -5,10 +5,10 @@
 <head>
 
 <title>Chi tiết sản phẩm</title>
-<body ng-controller="sanphamAdmin-controller">
+<body >
 
 	<!-- Page Content-->
-	<div class="page-content">
+	<div class="page-content" ng-controller="sanphamAdmin-controller">
 		<div class="container-fluid">
 			<!-- Page-Title -->
 			<div class="row">
@@ -29,10 +29,6 @@
 									id="Dash_Date"> <span class="day-name" id="Day_Name">Today:</span>&nbsp;
 									<span class="" id="Select_date">Jan 11</span> <i
 									data-feather="calendar" class="align-self-center icon-xs ms-1"></i>
-								</a> <a type="button"
-									class="btn btn-outline-secondary btn-square btn-skew ms-2"
-									ng-click="updateProduct(sanpham)"> <!-- Thêm lớp margin ms-2 -->
-									<span>Lưu Thông Tin</span>
 								</a>
 							</div>
 
@@ -222,20 +218,16 @@
 								labels that float over your input fields.</p>
 						</div>
 						<!--end card-header-->
-						<div ng-show="showCard" class="card-body">
+						<div class="card-body">
 							<div class="row g-2">
 								<div class="col-md">
 									<div class="media mb-3">
 										<img
-											src="/admin/assets/images/users/{{sanpham.nhaCungCap.hinhAnh}}"
-											alt="" style="width: 100px;" class="rounded-circle">
+											src="{{sanpham.nhaCungCap.hinhAnh}}"
+											alt="" style="width: 100px; height:100px;" class="rounded-circle">
 										<div class="media-body align-self-center ms-3 text-truncate">
 											<h3 class="my-0 fw-bold">{{sanpham.nhaCungCap.tenNhaCungCap}}</h3>
 											<p class="text-muted mb-2 font-13">{{sanpham.nhaCungCap.email}}</p>
-											<!-- <button type="button"
-												class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm">
-												<i class="fas fa-camera"></i>
-											</button> -->
 
 										</div>
 										<!--end media-body-->
@@ -267,7 +259,7 @@
 							</div>
 						</div>
 						<!--end card-body-->
-						<div ng-show="!showCard">
+						<!-- <div ng-show="!showCard">
 							<div class="row g-2">
 								<div class="col-md">
 									<div class="media mb-3">
@@ -276,13 +268,13 @@
 										<div class="media-body align-self-center ms-3 text-truncate">
 											<h3 class="my-0 fw-bold">{{nhacungcap1.tenNhaCungCap}}</h3>
 											<p class="text-muted mb-2 font-13">{{nhacungcap1.email}}</p>
-											<!-- <button type="button"
+											<button type="button"
 												class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm">
 												<i class="fas fa-camera"></i>
-											</button> -->
+											</button>
 
 										</div>
-										<!--end media-body-->
+										end media-body
 									</div>
 									<div class="form-floating mb-3">
 										<input type="text" class="form-control" id="Website"
@@ -309,7 +301,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 					<!--end card-->
 				</div>
@@ -527,6 +519,7 @@
 				id="add-column-btn">
 				<i class="fas fa-plus"></i>
 			</button>
+			<button type="button" ng-click="updateProduct(sanpham)" class="btn btn-outline-secondary float-end"><i class="mdi mdi-plus me-2"></i>Thêm</button>
 			<br> <br>
 
 		</div>
