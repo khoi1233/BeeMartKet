@@ -9,10 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+<<<<<<< HEAD
 import com.beermartket.alcohol.model.Hinh;
 import com.beermartket.alcohol.model.SanPham;
 import com.beermartket.alcohol.repository.HinhReponsitory;
+=======
+import com.beermartket.alcohol.model.TaiKhoan;
+>>>>>>> thanh02
 import com.beermartket.alcohol.repository.SanPhamRepository;
+import com.beermartket.alcohol.repository.TaiKhoanRepository;
 
 @Controller
 @RequestMapping("/admin")
@@ -20,14 +25,29 @@ public class HomeAdminController {
 	@Autowired
 	SanPhamRepository spDaoPhamRepository;
 	
+<<<<<<< HEAD
 	@Autowired HinhReponsitory hinhDao;
 
+=======
+	@Autowired
+	private TaiKhoanRepository taiKhoanRepository;
+	
+>>>>>>> thanh02
 	@RequestMapping("/home")
 	public String Home() {
 
 		return "admin/view/index";
 	}
-
+	@RequestMapping("/listAccount")
+	public String listAccount(Model model) {
+		List<TaiKhoan> taiKhoanList = taiKhoanRepository.findAll();
+        model.addAttribute("taiKhoanList", taiKhoanList);
+		return "admin/view/listAccount";
+	}
+	@RequestMapping("/addAccount")
+	public String addAccount() {
+		return "admin/view/addAccount";
+	}
 	@RequestMapping("/listProduct")
 	public String listProduct(Model model) {
 

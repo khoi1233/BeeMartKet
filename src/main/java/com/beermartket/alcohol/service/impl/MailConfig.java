@@ -26,4 +26,8 @@ public class MailConfig {
 
         return mailSender;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> thanh02

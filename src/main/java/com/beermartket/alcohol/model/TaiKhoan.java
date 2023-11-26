@@ -29,7 +29,12 @@ public class TaiKhoan implements Serializable {
 	@Column(name = "MaTaiKhoan")
 	private int maTaiKhoan;
 
+<<<<<<< HEAD
 	@Column(name = "Email")
+=======
+
+	@Column(name="Email")
+>>>>>>> thanh02
 	private String email;
 
 	@Column(name = "HinhAnh")
@@ -44,7 +49,13 @@ public class TaiKhoan implements Serializable {
 	@Column(name = "MaHoaMatKhau")
 	private String maHoaMatKhau;
 
+<<<<<<< HEAD
 	@Column(name = "TenDangNhap")
+=======
+
+
+	@Column(name="TenDangNhap")
+>>>>>>> thanh02
 	private String tenDangNhap;
 
 	@Column(name = "NgayTao")

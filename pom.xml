@@ -66,10 +66,13 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+<<<<<<< HEAD
 		
 		
 		
 		
+=======
+>>>>>>> thanh02
 		<!--**************************************Thanh đã thêm ******************************-->
 		<dependency>
     		<groupId>org.mindrot</groupId>
@@ -88,6 +91,11 @@
     		<version>1.1.1</version> <!-- Sử dụng phiên bản mới nhất hoặc phiên bản mà bạn muốn sử dụng -->
 		</dependency>
 		<!--**********************************************************************************-->
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> thanh02
 	</dependencies>
 
 

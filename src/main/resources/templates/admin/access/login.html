@@ -32,7 +32,7 @@
                     <div class="user-form-logo"><a href="/home/home"><img src="/images/logo.png" alt="logo"></a></div>
                     <div class="user-form-card">
                         <div class="user-form-title">
-                            <h2>Xin chào!</h2>
+                            <h2>Đăng nhập với tài khoản admin!</h2>
                             <p>Sử dụng thông tin đăng nhập của bạn để truy cập</p>
                         </div>
                         <div class="user-form-group">
@@ -49,28 +49,28 @@
                                 <p>Hoặc</p>
                             </div>
 							
-							<form class="user-form" action="/access/login" method="post">
-							<div  th:if="${error}" style="text-align: center;
+							<form class="user-form" action="/admin/access/login" method="post">
+							<div  th:if="${erroradmin}" style="text-align: center;
 																color: #BA313E;
 																margin-bottom: 2%;
 																font-size: 90%;																
 																background-color: #49F5A7;">
-								<p class="error-message" th:text="${error}"></p>
+								<p class="error-message" th:text="${erroradmin}"></p>
 							</div>
                                 <div class="form-group"><input type="username" class="form-control" name="username"
-                                        placeholder="Tên tài khoản" th:value="${username}" > </div>
+                                        placeholder="Tên tài khoản" th:value="${usernameadmin}"> </div>
                                 <div class="form-group"><input type="password" class="form-control" name="password"
-                                        placeholder="Mật khẩu" th:value="${password}"></div>
+                                        placeholder="Mật khẩu" th:value="${passwordadmin}"></div>
                                 <div class="form-check mb-3"><input class="form-check-input" type="checkbox" value="on"
                                         name="rememberMe" id="rememberMe"><label class="form-check-label" for="check" >Nhớ mật khẩu</label></div>
                                 <div class="form-button"><button type="submit">Đăng nhập</button>
-                                    <p>Bạn quên mật khẩu?<a th:href="@{/access/reset-password}">lấy lại mật khẩu</a></p>
+                                    <p>Bạn quên mật khẩu?<a th:href="@{/admin/access/reset-password}">lấy lại mật khẩu</a></p>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <div class="user-form-remind">
-                        <p>Bạn chưa có tài khoản?<a th:href="@{/access/register}">đăng ký</a></p>
+                        
                     </div>
                     <div class="user-form-footer">
                         <p>Bee Market | &COPY; Bản quyền thuộc về <a href="#">Bee Team</a></p>
