@@ -87,7 +87,6 @@ public class AccessController {
 				System.out.println(tk.getMatKhau());
 				
 				if (hashedUserInputPassword.equals(tk.getMatKhau())) {
-					System.out.println("Phong ăn cức");
 					model.addAttribute("error", "Đăng nhập thành công");
 					session.setAttribute(SessionAttr.CURRENT_USER, tk.getTenDangNhap());
 					session.setAttribute(SessionAttr.User, tk.getTenDangNhap());
@@ -294,5 +293,42 @@ public class AccessController {
 	     }
 
 	     return "redirect:/access/confirm-mail-reset-password";
+	 }
+	 
+	 @RequestMapping("/access/change-password2")
+		public String changepassword2(Model model) {
+		 
+			return "access/change-password2";
+		}
+	 
+	 @RequestMapping(value = "/access/change-password2", method = RequestMethod.POST)
+	 @ResponseBody
+	 public String changePassword2(@RequestParam("password") String password,
+	                               @RequestParam("newpassword") String newpassword) {
+	     String currentUser = (String) session.getAttribute(SessionAttr.CURRENT_USER);
+
+	     if (currentUser != null) {
+	         TaiKhoan tk = taikhoanrp.findByTenDangNhap(currentUser);
+
+	         String hashedUserInputPassword2 = BCrypt.hashpw(password, tk.getMaHoaMatKhau());
+
+	         if (hashedUserInputPassword2.equalsIgnoreCase(tk.getMatKhau())) {
+	             String salt = BCrypt.gensalt(12);
+	             String hashedUserInputPassword = BCrypt.hashpw(newpassword, salt);
+	             tk.setMatKhau(hashedUserInputPassword);
+	             tk.setMaHoaMatKhau(salt);
+	             taikhoanrp.save(tk);
+	             session.removeAttribute(SessionAttr.CURRENT_USER);
+	     		session.removeAttribute(SessionAttr.Admin);
+	     		session.removeAttribute(SessionAttr.User);
+	     		session.removeAttribute(SessionAttr.SUPER_ADMIN);
+	     		session.removeAttribute(SessionAttr.IMAGE);
+	             return "";
+	         } else {
+	             return "Mật khẩu cũ không chính xác";
+	         }
+	     } else {
+	         return "access/change-password2";
+	     }
 	 }
 }

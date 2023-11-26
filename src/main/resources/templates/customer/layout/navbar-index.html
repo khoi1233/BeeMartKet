@@ -346,30 +346,29 @@
 						<li class="navbar-item dropdown"><a
 							class="navbar-link dropdown-arrow" href="#">authentic</a>
 							<ul class="dropdown-position-list">
-								<li><a href="/access/login">login</a></li>
-								<li><a href="/access/register">register</a></li>
-								<li><a href="/access/reset-password">reset password</a></li>
-								<li><a href="/access/change-password">change password</a></li>
+								
+								
 								
 								<th:block
 									th:if="${session.user == null and session.admin == null and session.superadmin == null}">
-
-									</a>
+									<li><a href="/access/login">Đăng nhập</a></li>
+									<li><a href="/access/register">Đăng ký</a></li>
+									<li><a href="/access/reset-password">Quên mật khẩu</a></li>
 								</th:block>
 								<th:block th:if="${session.user != null}">
-
+									<li><a href="/access/change-password2">Đổi mật khẩu</a></li>
 									<li><a th:href="@{/home/log-out}" class="">Đăng xuất</a></li>
 
 								</th:block>
 
 								<th:block th:if="${session.admin != null}">
-
+									<li><a href="/access/change-password2">Đổi mật khẩu</a></li>
 									<li><a th:href="@{/home/log-out}" class="">Đăng xuất</a></li>
 
 								</th:block>
 
 								<th:block th:if="${session.superadmin != null}">
-
+									<li><a href="/access/change-password2">Đổi mật khẩu</a></li>
 									<li><a th:href="@{/home/log-out}" class="">Đăng xuất</a></li>
 
 								</th:block>
