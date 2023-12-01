@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin/layout/layout :: content(~{::body},~{::title})}">
+
+<head>
+
+<title>Tạo Phiếu Nhâp Sản Phẩm</title>
+<body>
+
+	<!-- Page Content-->
+	<div class="page-content" ng-controller="phieunhap">
+		<div class="container-fluid">
+			<!-- Page-Title -->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="page-title-box">
+						<div class="row">
+							<div class="col">
+								<h4 class="page-title">Phiếu Nhập Hàng</h4>
+								<!-- 								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="javascript:void(0);">Dastone</a></li>
+									<li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
+									<li class="breadcrumb-item active">Form Elements</li>
+								</ol> -->
+							</div>
+							<!--end col-->
+							<div class="col-auto align-self-center">
+								<a href="#" class="btn btn-sm btn-outline-primary"
+									id="Dash_Date"> <span class="day-name" id="Day_Name">Today:</span>&nbsp;
+									<span class="" id="Select_date">Jan 11</span> <i
+									data-feather="calendar" class="align-self-center icon-xs ms-1"></i>
+								</a>
+							</div>
+
+							<!--end col-->
+						</div>
+						<!--end row-->
+					</div>
+					<!--end page-title-box-->
+				</div>
+				<!--end col-->
+			</div>
+			<!--end row-->
+			<!-- end page title end breadcrumb -->
+
+
+			<div class="row justify-content-center">
+				<div class="col mx-auto">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">
+								Tạo Phiếu Nhập <span class="badge bg-soft-success font-12">New</span>
+							</h4>
+
+							<div class="upload">
+								<img id="previewImage" src="{{nhacungcap.hinhAnh}}" width="400"
+									height="400" alt=""> <br> <br>
+								<div class="round mb-3">
+									<i class="fas fa-plus" data-toggle="tooltip"
+										title="Chọn Nhà Cung Cấp" data-bs-toggle="modal"
+										data-bs-target="#nhacungcap" style="color: #fff;"></i>
+								</div>
+
+								<label ng-show="showWarning"
+									style="text-align: center; display: block; color: red;">Vui
+									lòng chọn nhà cung cấp</label>
+
+
+
+
+							</div>
+
+
+						</div>
+						<!--end card-header-->
+
+						<div class="card-body">
+
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="maLoaiSanPham"
+									ng-model="nhacungcap.maNhaCungCap"
+									placeholder="Mã Loại Sản Phẩm" disabled> <label
+									for="maLoaiSanPham">Mã Nhà Cung Cấp</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="tenLoaiSanPham"
+									ng-model="nhacungcap.tenNhaCungCap"
+									placeholder="Tên Loại Sản Phẩm" disabled> <label
+									for="tenLoaiSanPham">Tên Nhà Cung Cấp</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="tenLoaiSanPham"
+									ng-model="nhacungcap.soDienThoai"
+									placeholder="Tên Loại Sản Phẩm" disabled> <label
+									for="tenLoaiSanPham">Số Điện Thoại</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="tenLoaiSanPham"
+									ng-model="nhacungcap.diaChi" placeholder="Tên Loại Sản Phẩm" disabled>
+								<label for="tenLoaiSanPham">Địa Chỉ</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="tenLoaiSanPham"
+									ng-model="nhacungcap.website" placeholder="Tên Loại Sản Phẩm" disabled>
+								<label for="tenLoaiSanPham">Website</label>
+							</div>
+							<div class="form-floating">
+								<textarea class="form-control"
+									placeholder="Leave a comment here" id="ghichu"
+									style="height: 100px" ng-model="nhacungcap.ghiChu" disabled></textarea>
+								<label for="floatingTextarea2">Ghi Chú</label>
+							</div>
+						</div>
+						<div class="card-footer">
+							<!-- Nút thứ nhất -->
+							<button type="button" ng-click="chonSP(nhacungcap)"
+								class="btn btn-success" fdprocessedid="fumztf"
+								data-bs-toggle="modal" data-bs-target="#sanpham"
+								ng-show="showFirstButton">
+								<i class="mdi mdi-plus me-2"></i>Chọn Sản Phẩm Nhập
+							</button>
+
+							<!-- Nút thứ hai -->
+							<button type="button" class="btn btn-success"
+								fdprocessedid="fumztf" ng-click="chonSanPham(item)"
+								data-bs-toggle="modal" data-bs-target="#sanpham" id="myButton"
+								ng-show="showSecondButton">
+								<i class="mdi mdi-plus me-2"></i>Chọn Sản Phẩm Nhập
+							</button>
+						</div>
+
+
+
+
+
+					</div>
+					<div class="modal fade bd-example-modal-xl" id="sanpham"
+						tabindex="-1" role="dialog"
+						aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-xl" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h6 class="modal-title m-0" id="myExtraLargeModalLabel">Tất
+										cả sản phẩm</h6>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+
+								</div>
+								<!--end modal-header-->
+								<div class="modal-body">
+
+									<div class="row">
+										<style>
+.table td {
+	text-align: left;
+	padding-left: 200px;
+}
+</style>
+										<table>
+											<thead>
+												<tr>
+
+													<th></th>
+													<th>Mã Sản Phẩm</th>
+													<th>Tên Sản Phẩm</th>
+													<th>Loại Sản Phẩm</th>
+													<th>Giá Giá Nhập</th>
+													<th>Giá Góc</th>
+													<th>Đơn Vị Tính</th>
+													<th>Số Lượng Hiện Tại</th>
+													<th>Chọn</th>
+												</tr>
+											</thead>
+
+											<tbody>
+												<tr ng-repeat="item in sanphamncc">
+													<td><img ng-src="{{item.hinhAnh}}" alt=""
+														class="rounded-circle thumb-xs me-1"></td>
+													<td>{{item.maSanPham}}</td>
+													<td>{{item.tenSanPham}}</td>
+													<td>{{item.loaiSanPham.tenLoaiSanPham}}</td>
+													<td>{{item.giaNhap | number}}</td>
+													<td>{{item.giaGoc | number}}</td>
+													<td>{{item.donViTinh.tenDonViTinh}}</td>
+													<td>{{item.soLuong}}</td>
+													<td><i class="fas fa-check"
+														ng-click="chonSanPham(item)"
+														ng-class="{'text-success': item.selected}"></i></td>
+												</tr>
+											</tbody>
+										</table>
+
+
+									</div>
+								</div>
+								<!--end modal-body-->
+								<div class="modal-footer">
+									<button type="button" class="btn btn-soft-secondary btn-sm"
+										data-bs-dismiss="modal">Close</button>
+								</div>
+								<!--end modal-footer-->
+							</div>
+							<!--end modal-content-->
+						</div>
+						<!--end modal-dialog-->
+					</div>
+					<!--end modal-->
+
+					<!--end card-->
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<style>
+.table td {
+	text-align: left;
+	padding-left: 200px;
+}
+
+td input {
+	border: none; /* Loại bỏ viền của ô nhập */
+	border-bottom: 1px solid black;
+	/* Giữ lại viền bên phải của ô trước đó */
+}
+</style>
+								<table>
+									<thead>
+										<tr>
+
+											<th></th>
+											<th>Mã Sản Phẩm</th>
+											<th>Tên Sản Phẩm</th>
+											<th>Loại Sản Phẩm</th>
+											<th>Giá Giá Nhập</th>
+											<th>Đơn Vị Tính</th>
+											<th>Số Lượng</th>
+											<th>Ghi Chú</th>
+											<th>Thao Tác</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="item in sanphamdachon">
+											<td><img ng-src="{{item.hinhAnh}}" alt=""
+												class="rounded-circle thumb-xs me-1"></td>
+											<td>{{item.maSanPham}}</td>
+											<td>{{item.tenSanPham}}</td>
+											<td>{{item.loaiSanPham.tenLoaiSanPham}}</td>
+											<td><input type="text" ng-model="item.giaNhap | number" /><i
+												class="dripicons-pencil" data-bs-toggle="modal"
+												data-bs-target="#exampleModalSmall"
+												ng-click="editGiaNhap(item)"></i></td>
+											<td>{{item.donViTinh.tenDonViTinh}}</td>
+											<td><input type="number" ng-model="item.soLuong"
+												ng-init="item.soLuong = item.soLuong || 0" /></td>
+											<td>
+											</td>
+
+											<td><a class="text-dark"
+												ng-click="xoaSanPhamDaChon(item)"> <i
+													class="mdi mdi-close-circle-outline font-18"></i></a></td>
+
+										</tr>
+
+									</tbody>
+								</table>
+	
+
+								<div class="modal fade bd-example-modal-sm"
+									id="exampleModalSmall" tabindex="-1" role="dialog"
+									aria-labelledby="mySmallModalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-sm" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h6 class="modal-title m-0" id="mySmallModalLabel">Số
+													Lượng</h6>
+												<button type="button" class="btn-close"
+													data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<!--end modal-header-->
+											<div class="modal-body text-center">
+												<img src="{{sanpham.hinhAnh}}" alt=""
+													class="thumb-lg rounded-circle">
+												<h5 class="mb-1">{{sanpham.tenSanPham}}</h5>
+												<style>
+input[type="text"] {
+	border: none;
+	border-bottom: 1px solid black;
+}
+</style>
+												<input type="text" ng-model="sanpham.giaNhap"
+													placeholder="Giá Nhập" />
+											</div>
+											<!--end modal-body-->
+											<div class="modal-footer">
+												<button type="button" class="btn btn-soft-primary btn-sm"
+													ng-click=updateGiaNhap(sanpham)>Lưu</button>
+												<button type="button" class="btn btn-soft-secondary btn-sm"
+													data-bs-dismiss="modal">Close</button>
+											</div>
+											<!--end modal-footer-->
+										</div>
+										<!--end modal-content-->
+									</div>
+									<!--end modal-dialog-->
+								</div>
+								<!--end modal-->
+
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+				<!--end col-->
+
+			</div>
+			<!--end row-->
+			<div class="modal fade bd-example-modal-lg" id="nhacungcap"
+				tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h6 class="modal-title m-0" id="myLargeModalLabel">Tất cả
+								nhà cung cấp</h6>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<!--end modal-header-->
+						<!-- Modal -->
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-3" ng-repeat="item in nhacungcaps">
+									<div class="card">
+										<div class="card-body">
+											<a ng-click="chonNCC(item)"> <img width="150"
+												src="{{item.hinhAnh}}" alt="" class="d-block mx-auto my-4"
+												height="150">
+												<div class="row my-4">
+													<h5 class="product-name">
+														{{item.tenNhaCungCap}}
+														<h6 class="product-price">
+															<span>{{item.diaChi}}</span>
+														</h6>
+														<h6 class="product-price">
+															<span>{{item.website}}</span>
+														</h6>
+														<h6 class="product-price">
+															<span>{{item.email}}</span>
+														</h6>
+												</div>
+											</a>
+										</div>
+										<!--end card-body-->
+									</div>
+									<!--end card-->
+								</div>
+
+								<!--end col-->
+							</div>
+						</div>
+						<!--end modal-body-->
+						<div class="modal-footer">
+							<button type="button" class="btn btn-soft-secondary btn-sm"
+								data-bs-dismiss="modal">Close</button>
+						</div>
+						<!--end modal-footer-->
+					</div>
+					<!--end modal-content-->
+				</div>
+				<!--end modal-dialog-->
+			</div>
+			<!--end modal-->
+
+							<div class="card">
+									<div class="card-body">
+										<div class="form-floating">
+											<textarea class="form-control"
+												placeholder="Leave a comment here" id="floatingTextarea2"
+												style="height: 100px" ng-model ="ghichu"></textarea>
+											<label for="floatingTextarea2">Ghi Chú</label>
+										</div>
+									</div>
+								</div>
+			<button type="button"
+				ng-click="createPhieuNhapHang(nhacungcap.maNhaCungCap)"
+				class="btn btn-outline-secondary float-end">
+				<i class="mdi mdi-plus me-2"></i>Tạo Phiếu Nhập Hàng
+			</button>
+			<br> <br>
+
+		</div>
+		<!-- container -->
+
+		<footer class="footer text-center text-sm-start ">
+			&copy;
+			<script>
+				document.write(new Date().getFullYear())
+			</script>
+			Dastone <span class="text-muted d-none d-sm-inline-block float-end">Crafted
+				with <i class="mdi mdi-heart text-danger"></i> by Mannatthemes
+			</span>
+		</footer>
+		<!--end footer-->
+	</div>
+	<!-- end page content -->
+	</div>
+	<!-- end page-wrapper -->
+
+	<script>
+		function previewImage() {
+			var preview = document.getElementById('previewImage');
+			var fileInput = document.getElementById('fileInput');
+			var files = fileInput.files;
+
+			if (files.length > 0) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					preview.src = e.target.result;
+				};
+				reader.readAsDataURL(files[0]);
+			}
+		}
+	</script>
+
+</body>
+
+</html>

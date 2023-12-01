@@ -1,6 +1,7 @@
 package com.beermartket.alcohol.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -15,6 +16,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,6 +41,9 @@ public class SanPham implements Serializable {
 
 	@Column(name="GiaGoc")
 	private Double giaGoc;
+	
+	@Column(name="GiaNhap")
+	private Double giaNhap;
 
 	@Column(name="MoTa")
 	private String moTa;
@@ -67,6 +73,10 @@ public class SanPham implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy="sanPham")
 	private List<ChiTietHoaDon> chiTietHoaDons;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="sanPham")
+	private List<ChiTietPhieuNhapHang> chiTietPhieuNhapHangs;
 
 	@JsonIgnore
 	@OneToMany(mappedBy="sanPham")
@@ -93,6 +103,5 @@ public class SanPham implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="MaDonViTinh")
 	private DonViTinh donViTinh;
-
 
 }

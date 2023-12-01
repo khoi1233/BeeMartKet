@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
@@ -14,7 +16,6 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Data
 @Entity
@@ -25,37 +26,38 @@ public class NhaCungCap implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="MaNhaCungCap")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "MaNhaCungCap")
 	private int maNhaCungCap;
 
-	@Column(name="DiaChi")
+	@Column(name = "DiaChi")
 	private String diaChi;
 
-	@Column(name="GhiChu")
+	@Column(name = "GhiChu")
 	private String ghiChu;
 
-	@Column(name="SoDienThoai")
+	@Column(name = "SoDienThoai")
 	private String soDienThoai;
 
-	@Column(name="TenNhaCungCap")
+	@Column(name = "TenNhaCungCap")
 	private String tenNhaCungCap;
 
-	@Column(name="Website")
+	@Column(name = "Website")
 	private String website;
 	
-	@Column(name="HinhAnh")
+	@Column(name = "HinhAnh")
 	private String hinhAnh;
 	
-	@Column(name="Email")
+	@Column(name = "Email")
 	private String email;
 
-	
-	  @JsonIgnore	  
-	  @OneToMany(mappedBy="nhaCungCap") private List<PhieuNhapHang> phieuNhapHangs;
-	 
 
 	@JsonIgnore
-	@OneToMany(mappedBy="nhaCungCap")
+	@OneToMany(mappedBy = "nhaCungCap")
+	private List<PhieuNhapHang> phieuNhapHangs;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "nhaCungCap")
 	private List<SanPham> sanPhams;
 
 }

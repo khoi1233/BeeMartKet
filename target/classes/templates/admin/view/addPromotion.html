@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin/layout/layout :: content(~{::body},~{::title})}">
+
+<head>
+
+<title>Thêm khuyến mãi</title>
+<body >
+
+	<!-- Page Content-->
+	<div class="page-content" ng-controller="sanphamAdmin-controller">
+		<div class="container-fluid">
+			<!-- Page-Title -->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="page-title-box">
+						<div class="row">
+							<div class="col">
+								<h4 class="page-title">Tạo Voucher</h4>
+							</div>
+							<!--end col-->
+							<div class="col-auto align-self-center">
+								<a href="#" class="btn btn-sm btn-outline-primary"
+									id="Dash_Date"> <span class="day-name" id="Day_Name">Today:</span>&nbsp;
+									<span class="" id="Select_date">Jan 11</span> <i
+									data-feather="calendar" class="align-self-center icon-xs ms-1"></i>
+								</a>
+							</div>
+
+							<!--end col-->
+						</div>
+						<!--end row-->
+					</div>
+					<!--end page-title-box-->
+				</div>
+				<!--end col-->
+			</div>
+			<!--end row-->
+			<!-- end page title end breadcrumb -->
+
+
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="card">
+						<div class="card-header mb-3">
+							<h4 class="card-title">
+								Thông Tin Voucher <span class="badge bg-soft-success font-12">New</span>
+							</h4>
+
+						</div>
+						<div class="upload">
+							<img id="previewImage" src="https://firebasestorage.googleapis.com/v0/b/formal-facet-395516.appspot.com/o/M%C3%A0u%20be%20V%C3%A0%20V%C3%B2ng%20tr%C3%B2n%20Gia%20%C4%91%C3%ACnh%20%E1%BA%A2nh%20v%C3%A0%20M%C3%A0u%20n%C6%B0%E1%BB%9Bc%20L%C3%A1%20%E1%BA%A2nh%20In%20%C4%90%C3%B3ng%20khung.png?alt=media&token=91d924a8-c300-4b9b-b7b6-4b802a8a15b9" width="320"
+								height="320" alt="">
+							<div class="round mb-3">
+								<input type="file" id="fileInput" onchange="previewImage()">
+								<i class="fa fa-camera" style="color: #fff;"></i>
+							</div>
+						</div>
+						<!--end card-header-->
+
+						<div class="card-body">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="maKhuyenMai"
+									ng-model="khuyenmai.maKhuyenMai" placeholder="Mã Loại Sản Phẩm">
+								<label for="maKhuyenMai">Mã Khuyến Mãi</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="tenKhuyenMai"
+									ng-model="khuyenmai.tenKhuyenMai"
+									placeholder="Tên Loại Sản Phẩm"> <label
+									for="tenKhuyenmai">Tên Khuyến Mãi</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="chiecKhau"
+									ng-model="khuyenmai.chiecKhau" placeholder="Tên Loại Sản Phẩm">
+								<label for="chiecKhau">Chiết Khấu</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="soLuong"
+									ng-model="khuyenmai.soLuong" placeholder="Tên Loại Sản Phẩm">
+								<label for="soLuong">Số Lượng</label>
+							</div>
+
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+				</div>
+				<div class="col-lg-6">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">
+								Hạn sử dụng <span class="badge bg-soft-success font-12">New</span>
+							</h4>
+							<p class="text-muted mb-0">Create beautifully simple form
+								labels that float over your input fields.</p>
+						</div>
+						<!--end card-header-->
+						<div class="card-body">
+							<div class="row g-2">
+								<div class="col-md">
+									<div class="form-floating mb-3">
+										<input type="datetime-local" class="form-control" id="ngayTao"
+											placeholder="Sô Điện Thoại" ng-model="khuyenmai.ngayTao">
+										<label for="floatingInputGrid">Ngày Bắt Đầu Khuyến Mãi</label>
+									</div>
+									<div class="form-floating mb-3">
+										<input type="datetime-local" class="form-control"
+											id="ngayKetThuc" placeholder="ngày kết thúc"
+											ng-model="khuyenmai.ngayKetThuc"> <label
+											for="ngayKetThuc">Ngày Kết Thúc Khuyến Mãi</label>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">
+								Trạng Thái<span class="badge bg-soft-success font-12">New</span>
+							</h4>
+							<p class="text-muted mb-0">Create beautifully simple form
+								labels that float over your input fields.</p>
+						</div>
+						<!--end card-header-->
+						<div class="card-body">
+							<div class="row g-2">
+								<div class="col-md">
+									<div class="form-floating mb-3">
+										<input type="text" class="form-control" id="giaTriToiThieu"
+											placeholder="Website" ng-model="khuyenmai.giaTriToiThieu">
+										<label for="Website">Giá Trị Tối Thiểu</label>
+									</div>
+									<div class="form-floating mb-3">
+										<input type="email" class="form-control" id="giaTriKhuyenMai"
+											placeholder="Giá Trị tối đa"
+											ng-model="khuyenmai.giaTriKhuyenMai"> <label
+											for="giaTriKhuyenMai">Giá Trị Tối Đa</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">
+								Giá Trị Của Voucher <span class="badge bg-soft-success font-12">New</span>
+							</h4>
+							<p class="text-muted mb-0">Create beautifully simple form
+								labels that float over your input fields.</p>
+						</div>
+						<!--end card-header-->
+						<div class="card-body">
+							<div class="row mb-3">
+
+								<div class="col-md-6">
+									<label class="col-md-3 my-1 form-label">Trạng Thái</label><br>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="trangThai"
+											id="hoatdong" ng-value="true" ng-model="khuyenmai.trangThai">
+										<label class="form-check-label" for="inlineRadio1">Hoạt
+											Động</label>
+									</div>
+									<div class="form-check form-check-inline mb-3">
+										<input class="form-check-input" type="radio" name="trangThai"
+											id="tamngung" ng-value="false" ng-model="khuyenMai.trangThai">
+										<label class="form-check-label" for="inlineRadio3">Tạm
+											Ngưng</label>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<label class="col-md-3 my-1 form-label">Loại</label><br>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="loai"
+											id="hoatdong2" ng-value="true" ng-model="khuyenmai.loai">
+										<label class="form-check-label" for="inlineRadio1">True
+										</label>
+									</div>
+									<div class="form-check form-check-inline mb-3">
+										<input class="form-check-input" type="radio" name="loai"
+											id="tamngung2" ng-value="false" ng-model="khuyenmai.loai">
+										<label class="form-check-label" for="inlineRadio3">False</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--end card-->
+				</div>
+				<!--end col-->
+			</div>
+			<!--end row-->
+
+		</div>
+
+
+		<!--end row-->
+		<button type="button" ng-click="createKhuyenMai()"
+			class="btn btn-outline-secondary float-end">
+			<i class="mdi mdi-plus me-2"></i>Thêm
+		</button>
+
+		<br> <br> <br> <br>
+
+	</div>
+	<!-- container -->
+
+	<footer class="footer text-center text-sm-start ">
+		&copy;
+		<script>
+			document.write(new Date().getFullYear())
+		</script>
+		Dastone <span class="text-muted d-none d-sm-inline-block float-end">Crafted
+			with <i class="mdi mdi-heart text-danger"></i> by Mannatthemes
+		</span>
+	</footer>
+	<!--end footer-->
+	</div>
+	<!-- end page content -->
+	</div>
+	<!-- end page-wrapper -->
+
+	<script>
+		function previewImage() {
+			var preview = document.getElementById('previewImage');
+			var fileInput = document.getElementById('fileInput');
+			var files = fileInput.files;
+
+			if (files.length > 0) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					preview.src = e.target.result;
+				};
+				reader.readAsDataURL(files[0]);
+			}
+		}
+	</script>
+
+
+</body>
+
+</html>

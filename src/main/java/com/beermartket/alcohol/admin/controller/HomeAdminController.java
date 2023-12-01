@@ -3,6 +3,8 @@ package com.beermartket.alcohol.admin.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.beermartket.alcohol.model.Hinh;
-import com.beermartket.alcohol.model.SanPham;
 import com.beermartket.alcohol.repository.HinhReponsitory;
 import com.beermartket.alcohol.repository.SanPhamRepository;
+
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 
 @Controller
 @RequestMapping("/admin")
@@ -21,6 +25,9 @@ public class HomeAdminController {
 	SanPhamRepository spDaoPhamRepository;
 	
 	@Autowired HinhReponsitory hinhDao;
+	
+	@Autowired
+	private JavaMailSender javaMailSender;
 
 	@RequestMapping("/home")
 	public String Home() {
@@ -62,6 +69,13 @@ public class HomeAdminController {
 		return "admin/view/listCoupon";
 	}
 	
+	@RequestMapping("/addCoupon")
+	public String addCoupon() {
+
+		
+		return "admin/view/addCoupon";
+	}
+	
 	@RequestMapping("/coupon_detail/{maPhieuNhap}")
 	public String detailCoupon() {
 
@@ -78,5 +92,67 @@ public class HomeAdminController {
         
 		return "admin/view/listOrderDetail";
 	}
+	
+	@RequestMapping("/listCategory")
+	public String listCategory() {
+
+		return "admin/view/listCategory";
+	}
+	
+	@RequestMapping("/detail_Category/{maLoaiSanPham}")
+	public String detailCategory() {
+
+		return "admin/view/category_detail";
+	}
+	
+	@RequestMapping("/add/Category")
+	public String addCategory() {
+
+		return "admin/view/addCategory";
+	}
+	
+	@RequestMapping("/listSupplier")
+	public String listSupplier() {
+
+		return "admin/view/listSupplier";
+	}
+	
+	@RequestMapping("/detail_supplier/{maNhaCungCap}")
+	public String detailSupplier() {
+
+		return "admin/view/Supplier_detail";
+	}
+	
+	@RequestMapping("/add/supplier")
+	public String addSupplier() {
+
+		return "admin/view/addSupplier";
+	}
+	
+	@RequestMapping("/listPromotion")
+	public String lisPromotion() {
+
+		return "admin/view/listpromotion";
+	}
+	
+	@RequestMapping("/promotion/{maKhuyenMai}")
+	public String detailPromotion() {
+
+		return "admin/view/Promotion_detail";
+	}
+	
+	@RequestMapping("/add/promotion")
+	public String addPromotion() {
+
+		return "admin/view/addPromotion";
+	}
+	
+	@RequestMapping("/listAccount")
+	public String lisAccount() {
+
+		return "admin/view/listAccount";
+	}
+	
+
 	
 }

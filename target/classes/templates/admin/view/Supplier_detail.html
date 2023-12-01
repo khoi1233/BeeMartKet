@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin/layout/layout :: content(~{::body},~{::title})}">
+
+<head>
+
+<title>Chi tiết nhà cung cấp</title>
+<body >
+
+	<!-- Page Content-->
+	<div class="page-content" ng-controller="sanphamAdmin-controller">
+		<div class="container-fluid">
+			<!-- Page-Title -->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="page-title-box">
+						<div class="row">
+							<div class="col">
+								<h4 class="page-title">Chi Tiêt Nhà Cung Cấp</h4>
+							</div>
+							<!--end col-->
+							<div class="col-auto align-self-center">
+								<a href="#" class="btn btn-sm btn-outline-primary"
+									id="Dash_Date"> <span class="day-name" id="Day_Name">Today:</span>&nbsp;
+									<span class="" id="Select_date">Jan 11</span> <i
+									data-feather="calendar" class="align-self-center icon-xs ms-1"></i>
+								</a>
+							</div>
+
+							<!--end col-->
+						</div>
+						<!--end row-->
+					</div>
+					<!--end page-title-box-->
+				</div>
+				<!--end col-->
+			</div>
+			<!--end row-->
+			<!-- end page title end breadcrumb -->
+
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">
+								Thông Tin Nhà Cung Cấp <span
+									class="badge bg-soft-success font-12">New</span>
+							</h4>
+
+						</div>
+						<div class="upload">
+							<img id="previewImage" src="{{nhacungcap1.hinhAnh}}" width="400"
+								height="400" alt="">
+							<div class="round mb-3">
+								<input type="file" id="fileInput" onchange="previewImage()">
+								<i class="fa fa-camera" style="color: #fff;"></i>
+							</div>
+						</div>
+						<!--end card-header-->
+
+						<div class="card-body">
+
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="maLoaiSanPham"
+									ng-model="nhacungcap1.maNhaCungCap"
+									placeholder="Mã Loại Sản Phẩm"> <label
+									for="maLoaiSanPham">Mã Nhà Cung Cấp</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="tenLoaiSanPham"
+									ng-model="nhacungcap1.tenNhaCungCap"
+									placeholder="Tên Loại Sản Phẩm"> <label
+									for="tenLoaiSanPham">Tên Nhà Cung Cấp</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="tenLoaiSanPham"
+									ng-model="nhacungcap1.soDienThoai"
+									placeholder="Tên Loại Sản Phẩm"> <label
+									for="tenLoaiSanPham">Số Điện Thoại</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="tenLoaiSanPham"
+									ng-model="nhacungcap1.diaChi"
+									placeholder="Tên Loại Sản Phẩm"> <label
+									for="tenLoaiSanPham">Địa Chỉ</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="tenLoaiSanPham"
+									ng-model="nhacungcap1.website"
+									placeholder="Tên Loại Sản Phẩm"> <label
+									for="tenLoaiSanPham">Website</label>
+							</div>
+							<div class="form-floating">
+								<textarea class="form-control"
+									placeholder="Leave a comment here" id="floatingTextarea2"
+									style="height: 100px" ng-model="nhacungcap1.ghiChu"></textarea>
+								<label for="floatingTextarea2">Ghi Chú</label>
+							</div>
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+				</div>
+				<!--end col-->
+			</div>
+			<!--end row-->
+
+			<!--end row-->
+			<button type="button" ng-click="updateSupplier(nhacungcap1)"
+				class="btn btn-outline-secondary float-end">
+				<i class="fas fa-save me-2"></i>Lưu
+			</button>
+
+			<br> <br>
+
+		</div>
+		<!-- container -->
+
+		<footer class="footer text-center text-sm-start ">
+			&copy;
+			<script>
+				document.write(new Date().getFullYear())
+			</script>
+			Dastone <span class="text-muted d-none d-sm-inline-block float-end">Crafted
+				with <i class="mdi mdi-heart text-danger"></i> by Mannatthemes
+			</span>
+		</footer>
+		<!--end footer-->
+	</div>
+	<!-- end page content -->
+	</div>
+	<!-- end page-wrapper -->
+	<script>
+		function previewImage() {
+			var preview = document.getElementById('previewImage');
+			var fileInput = document.getElementById('fileInput');
+			var files = fileInput.files;
+
+			if (files.length > 0) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					preview.src = e.target.result;
+				};
+				reader.readAsDataURL(files[0]);
+			}
+		}
+	</script>
+</body>
+
+</html>

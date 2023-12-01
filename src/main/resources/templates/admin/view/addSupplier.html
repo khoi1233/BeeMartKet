@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin/layout/layout :: content(~{::body},~{::title})}">
+
+<head>
+
+<title>Thêm Nhà Cung Cấp</title>
+<body >
+
+	<!-- Page Content-->
+	<div class="page-content" ng-controller="sanphamAdmin-controller">
+		<div class="container-fluid">
+			<!-- Page-Title -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">
+								Thông Tin Nhà Cung Cấp <span
+									class="badge bg-soft-success font-12">New</span>
+							</h4>
+
+						</div>
+						<div class="upload">
+							<img id="previewImage" src="https://firebasestorage.googleapis.com/v0/b/formal-facet-395516.appspot.com/o/M%C3%A0u%20be%20V%C3%A0%20V%C3%B2ng%20tr%C3%B2n%20Gia%20%C4%91%C3%ACnh%20%E1%BA%A2nh%20v%C3%A0%20M%C3%A0u%20n%C6%B0%E1%BB%9Bc%20L%C3%A1%20%E1%BA%A2nh%20In%20%C4%90%C3%B3ng%20khung.png?alt=media&token=91d924a8-c300-4b9b-b7b6-4b802a8a15b9" width="400"
+								height="400" alt="">
+							<div class="round mb-3">
+								<input type="file" id="fileInput" onchange="previewImage()">
+								<i class="fa fa-camera" style="color: #fff;"></i>
+							</div>
+						</div>
+						<!--end card-header-->
+
+						<div class="card-body">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="tenLoaiSanPham"
+									ng-model="nhacungcap1.tenNhaCungCap"
+									placeholder="Tên Loại Sản Phẩm"> <label
+									for="tenLoaiSanPham">Tên Nhà Cung Cấp</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="tenLoaiSanPham"
+									ng-model="nhacungcap1.soDienThoai"
+									placeholder="Tên Loại Sản Phẩm"> <label
+									for="tenLoaiSanPham">Số Điện Thoại</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="tenLoaiSanPham"
+									ng-model="nhacungcap1.diaChi"
+									placeholder="Tên Loại Sản Phẩm"> <label
+									for="tenLoaiSanPham">Địa Chỉ</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="tenLoaiSanPham"
+									ng-model="nhacungcap1.website"
+									placeholder="Tên Loại Sản Phẩm"> <label
+									for="tenLoaiSanPham">Website</label>
+							</div>
+							<div class="form-floating">
+								<textarea class="form-control"
+									placeholder="Leave a comment here" id="floatingTextarea2"
+									style="height: 100px" ng-model="nhacungcap1.ghiChu"></textarea>
+								<label for="floatingTextarea2">Ghi Chú</label>
+							</div>
+						</div>
+						<!--end card-body-->
+					</div>
+					<!--end card-->
+				</div>
+				<!--end col-->
+			</div>
+			<!--end row-->
+			</div>
+		<button type="button" ng-click="createNhaCungCap()" class="btn btn-outline-secondary float-end"><i class="mdi mdi-plus me-2"></i>Thêm</button>
+
+			<br> <br>
+			<br> <br>
+
+		</div>
+		<!-- container -->
+
+		<footer class="footer text-center text-sm-start ">
+			&copy;
+			<script>
+				document.write(new Date().getFullYear())
+			</script>
+			Dastone <span class="text-muted d-none d-sm-inline-block float-end">Crafted
+				with <i class="mdi mdi-heart text-danger"></i> by Mannatthemes
+			</span>
+		</footer>
+		<!--end footer-->
+	</div>
+	<!-- end page content -->
+	</div>
+	<!-- end page-wrapper -->
+
+ <script>
+		function previewImage() {
+			var preview = document.getElementById('previewImage');
+			var fileInput = document.getElementById('fileInput');
+			var files = fileInput.files;
+
+			if (files.length > 0) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					preview.src = e.target.result;
+				};
+				reader.readAsDataURL(files[0]);
+			}
+		}
+	</script>
+</body>
+
+</html>
