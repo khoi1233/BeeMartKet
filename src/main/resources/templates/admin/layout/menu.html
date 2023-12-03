@@ -32,10 +32,17 @@
 					class="align-self-center menu-icon"></i><span>Tài khoản</span><span
 					class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
 				<ul class="nav-second-level" aria-expanded="false">
-					<li class="nav-item"><a class="nav-link" th:href="@{/admin/listAccount}"><i
-							class="ti-control-record"></i>Danh sách tài khoản</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/admin/listAccountAdmin}"><i
+							class="ti-control-record"></i>Danh sách tài khoản quản lý đang được sử dụng</a></li>
+							<li class="nav-item"><a class="nav-link" th:href="@{/admin/listAccountAdminLock}"><i
+							class="ti-control-record"></i>Danh sách tài khoản quản lý đã bị khóa</a></li>
+							<li class="nav-item"><a class="nav-link" th:href="@{/admin/listAccount}"><i
+							class="ti-control-record"></i>Danh sách tài khoản khách hàng đang được sử dụng</a></li>
+							<li class="nav-item"><a class="nav-link" th:href="@{/admin/listAccountLock}"><i
+							class="ti-control-record"></i>Danh sách tài khoản khách hàng đã bị khóa</a></li>
 					<li class="nav-item"><a class="nav-link" th:href="@{/admin/addAccount}"><i
-							class="ti-control-record"></i>Thêm tài khoản</a></li></li>
+							class="ti-control-record"></i>Thêm tài khoản quản lý</a></li></li>
+							
 				
 		</ul>
 		</li>
@@ -280,9 +287,24 @@
 								data-feather="users"
 								class="align-self-center icon-xs icon-dual me-1"></i> Contacts</a>
 							<div class="dropdown-divider mb-0"></div>
-							<a class="dropdown-item" href="auth-login.html"><i
+							<th:block th:if="${session.admin != null}">
+									<a class="dropdown-item" href="/admin/access/change-password2">Đổi mật khẩu</a>
+									<a class="dropdown-item" th:href="@{/admin/log-out}"><i
 								data-feather="power"
-								class="align-self-center icon-xs icon-dual me-1"></i> Logout</a>
+								class="align-self-center icon-xs icon-dual me-1"></i>Đăng xuất</a>
+
+								</th:block>
+
+								<th:block th:if="${session.superadmin != null}">
+									<a class="dropdown-item" href="/admin/access/change-password2">Đổi mật khẩu</a>
+									<a class="dropdown-item" th:href="@{/admin/log-out}"><i
+								data-feather="power"
+								class="align-self-center icon-xs icon-dual me-1"></i>Đăng xuất</a>
+
+								</th:block>
+<!-- 							<a class="dropdown-item" href="auth-login.html"><i -->
+<!-- 								data-feather="power" -->
+<!-- 								class="align-self-center icon-xs icon-dual me-1"></i> Logout</a> -->
 						</div></li>
 				</ul>
 				<!--end topbar-nav-->

@@ -16,8 +16,8 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Thêm mới tài khoản quản lý</h4>
-                                    <p class="text-muted mb-0">Tính năng thêm tài khoản quản lý</p>
+                                    <h4 class="card-title">Cập nhật tài khoản quản lý</h4>
+                                    <p class="text-muted mb-0">Tính năng cập nhật tài khoản quản lý</p>
                                 </div><!--end card-header-->
                                 <div class="card-body">
 
@@ -32,7 +32,7 @@
                             <div class="form-group row">
                                 <label for="fullName" class="col-lg-3 col-form-label">Họ tên</label>
                                 <div class="col-lg-9">
-                                    <input id="fullName" name="fullName" type="text" class="form-control" required>
+                                    <input id="fullName" th:value="${tkedit?.hoTen}" name="fullName" type="text" class="form-control" required>
                                     <div class="error-message" id="fullName-error" style="color: red;"></div>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                             <div class="form-group row">
                                 <label for="phoneNumber" class="col-lg-3 col-form-label">Số điện thoại</label>
                                 <div class="col-lg-9">
-                                    <input id="phoneNumber" name="phoneNumber" type="text" class="form-control" required>
+                                    <input id="phoneNumber" th:value="${tkedit?.soDienThoai}" name="phoneNumber" type="text" class="form-control" required>
                                     <div class="error-message" id="phoneNumber-error"style="color: red;"></div>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                             <div class="form-group row">
                                 <label for="username" class="col-lg-3 col-form-label">Tên tài khoản</label>
                                 <div class="col-lg-9">
-                                    <input id="username" name="username" type="text" class="form-control" required>
+                                    <input id="username" th:value="${tkedit?.tenDangNhap}" name="username" type="text" class="form-control" required readonly>
                                     <div class="error-message" id="username-error"style="color: red;"></div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                             <div class="form-group row">
                                 <label for="email" class="col-lg-3 col-form-label">Email</label>
                                 <div class="col-lg-9">
-                                    <input id="email" name="email" type="text" class="form-control" required>
+                                    <input id="email" th:value="${tkedit?.email}" name="email" type="text" class="form-control" required>
                                     <div class="error-message" id="email-error"style="color: red;"></div>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                             <div class="form-group row">
                                 <label for="address" class="col-lg-3 col-form-label">Địa chỉ</label>
                                 <div class="col-lg-9">
-                                    <input id="address" name="address" type="text" class="form-control" required>
+                                    <input id="address" th:value="${tkedit?.diaChi}" name="address" type="text" class="form-control" required>
                                     <div class="error-message" id="address-error"style="color: red;"></div>
                                 </div>
                             </div>
@@ -82,17 +82,31 @@
                     </div>
                                             
                                              <div class="row">
-                                             
-                                             		<div class="card-body">
-													<input type="file" id="input-file-now" class="dropify" accept=".jpg, .jpeg, .png"/>
-													<center><div class="error-message" id="image-error"style="color: red;"></div></center>
-													
+
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label for="address" class="col-lg-3 col-form-label">Tải
+															lên ảnh mới:</label> <input type="file" id="input-file-now"
+															class="dropify" accept=".jpg, .jpeg, .png" /> 
+														<center>
+															<div class="error-message" id="image-error"
+																style="color: red;"></div>
+														</center>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label for="address" class="col-lg-3 col-form-label">Ảnh cũ:</label> 
+														<img th:src="@{'/images/avatar/' +${tkedit?.hinhAnh}}" alt="" style="max-width: 300px; max-height: 300px">
+														
+													</div>
+												</div>
+
+
 											</div>
-											
-                                             </div>
                                             
                                         
-  	 <button type="button" id="nextButton" class="btn btn-primary">Thêm</button>
+  	 <button type="button" id="nextButton" class="btn btn-primary">Cập nhật</button>
   	</div>
   </div>
   
@@ -214,15 +228,10 @@ document.addEventListener("DOMContentLoaded", function() {
         
 
 	    try {
-	        const usernameResponse = await fetch(`/check-username?username=${username}`);
-	        const usernameData = await usernameResponse.json();
-	        if (usernameData.isUsernameExists) {
-	            showError("username", "Tên đăng nhập đã tồn tại.");
-	            hasValidationError = true;
-	        }
+	        
 
 	        // Check email existence
-	        const emailResponse = await fetch(`/check-email?email=${email}`);
+	        const emailResponse = await fetch(`/check-emailedit?email=${encodeURIComponent(email)}&username=${encodeURIComponent(username)}`);
 	        const emailData = await emailResponse.json();
 	        if (emailData.isEmailExists) {
 	            showError("email", "Email đã tồn tại.");
@@ -230,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	        }
 
 	        // Check phone number existence
-	        const phoneNumberResponse = await fetch(`/check-phone-number?phoneNumber=${phoneNumber}`);
+	        const phoneNumberResponse = await fetch(`/check-phone-numberedit?phoneNumber=${encodeURIComponent(phoneNumber)}&username=${encodeURIComponent(username)}`);
 	        const phoneNumberData = await phoneNumberResponse.json();
 	        if (phoneNumberData.isPhoneNumberExists) {
 	            showError("phoneNumber", "Số điện thoại đã tồn tại.");
@@ -333,11 +342,17 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         // Perform the AJAX request or use the Fetch API to send data to the backend
-        fetch("/addAdmin-form", {
+        fetch("/editAdmin-form", {
             method: "POST",
             body: formData
         })
-        .then(response => response.json())
+        .then(response => {
+            if (response.ok) {
+                // Redirect to the listAccountAdmin page after successful form submission
+                window.location.href = "/admin/listAccountAdmin";
+            }
+            return response.json();
+        })
         .then(data => {
             // Handle the response from the backend (if needed)
             console.log(data);
@@ -345,7 +360,6 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error("Error:", error);
         });
-        
     }
     function resetInputFields() {
         // Reset all input fields

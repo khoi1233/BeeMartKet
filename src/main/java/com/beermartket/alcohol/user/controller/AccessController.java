@@ -1,5 +1,9 @@
 package com.beermartket.alcohol.user.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -10,6 +14,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -67,7 +72,8 @@ public class AccessController {
 
 		boolean remember = "on".equals(rememberMe);
 		System.out.println(remember);
-		TaiKhoan tk = taikhoanrp.findByTenDangNhap(username);
+		String trangthai = "Đang hoạt động"; 
+		TaiKhoan tk = taikhoanrp.findByTenDangNhap(username,trangthai);
 		username = username.trim();
 		password = password.trim();
 
@@ -144,12 +150,123 @@ public class AccessController {
 
 		return "access/register";
 	}
+	@RequestMapping("/access/checkconfirm-mail")
+	 public ResponseEntity<String> checkconfirmmail(@RequestParam(name = "code", required = false) String code, Model model, HttpServletRequest request, @RequestBody Map<String, Object> requestBody) {
+		 HttpSession sessionSEmail = request.getSession();
+        String rdCode = (String) sessionSEmail.getAttribute("randomCode");
+        String emCode = (String) sessionSEmail.getAttribute("emailcode");
+        Map<String, Object> userInfo = (Map<String, Object>) requestBody.get("userInfo");
+        
+        System.out.println("Code: " + code);
+		 if (emCode != null) {
+			 
+	         if (code != null && code.equalsIgnoreCase(rdCode)) {
+	        
+	             // Mã người dùng nhập vào khớp với mã lưu trong session
+	        	 if (userInfo != null) {
+	        		 	System.out.println("Chính xác");
+	        		 	LocalDateTime currentDateTime = LocalDateTime.now();
+	        		 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	        		 	String formattedDateTime = currentDateTime.format(formatter);
+	        		    String username = (String) userInfo.get("username");
+	        		    String email = (String) userInfo.get("email");
+	        		    String password = (String) userInfo.get("password");
+	        		    String fullName = (String) userInfo.get("fullName");
+	        		    String salt = BCrypt.gensalt(12);
+	        		    String hashedUserInputPassword = BCrypt.hashpw(password, salt);
+	        		    TaiKhoan dangkytaikhoan = new TaiKhoan();
+	        		    dangkytaikhoan.setHoTen(fullName);
+	        		    dangkytaikhoan.setEmail(email);
+	        		    dangkytaikhoan.setTenDangNhap(username);
+	        		    dangkytaikhoan.setMatKhau(hashedUserInputPassword);
+	        		    dangkytaikhoan.setMaHoaMatKhau(salt);
+	        		    dangkytaikhoan.setNgayTao(formattedDateTime);
+	        		    taikhoanrp.save(dangkytaikhoan);
+	        		    System.out.println("Username: " + username);
+	        		    System.out.println("Email: " + email);
+	        		    System.out.println("Password: " + password);
+	        		    System.out.println("Full Name: " + fullName);
+	        		    return ResponseEntity.ok("Xác minh thành công");
+	        		} else {
+	        		    System.out.println("userInfo không có dữ liệu");
+	        		}
+	        	    
+	        	 
+	         }
+	         else {
+	        	 
+	        	 System.out.println("sai");
+	        	 return ResponseEntity.badRequest().body("Xác minh không thành công");
+			}
+	             if (emCode != null) {
+	                 // Email cũng đã được lưu trong session, bạn có thể sử dụng email để xác minh
+	                 sendVerificationCodeByEmail(emCode, rdCode);
+	                 
+	            }
+	             
+	         }
+	         
+	         // Lưu giá trị randomCode vào session
+	         
+	         
+		 return ResponseEntity.badRequest().body("Xác minh không thành công");
+	 }
+	 @RequestMapping("/access/send-mail")
+	 public String sendmail(@RequestParam(name = "email", required = false) String email, Model model, HttpServletRequest request) {
+	     if (email != null) {
+	         System.out.println("Email received from client: " + email);
+	         String randomCode = generateRandomCode(6);
+	         System.out.println("Email received from client: " + randomCode);
+
+	         // Lưu giá trị randomCode vào session
+	         HttpSession sessionSEmail = request.getSession();
+	         sessionSEmail.setAttribute("randomCode", randomCode);
+	         sessionSEmail.setAttribute("emailcode", email);
+	         sessionSEmail.setMaxInactiveInterval(60);
+	         sendVerificationCodeByEmail(email, randomCode);
+	     } else {
+	         System.out.println("No email was provided by the client.");
+	     }
+
+	     return "redirect:/access/confirm-mail";
+	 }
+	 @RequestMapping("/access/confirm-mail")
+	    public String pageConfirmMail(Model model, HttpServletRequest request) {
+		 	
+
+	        return "access/confirm-mail";
+	    }
+	 private void sendVerificationCodeByEmail(String toEmail, String verificationCode) {
+//	        SimpleMailMessage message = new SimpleMailMessage();
+	        MimeMessage message = javaMailSender.createMimeMessage();
+	        try {
+	            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+	            String Subject = "BEE MARKET XIN CHÀO, MÃ XÁC NHẬN EMAIL CỦA BẠN";
+	            String icon1 = "<h3 style =\" style= color: black;\">Mã xác nhận email của bạn là:</h3>";
+	            String styledIcon1 = icon1+"<h3 style=\"color: blue; text-decoration: underline;\">" + verificationCode + "</h3>";
+	            String content = "<html><body>" + styledIcon1 + "</body></html>";
+	            helper.setTo(toEmail);
+	            helper.setSubject(Subject);
+	            helper.setText(content, true);  // Sử dụng true để cho phép email hiển thị HTML
+
+	            javaMailSender.send(message);
+	        } catch (MessagingException e) {
+	            e.printStackTrace();
+	        }
+	        
+	        javaMailSender.send(message);
+
+	        
+	    }
+	
+	
+	
 	@RequestMapping(value = "/access/reset-password", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> resetpassword(Model model, @RequestParam("username") String username,
             @RequestParam("email") String email) {
-		
-		TaiKhoan tk = taikhoanrp.findByTenDangNhap(username);
+		String trangthai = "Đang hoạt động"; 
+		TaiKhoan tk = taikhoanrp.findByTenDangNhap(username,trangthai);
 
 		 if (tk == null) {
 	            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"usernameError\": \"Tên đăng nhập không tồn tại\"}");
@@ -174,14 +291,22 @@ public class AccessController {
 	}
 	
 	
-	 @RequestMapping(value = "/api/check-username", method = RequestMethod.GET)
-	 @ResponseBody
-	 public boolean checkUsername(@RequestParam("usernameRT") String usernameRT) {
-		 System.out.println(usernameRT);
-	     TaiKhoan tk = taikhoanrp.findByTenDangNhap(usernameRT);
-	     return tk != null;
-	 }
-	 
+	@RequestMapping(value = "/api/check-user", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Boolean> checkUser(@RequestParam("usernameRT") String usernameRT, @RequestParam("emailRT") String emailRT) {
+	    Map<String, Boolean> result = new HashMap<>();
+
+	    // Check username
+	    TaiKhoan tkUsername = taikhoanrp.findByTenDangNhapAll(usernameRT);
+	    result.put("usernameExists", tkUsername != null);
+
+	    // Check email
+	    TaiKhoan tkEmail = taikhoanrp.findByEmail(emailRT);
+	    result.put("emailExists", tkEmail != null);
+
+	    return result;
+	}
+
 	 public String generateRandomCode(int length) {
 	        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 	        StringBuilder result = new StringBuilder();
@@ -214,7 +339,8 @@ public class AccessController {
 		 HttpSession sessionSEmail = request.getSession();
 
 		 String okcheckcode = (String) sessionSEmail.getAttribute("okcheckcode");
-			TaiKhoan tk = taikhoanrp.findByTenDangNhap(username);
+		 String trangthai = "Đang hoạt động"; 
+			TaiKhoan tk = taikhoanrp.findByTenDangNhap(username,trangthai);
 			if (okcheckcode!=null) {
 				if (tk != null && tk.getEmail().equals(email)) {		
 					String salt = BCrypt.gensalt(12);
@@ -308,7 +434,8 @@ public class AccessController {
 	     String currentUser = (String) session.getAttribute(SessionAttr.CURRENT_USER);
 
 	     if (currentUser != null) {
-	         TaiKhoan tk = taikhoanrp.findByTenDangNhap(currentUser);
+	    	 String trangthai = "Đang hoạt động"; 
+	         TaiKhoan tk = taikhoanrp.findByTenDangNhap(currentUser,trangthai);
 
 	         String hashedUserInputPassword2 = BCrypt.hashpw(password, tk.getMaHoaMatKhau());
 

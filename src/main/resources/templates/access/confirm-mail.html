@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
@@ -10,7 +10,7 @@
     <meta name="title" content="greeny - Ecommerce Food Store HTML Template">
     <meta name="keywords"
         content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, products, farm, grocery, natural, online">
-    <title>Bee Market - Đăng ký</title>
+    <title>Bee Market - Xác nhận email</title>
     <link rel="icon" href="/images/favicon.png">
     <link rel="stylesheet" href="/fonts/flaticon/flaticon.css">
     <link rel="stylesheet" href="fonts/icofont/icofont.min.css">
@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/vendor/niceselect/nice-select.min.css">
     <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css">
+  	<link rel="stylesheet" href="/css/access.css">
     <link rel="stylesheet" href="/css/user-auth.css">
 </head>
 
@@ -46,19 +47,51 @@
                             <div class="user-form-divider">
                                 <p>Hoặc</p>
                             </div>
-                            <form class="user-form" action="/access/register/check" method="post">
-                                <div class="form-group"><input type="text" class="form-control"
-                                        placeholder="Nhập tên đăng nhập" name="usernameRT"></div>
-                                <div class="form-group"><input type="email" class="form-control"
-                                        placeholder="Nhập địa chỉ email" name="emailRT"></div>
-                                <div class="form-group"><input type="password" class="form-control"
-                                        placeholder="Nhập mật khẩu" name="passswordRT"></div>
-                                <div class="form-group"><input type="password" class="form-control"
-                                        placeholder="Nhập xác nhận mật khẩu" name="passswordRT2"></div>
-                                <div class="form-check mb-3"><input class="form-check-input" type="checkbox" value=""
-                                        id="check"><label class="form-check-label" for="check">Chấp nhận tất cả các <a
-                                            href="#">Điều khoản & Điều kiện</a></label></div>
-                                <div class="form-button"><button type="submit">Đăng ký</button></div>
+                            <form class="user-form">
+                            <div class="form-error" th:if="${errorDK}">
+								<p class="error-message" th:text="${errorDK}"></p>
+							</div>
+                                
+                              
+                              <div class="form-group">
+                              	<label class="form-check-label" for="check">Mã xác nhận đã được gửi qua</label> 
+                              	<label id="emailLabel" style="color: black; font-weight: bold;"></label>
+                              </div>
+<!--                                 <div class="form-group"><input type="email" class="form-control" -->
+<!--                                         placeholder="Nhập mã xác nhận" name="emailRT" th:value="${maxacnhan}"></div> -->
+                              
+                              <div class="code-input">
+           <input type="text" id="code1" maxlength="1" oninput="nextInput(1)" onkeydown="handleBackspace(1)" onkeypress="removeAccents(event, 'code1')">
+        <input type="text" id="code2" maxlength="1" oninput="nextInput(2)" onkeydown="handleBackspace(2)" onkeypress="removeAccents(event, 'code2')">
+        <input type="text" id="code3" maxlength="1" oninput="nextInput(3)" onkeydown="handleBackspace(3)" onkeypress="removeAccents(event, 'code3')">
+        <input type="text" id="code4" maxlength="1" oninput="nextInput(4)" onkeydown="handleBackspace(4)" onkeypress="removeAccents(event, 'code4')">
+        <input type="text" id="code5" maxlength="1" oninput="nextInput(5)" onkeydown="handleBackspace(5)" onkeypress="removeAccents(event, 'code5')">
+        <input type="text" id="code6" maxlength="1" oninput="nextInput(6)" onkeydown="handleBackspace(6)" onkeypress="removeAccents(event, 'code6')">
+    </div>
+    <input type="hidden" id="result" readonly>
+    <div class="form-error">
+								 <p class="error-message" id="confirm-error"></p>
+							
+       
+    </div>
+    <br>
+<!--     <input type="text" id="randomCode" value="${sessionSEmail.getAttribute('randomCode') ? sessionSEmail.getAttribute('randomCode').toString() : ''}"> -->
+<!--      <input  name="randomCode" id="randomCode" value="${sessionSEmail.getAttribute('randomCode')}"> -->
+<!--       <input name="randomCode" id="randomCodeInput" th:value="${confirm}"> -->
+                                <div class="form-group">
+                                        <label class="form-check-label" for="check">Bạn không nhận được mã? 
+                                        	<span id="countdown">60 giây</span> 
+   											 <a href="#" id="resendLink" style="display: none">Gửi lại</a>
+
+                                        </label>
+                                </div>
+                                <div class="form-button"><button id="confirm">Xác nhận email</button></div>
+<!--                                 <input style="" type="password" class="form-control" -->
+<!--                                          name="emailRT" th:value="${emailRT}"> -->
+<!--                                 <input style="display: none;" type="password" class="form-control" -->
+<!--                                          name="usernameRT" th:value="${usernameRT}"> -->
+<!--                                         <input style="display: none;" type="password" class="form-control" -->
+<!--                                          name="passwordRT" th:value="${passwordRT}"> -->
                             </form>
                         </div>
                     </div>
@@ -72,6 +105,7 @@
             </div>
         </div>
     </section>
+
     <script src="/vendor/bootstrap/jquery-1.12.4.min.js"></script>
     <script src="/vendor/bootstrap/popper.min.js"></script>
     <script src="/vendor/bootstrap/bootstrap.min.js"></script>
@@ -85,6 +119,8 @@
     <script src="/js/venobox.js"></script>
     <script src="/js/slick.js"></script>
     <script src="/js/main.js"></script>
+    
+    <script src="/js/confirm-mail.js"></script>
 </body>
 
 
